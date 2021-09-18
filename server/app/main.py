@@ -27,10 +27,12 @@ def init_conn():
     return conn, cursor
 
 
-def calculateSongs(songs: list = []):
+def calculateSongs(token: str="", songs: list = []):
     metric = {}
-    for s in songs:
-        print(s)  # Calculate
+    url = "https://api.spotify.com/v1/audio-features"
+    headers = {"Authorization": "Bearer {}".format(token)}
+    response = requests.get(url, headers=headers, params={})
+    res = response.json()
     return metric
 
 
@@ -43,16 +45,35 @@ def welcome():
         return "Error with {}".format(e), 400
 
 
+@app.get('/testSpotify')
+def testSpotify(token: str=""):
+    try:
+        url = "https://api.spotify.com/v1/audio-features"
+        headers = {"Authorization": "Bearer {}".format(token)}
+        response = requests.get(url, headers=headers, params={"ids": "06PBQ4rDmHRVfWsszDwLTa"})
+        return response.json()
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e), 400
+
+
 @app.post('/logUser')
 def log_user(user: dict = defaultUser):
     try:
         conn, cursor = init_conn()
         userID = user['UserID']
         userName = user['UserName']
+        token = user['Token']
 
-        savedTracks = []  # Get Saved Tracks
+        url = "https://api.spotify.com/v1/me/tracks"
+        headers = {"Authorization": "Bearer {}".format(token)}
+        response = requests.get(url, headers=headers, params={})
+        res = response.json()
 
-        metrics = calculateSongs(savedTracks)
+        savedTracks = []
+        savedTracks.append(res['items']['track']['id'])
+
+        metrics = calculateSongs(token, savedTracks)
         res = post_user(conn, cursor, userID, userName, metrics)
         return res, 200
 
