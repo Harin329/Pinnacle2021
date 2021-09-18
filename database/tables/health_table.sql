@@ -1,4 +1,4 @@
-USE `health_db`;
+USE `spotlight_db`;
 DROP procedure IF EXISTS `createHealthTable`;
 
 SET FOREIGN_KEY_CHECKS = 0;
@@ -7,7 +7,7 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 DELIMITER $$
 
-USE `health_db`$$
+USE `spotlight_db`$$
 CREATE PROCEDURE `createHealthTable` ()
 BEGIN
 
