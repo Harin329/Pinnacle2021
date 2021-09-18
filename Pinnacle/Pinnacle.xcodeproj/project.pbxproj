@@ -12,6 +12,8 @@
 		B836279626F5CD2B0092A106 /* CreateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B836279526F5CD2B0092A106 /* CreateProfile.swift */; };
 		B836279926F5CE5D0092A106 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B836279826F5CE5D0092A106 /* HexColor.swift */; };
 		B836279B26F5CF8C0092A106 /* medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B836279A26F5CF8C0092A106 /* medium.ttf */; };
+		B836279F26F648B10092A106 /* book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B836279E26F648B10092A106 /* book.ttf */; };
+		B83627A126F64CF50092A106 /* OnboardingSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627A026F64CF50092A106 /* OnboardingSong.swift */; };
 		BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC026F59415008B44BB /* PinnacleApp.swift */; };
 		BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC226F59415008B44BB /* ContentView.swift */; };
 		BE8B3EC526F59416008B44BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8B3EC426F59416008B44BB /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 		B836279526F5CD2B0092A106 /* CreateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfile.swift; sourceTree = "<group>"; };
 		B836279826F5CE5D0092A106 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		B836279A26F5CF8C0092A106 /* medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = medium.ttf; sourceTree = "<group>"; };
+		B836279E26F648B10092A106 /* book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = book.ttf; sourceTree = "<group>"; };
+		B83627A026F64CF50092A106 /* OnboardingSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSong.swift; sourceTree = "<group>"; };
 		BE8B3EBD26F59415008B44BB /* Pinnacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinnacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8B3EC026F59415008B44BB /* PinnacleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnacleApp.swift; sourceTree = "<group>"; };
 		BE8B3EC226F59415008B44BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				B836279526F5CD2B0092A106 /* CreateProfile.swift */,
+				B83627A026F64CF50092A106 /* OnboardingSong.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -64,6 +69,8 @@
 		B836279C26F5CF910092A106 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				B836279A26F5CF8C0092A106 /* medium.ttf */,
+				B836279E26F648B10092A106 /* book.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -89,7 +96,6 @@
 		BE8B3EBF26F59415008B44BB /* Pinnacle */ = {
 			isa = PBXGroup;
 			children = (
-				B836279A26F5CF8C0092A106 /* medium.ttf */,
 				B836279C26F5CF910092A106 /* Fonts */,
 				B836279726F5CE490092A106 /* Extension */,
 				B836279426F5CD0F0092A106 /* Onboarding */,
@@ -168,6 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B836279F26F648B10092A106 /* book.ttf in Resources */,
 				B836279B26F5CF8C0092A106 /* medium.ttf in Resources */,
 				BE8B3EC826F59416008B44BB /* Preview Assets.xcassets in Resources */,
 				BE8B3EC526F59416008B44BB /* Assets.xcassets in Resources */,
@@ -185,6 +192,7 @@
 				BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */,
 				B836279926F5CE5D0092A106 /* HexColor.swift in Sources */,
 				BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */,
+				B83627A126F64CF50092A106 /* OnboardingSong.swift in Sources */,
 				B836279626F5CD2B0092A106 /* CreateProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
