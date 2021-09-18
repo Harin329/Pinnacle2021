@@ -28,14 +28,38 @@ def init_conn():
     return conn, cursor
 
 
-def calculateSongs(token: str="", songs: list = []):
-    metric = {}
+def calculateSongs(token: str = "", songs: list = []):
+    metric = {"danceability": 0, "energy": 0, "key": 0, "loudness": 0, "mode": 0, "speechiness": 0,
+              "acousticness": 0, "instrumentalness": 0, "liveness": 0, "valence": 0, "tempo": 0, }
     url = "https://api.spotify.com/v1/audio-features"
     headers = {"Authorization": "Bearer {}".format(token)}
-    response = requests.get(url, headers=headers, params={"ids": ",".join(songs)})
+    response = requests.get(url, headers=headers, params={
+                            "ids": ",".join(songs)})
     res = response.json()
+    total = len(res['audio_features'])
     for r in res['audio_features']:
-        print(r)
+        metric["danceability"] += r["danceability"]
+        metric["energy"] += r["energy"]
+        metric["key"] += r["key"]
+        metric["loudness"] += r["loudness"]
+        metric["mode"] += r["mode"]
+        metric["speechiness"] += r["speechiness"]
+        metric["acousticness"] += r["acousticness"]
+        metric["instrumentalness"] += r["instrumentalness"]
+        metric["liveness"] += r["liveness"]
+        metric["valence"] += r["valence"]
+        metric["tempo"] += r["tempo"]
+    metric["danceability"] /= total
+    metric["energy"] /= total
+    metric["key"] /= total
+    metric["loudness"] /= total
+    metric["mode"] /= total
+    metric["speechiness"] /= total
+    metric["acousticness"] /= total
+    metric["instrumentalness"] /= total
+    metric["liveness"] /= total
+    metric["valence"] /= total
+    metric["tempo"] /= total
     return metric
 
 
@@ -49,11 +73,12 @@ def welcome():
 
 
 @app.get('/testSpotify')
-def testSpotify(token: str=""):
+def testSpotify(token: str = ""):
     try:
         url = "https://api.spotify.com/v1/audio-features"
         headers = {"Authorization": "Bearer {}".format(token)}
-        response = requests.get(url, headers=headers, params={"ids": "06PBQ4rDmHRVfWsszDwLTa,06PBQ4rDmHRVfWsszDwLTa"})
+        response = requests.get(url, headers=headers, params={
+                                "ids": "06PBQ4rDmHRVfWsszDwLTa,06PBQ4rDmHRVfWsszDwLTa"})
         return response.json()
     except Exception as e:
         logging.error(e)
