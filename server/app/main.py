@@ -187,7 +187,7 @@ def get_top(user: dict=defaultUser):
 
 
 @app.put('/setAnthem')
-def log_anthem(userID: string="", anthem: string=""):
+def log_anthem(userID: str="", anthem: str=""):
     try:
         conn, cursor = init_conn()
 
