@@ -33,6 +33,11 @@ struct PeopleToFollow: View {
                 Spacer()
             }.padding(.horizontal)
             Spacer()
+            
+            HStack {
+                
+            }
+            
         }
         .background((Color(hex:"51D8DC")).ignoresSafeArea())
     }
