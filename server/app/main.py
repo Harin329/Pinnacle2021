@@ -8,7 +8,8 @@ from starlette.middleware.cors import CORSMiddleware
 
 defaultUser = {
     "UserID": "123",
-    "UserName": "Harin"
+    "UserName": "Harin",
+    "token": "abc"
 }
 
 app = FastAPI()
@@ -31,8 +32,10 @@ def calculateSongs(token: str="", songs: list = []):
     metric = {}
     url = "https://api.spotify.com/v1/audio-features"
     headers = {"Authorization": "Bearer {}".format(token)}
-    response = requests.get(url, headers=headers, params={})
+    response = requests.get(url, headers=headers, params={"ids": ",".join(songs)})
     res = response.json()
+    for r in res['audio_features']:
+        print(r)
     return metric
 
 
@@ -50,7 +53,7 @@ def testSpotify(token: str=""):
     try:
         url = "https://api.spotify.com/v1/audio-features"
         headers = {"Authorization": "Bearer {}".format(token)}
-        response = requests.get(url, headers=headers, params={"ids": "06PBQ4rDmHRVfWsszDwLTa"})
+        response = requests.get(url, headers=headers, params={"ids": "06PBQ4rDmHRVfWsszDwLTa,06PBQ4rDmHRVfWsszDwLTa"})
         return response.json()
     except Exception as e:
         logging.error(e)
@@ -70,8 +73,11 @@ def log_user(user: dict = defaultUser):
         response = requests.get(url, headers=headers, params={})
         res = response.json()
 
-        savedTracks = []
-        savedTracks.append(res['items']['track']['id'])
+        items = res['items']
+        for i in items:
+            id = i['track']['id']
+            savedTracks = []
+            savedTracks.append(id)
 
         metrics = calculateSongs(token, savedTracks)
         res = post_user(conn, cursor, userID, userName, metrics)
