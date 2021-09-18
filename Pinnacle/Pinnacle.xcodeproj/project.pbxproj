@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B802D3DD26F5A09A00329210 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802D3DC26F5A09A00329210 /* SpotifyiOS.framework */; };
+		B802D3E226F5A79400329210 /* SpotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802D3E126F5A79400329210 /* SpotifyController.swift */; };
+		B802D3E426F5AE8E00329210 /* SpotifyAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802D3E326F5AE8E00329210 /* SpotifyAuthentication.swift */; };
 		BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC026F59415008B44BB /* PinnacleApp.swift */; };
 		BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC226F59415008B44BB /* ContentView.swift */; };
 		BE8B3EC526F59416008B44BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8B3EC426F59416008B44BB /* Assets.xcassets */; };
@@ -14,6 +17,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B802D3DC26F5A09A00329210 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
+		B802D3DE26F5A27B00329210 /* Pinnacle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pinnacle-Bridging-Header.h"; sourceTree = "<group>"; };
+		B802D3E126F5A79400329210 /* SpotifyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyController.swift; sourceTree = "<group>"; };
+		B802D3E326F5AE8E00329210 /* SpotifyAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAuthentication.swift; sourceTree = "<group>"; };
 		BE8B3EBD26F59415008B44BB /* Pinnacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinnacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8B3EC026F59415008B44BB /* PinnacleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnacleApp.swift; sourceTree = "<group>"; };
 		BE8B3EC226F59415008B44BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -27,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B802D3DD26F5A09A00329210 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +44,8 @@
 		BE8B3EB426F59415008B44BB = {
 			isa = PBXGroup;
 			children = (
+				B802D3DC26F5A09A00329210 /* SpotifyiOS.framework */,
+				B802D3DE26F5A27B00329210 /* Pinnacle-Bridging-Header.h */,
 				BE8B3EBF26F59415008B44BB /* Pinnacle */,
 				BE8B3EBE26F59415008B44BB /* Products */,
 			);
@@ -57,6 +67,8 @@
 				BE8B3EC426F59416008B44BB /* Assets.xcassets */,
 				BE8B3EC926F59417008B44BB /* Info.plist */,
 				BE8B3EC626F59416008B44BB /* Preview Content */,
+				B802D3E126F5A79400329210 /* SpotifyController.swift */,
+				B802D3E326F5AE8E00329210 /* SpotifyAuthentication.swift */,
 			);
 			path = Pinnacle;
 			sourceTree = "<group>";
@@ -138,6 +150,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B802D3E226F5A79400329210 /* SpotifyController.swift in Sources */,
+				B802D3E426F5AE8E00329210 /* SpotifyAuthentication.swift in Sources */,
 				BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */,
 				BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */,
 			);
@@ -201,8 +215,10 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "Pinnacle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -255,8 +271,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "Pinnacle-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -271,6 +289,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Pinnacle/Preview Content\"";
 				DEVELOPMENT_TEAM = 35ZK849627;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pinnacle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -293,6 +315,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Pinnacle/Preview Content\"";
 				DEVELOPMENT_TEAM = 35ZK849627;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Pinnacle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -9,9 +9,24 @@ import SwiftUI
 
 @main
 struct PinnacleApp: App {
+    @StateObject var spotifyController = SpotifyController()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            VStack {
+                ContentView()
+                Button (action: {
+                    spotifyController.connect()
+                }) {
+                    Text("Login")
+                }
+                    .onOpenURL { url in
+                        spotifyController.setAccessToken(from: url)
+                    }
+                    .onReceive(NotificationCenter.default.publisher(for: UIApplication.didFinishLaunchingNotification), perform: { _ in
+                        spotifyController.connect()
+                })
+            }
         }
     }
 }
