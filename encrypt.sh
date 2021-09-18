@@ -1,6 +1,7 @@
 #!/bin/bash
 rsa_key_size=4096
 data_path="./certbot"
+domains=(pinnacle.harinwu.com)
 
 if [ ! -e "$data_path/conf/options-ssl-nginx.conf" ] || [ ! -e "$data_path/conf/ssl-dhparams.pem" ]; then
   echo "### Downloading recommended TLS parameters ..."
@@ -28,10 +29,15 @@ docker-compose run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/renewal/$domains.conf" certbot
 echo
 
+domain_args=""
+for domain in "${domains[@]}"; do
+  domain_args="$domain_args -d $domain"
+done
+
 docker-compose run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     --email harinwu99@gmail.com \
-    -d pinnacle.harinwu.com \
+    $domain_args \
     --rsa-key-size $rsa_key_size \
     --agree-tos \
     --force-renewal" certbot

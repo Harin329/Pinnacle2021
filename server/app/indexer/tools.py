@@ -31,7 +31,31 @@ def post_user(conn, cursor, userID, userName, metrics):
             metrics['tempo']
              ))
         conn.commit()
-        return name
+        return metrics
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)
+
+def post_playlist(conn, cursor, playlistID, playlistName, metrics):
+    sql = 'postPlaylist'
+    try:
+        cursor.callproc(sql, (
+            playlistID,
+            playlistName, 
+            metrics['danceability'], 
+            metrics['energy'], 
+            metrics['key'], 
+            metrics['loudness'],
+            metrics['mode'], 
+            metrics['speechiness'], 
+            metrics['acousticness'], 
+            metrics['instrumentalness'],
+            metrics['liveness'], 
+            metrics['valence'],
+            metrics['tempo']
+             ))
+        conn.commit()
+        return metrics
     except Exception as e:
         print("MYSQL ERROR:", sql)
         logging.error(e)

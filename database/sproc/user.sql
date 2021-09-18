@@ -3,54 +3,14 @@ USE `spotlight_db`;
 
 DROP procedure IF EXISTS `postUser`;
 
-DELIMITER $ $ USE `spotlight_db` $ $ CREATE PROCEDURE `postUser`(
-    IN `userID` VARCHAR(255),
-    IN `userName` VARCHAR(255),
-    IN `_danceability` DOUBLE PRECISION(10, 5),
-    IN `_energy` DOUBLE PRECISION(10, 5),
-    IN `_key` DOUBLE PRECISION(10, 5),
-    IN `_loudness` DOUBLE PRECISION(10, 5),
-    IN `_mode` DOUBLE PRECISION(10, 5),
-    IN `_speechiness` DOUBLE PRECISION(10, 5),
-    IN `_acousticness` DOUBLE PRECISION(10, 5),
-    IN `_instrumentalness` DOUBLE PRECISION(10, 5),
-    IN `_liveness` DOUBLE PRECISION(10, 5),
-    IN `_valence` DOUBLE PRECISION(10, 5),
-    IN `_tempo` DOUBLE PRECISION(10, 5),
-) BEGIN
-INSERT INTO
-    `user_table` (
-        `user_id`,
-        `name`,
-        `last_login`,
-        `danceability`,
-        `energy`,
-        `key`,
-        `loudness`,
-        `mode`,
-        `speechiness`,
-        `acousticness`,
-        `instrumentalness`,
-        `liveness`,
-        `valence`,
-        `tempo`
-    )
-VALUES
-    (
-        `userID`,
-        `userName`,
-        now(),
-        `_danceability`,
-        `_energy`,
-        `_key`,
-        `_loudness`,
-        `_mode`,
-        `_speechess`,
-        `_acousticness`,
-        `_instrumentalness`,
-        `_liveness`,
-        `_valence`,
-        `_tempo`,
-    );
+DELIMITER $$
+USE `spotlight_db`$$
+CREATE PROCEDURE `postUser` (IN `_userid` VARCHAR(255), IN `_username` VARCHAR(255), IN `_danceability` DECIMAL(10, 5), IN `_energy` DECIMAL(10, 5), IN `_key` DECIMAL(10, 5), IN `_loudness` DECIMAL(10, 5), IN `_mode` DECIMAL(10, 5), IN `_speechiness` DECIMAL(10, 5), IN `_acousticness` DECIMAL(10, 5), IN `_instrumentalness` DECIMAL(10, 5), IN `_liveness` DECIMAL(10, 5), IN `_valence` DECIMAL(10, 5), IN `_tempo` DECIMAL(10, 5))
+BEGIN
 
-END $ $ DELIMITER;
+REPLACE INTO `user_table` (`user_id`, `name`, `last_login`, `danceability`, `energy`, `key`, `loudness`, `mode`, `speechiness`, `acousticness`, `instrumentalness`, `liveness`, `valence`, `tempo`)
+VALUES (`_userid`, `_username`, now(), `_danceability`, `_energy`, `_key`, `_loudness`, `_mode`, `_speechiness`, `_acousticness`, `_instrumentalness`, `_liveness`, `_valence`, `_tempo`);
+
+END$$
+
+DELIMITER ;
