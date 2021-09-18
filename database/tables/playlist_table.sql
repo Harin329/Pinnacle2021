@@ -14,7 +14,9 @@ BEGIN
 CREATE TABLE `playlist_table` (
   `playlist_id` VARCHAR(255) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
+  `creator` VARCHAR(255) NOT NULL,
   `time` DATETIME,
+  `followers` INT(8),
   `danceability` DECIMAL(10, 5),
   `energy` DECIMAL(10, 5),
   `key` DECIMAL(10, 5),

@@ -2,6 +2,7 @@
 USE `spotlight_db`;
 
 DROP procedure IF EXISTS `postUser`;
+DROP procedure IF EXISTS `setAnthem`;
 
 DELIMITER $$
 USE `spotlight_db`$$
@@ -10,6 +11,19 @@ BEGIN
 
 REPLACE INTO `user_table` (`user_id`, `name`, `last_login`, `danceability`, `energy`, `key`, `loudness`, `mode`, `speechiness`, `acousticness`, `instrumentalness`, `liveness`, `valence`, `tempo`)
 VALUES (`_userid`, `_username`, now(), `_danceability`, `_energy`, `_key`, `_loudness`, `_mode`, `_speechiness`, `_acousticness`, `_instrumentalness`, `_liveness`, `_valence`, `_tempo`);
+
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+USE `spotlight_db`$$
+CREATE PROCEDURE `setAnthem` (IN `_userid` VARCHAR(255), `_anthem` VARCHAR(255))
+BEGIN
+
+UPDATE `user_table`
+SET `anthem` = '_anthem'
+WHERE `user_id` = `_userid`;
 
 END$$
 

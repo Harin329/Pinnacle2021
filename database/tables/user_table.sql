@@ -14,6 +14,7 @@ BEGIN
 CREATE TABLE `user_table` (
   `user_id` VARCHAR(255) NOT NULL,
   `name` VARCHAR(255) NOT NULL,
+  `anthem` VARCHAR(255),
   `last_login` DATETIME,
   `danceability` DECIMAL(10, 5),
   `energy` DECIMAL(10, 5),
