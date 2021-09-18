@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreateProfile: View {
+    @StateObject var spotifyController: SpotifyController
     var body: some View {
         VStack {
             HStack {
@@ -25,7 +26,7 @@ struct CreateProfile: View {
                     Spacer()
                     Rectangle()
                         .fill(Color(hex: "FFF"))
-                        .frame(width: 205, height: 8)
+                        .frame(width: 230, height: 8)
                 }
             }.padding()
             
@@ -36,6 +37,7 @@ struct CreateProfile: View {
             }.padding()
             HStack {
                 Button(action: {
+                    spotifyController.connect()
                 }) {
                     HStack {
                         Text("Log in")
@@ -73,9 +75,9 @@ struct CreateProfile: View {
     }
 }
 
-struct CreateProfile_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateProfile()
-            .previewDevice(PreviewDevice(rawValue: "iPhone X"))
-    }
-}
+//struct CreateProfile_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CreateProfile()
+//            .previewDevice(PreviewDevice(rawValue: "iPhone X"))
+//    }
+//}

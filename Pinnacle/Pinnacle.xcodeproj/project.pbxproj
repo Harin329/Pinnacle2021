@@ -14,6 +14,11 @@
 		B836279B26F5CF8C0092A106 /* medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B836279A26F5CF8C0092A106 /* medium.ttf */; };
 		B836279F26F648B10092A106 /* book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B836279E26F648B10092A106 /* book.ttf */; };
 		B83627A126F64CF50092A106 /* OnboardingSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627A026F64CF50092A106 /* OnboardingSong.swift */; };
+		B83627A326F653530092A106 /* Taste.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627A226F653530092A106 /* Taste.swift */; };
+		B83627A526F660110092A106 /* GenreSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627A426F660110092A106 /* GenreSelector.swift */; };
+		B83627A726F664480092A106 /* FavoriteArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627A626F664480092A106 /* FavoriteArtist.swift */; };
+		B83627AC26F66A6D0092A106 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627AB26F66A6D0092A106 /* URLImage.swift */; };
+		B83627AF26F6736C0092A106 /* PeopleToFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627AE26F6736C0092A106 /* PeopleToFollow.swift */; };
 		BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC026F59415008B44BB /* PinnacleApp.swift */; };
 		BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC226F59415008B44BB /* ContentView.swift */; };
 		BE8B3EC526F59416008B44BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8B3EC426F59416008B44BB /* Assets.xcassets */; };
@@ -29,6 +34,11 @@
 		B836279A26F5CF8C0092A106 /* medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = medium.ttf; sourceTree = "<group>"; };
 		B836279E26F648B10092A106 /* book.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = book.ttf; sourceTree = "<group>"; };
 		B83627A026F64CF50092A106 /* OnboardingSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSong.swift; sourceTree = "<group>"; };
+		B83627A226F653530092A106 /* Taste.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taste.swift; sourceTree = "<group>"; };
+		B83627A426F660110092A106 /* GenreSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelector.swift; sourceTree = "<group>"; };
+		B83627A626F664480092A106 /* FavoriteArtist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteArtist.swift; sourceTree = "<group>"; };
+		B83627AB26F66A6D0092A106 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
+		B83627AE26F6736C0092A106 /* PeopleToFollow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleToFollow.swift; sourceTree = "<group>"; };
 		BE8B3EBD26F59415008B44BB /* Pinnacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinnacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8B3EC026F59415008B44BB /* PinnacleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnacleApp.swift; sourceTree = "<group>"; };
 		BE8B3EC226F59415008B44BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,8 +62,9 @@
 		B836279426F5CD0F0092A106 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				B836279526F5CD2B0092A106 /* CreateProfile.swift */,
-				B83627A026F64CF50092A106 /* OnboardingSong.swift */,
+				B83627AD26F672E90092A106 /* 3 */,
+				B83627A926F6645E0092A106 /* 2 */,
+				B83627A826F6644C0092A106 /* 1 */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -73,6 +84,41 @@
 				B836279E26F648B10092A106 /* book.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		B83627A826F6644C0092A106 /* 1 */ = {
+			isa = PBXGroup;
+			children = (
+				B836279526F5CD2B0092A106 /* CreateProfile.swift */,
+				B83627A026F64CF50092A106 /* OnboardingSong.swift */,
+			);
+			path = 1;
+			sourceTree = "<group>";
+		};
+		B83627A926F6645E0092A106 /* 2 */ = {
+			isa = PBXGroup;
+			children = (
+				B83627A226F653530092A106 /* Taste.swift */,
+				B83627A426F660110092A106 /* GenreSelector.swift */,
+				B83627A626F664480092A106 /* FavoriteArtist.swift */,
+			);
+			path = 2;
+			sourceTree = "<group>";
+		};
+		B83627AA26F66A5D0092A106 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B83627AB26F66A6D0092A106 /* URLImage.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B83627AD26F672E90092A106 /* 3 */ = {
+			isa = PBXGroup;
+			children = (
+				B83627AE26F6736C0092A106 /* PeopleToFollow.swift */,
+			);
+			path = 3;
 			sourceTree = "<group>";
 		};
 		BE8B3EB426F59415008B44BB = {
@@ -96,6 +142,7 @@
 		BE8B3EBF26F59415008B44BB /* Pinnacle */ = {
 			isa = PBXGroup;
 			children = (
+				B83627AA26F66A5D0092A106 /* Models */,
 				B836279C26F5CF910092A106 /* Fonts */,
 				B836279726F5CE490092A106 /* Extension */,
 				B836279426F5CD0F0092A106 /* Onboarding */,
@@ -188,10 +235,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B83627A526F660110092A106 /* GenreSelector.swift in Sources */,
 				B802D3E226F5A79400329210 /* SpotifyController.swift in Sources */,
+				B83627A726F664480092A106 /* FavoriteArtist.swift in Sources */,
+				B83627AC26F66A6D0092A106 /* URLImage.swift in Sources */,
 				BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */,
 				B836279926F5CE5D0092A106 /* HexColor.swift in Sources */,
+				B83627AF26F6736C0092A106 /* PeopleToFollow.swift in Sources */,
 				BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */,
+				B83627A326F653530092A106 /* Taste.swift in Sources */,
 				B83627A126F64CF50092A106 /* OnboardingSong.swift in Sources */,
 				B836279626F5CD2B0092A106 /* CreateProfile.swift in Sources */,
 			);
