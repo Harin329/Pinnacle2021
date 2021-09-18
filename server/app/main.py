@@ -1,4 +1,5 @@
 import logging
+import requests
 from indexer.tools import connect_mysql, post_user, get_health
 from fastapi import FastAPI
 import uvicorn
@@ -25,10 +26,11 @@ def init_conn():
     cursor = conn.cursor()
     return conn, cursor
 
-def calculateSongs(songs: list=[]):
+
+def calculateSongs(songs: list = []):
     metric = {}
     for s in songs:
-        print(s) # Calculate
+        print(s)  # Calculate
     return metric
 
 
@@ -42,13 +44,13 @@ def welcome():
 
 
 @app.post('/logUser')
-def log_user(user: dict=defaultUser):
+def log_user(user: dict = defaultUser):
     try:
         conn, cursor = init_conn()
         userID = user['UserID']
         userName = user['UserName']
 
-        savedTracks = [] # Get Saved Tracks
+        savedTracks = []  # Get Saved Tracks
 
         metrics = calculateSongs(savedTracks)
         res = post_user(conn, cursor, userID, userName, metrics)
@@ -60,19 +62,20 @@ def log_user(user: dict=defaultUser):
 
 
 @app.post('/logPlaylist')
-def log_playlist(user: dict=defaultUser):
+def log_playlist(user: dict = defaultUser):
     try:
         conn, cursor = init_conn()
         userID = user['UserID']
         userName = user['UserName']
-        publicPlaylists = [] # Get All Playlists
+        publicPlaylists = []  # Get All Playlists
 
         for p in publicPlaylists:
             playlistID = ""
             playlistName = ""
-            songlist = [] # Get Songs in Playlist
+            songlist = []  # Get Songs in Playlist
             metrics = calculateSongs(songlist)
-            res = post_playlist(conn, cursor, playlistID, playlistName, metrics)
+            res = post_playlist(conn, cursor, playlistID,
+                                playlistName, metrics)
         return res, 200
 
     except Exception as e:
