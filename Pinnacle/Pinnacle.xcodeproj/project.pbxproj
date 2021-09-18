@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B802D3DD26F5A09A00329210 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B802D3DC26F5A09A00329210 /* SpotifyiOS.framework */; };
 		B802D3E226F5A79400329210 /* SpotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802D3E126F5A79400329210 /* SpotifyController.swift */; };
+		B836279626F5CD2B0092A106 /* CreateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B836279526F5CD2B0092A106 /* CreateProfile.swift */; };
+		B836279926F5CE5D0092A106 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B836279826F5CE5D0092A106 /* HexColor.swift */; };
+		B836279B26F5CF8C0092A106 /* medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B836279A26F5CF8C0092A106 /* medium.ttf */; };
 		BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC026F59415008B44BB /* PinnacleApp.swift */; };
 		BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC226F59415008B44BB /* ContentView.swift */; };
 		BE8B3EC526F59416008B44BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8B3EC426F59416008B44BB /* Assets.xcassets */; };
@@ -19,6 +22,9 @@
 		B802D3DC26F5A09A00329210 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		B802D3DE26F5A27B00329210 /* Pinnacle-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pinnacle-Bridging-Header.h"; sourceTree = "<group>"; };
 		B802D3E126F5A79400329210 /* SpotifyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyController.swift; sourceTree = "<group>"; };
+		B836279526F5CD2B0092A106 /* CreateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfile.swift; sourceTree = "<group>"; };
+		B836279826F5CE5D0092A106 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
+		B836279A26F5CF8C0092A106 /* medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = medium.ttf; sourceTree = "<group>"; };
 		BE8B3EBD26F59415008B44BB /* Pinnacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinnacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8B3EC026F59415008B44BB /* PinnacleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnacleApp.swift; sourceTree = "<group>"; };
 		BE8B3EC226F59415008B44BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +45,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B836279426F5CD0F0092A106 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B836279526F5CD2B0092A106 /* CreateProfile.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B836279726F5CE490092A106 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B836279826F5CE5D0092A106 /* HexColor.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B836279C26F5CF910092A106 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		BE8B3EB426F59415008B44BB = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +89,10 @@
 		BE8B3EBF26F59415008B44BB /* Pinnacle */ = {
 			isa = PBXGroup;
 			children = (
+				B836279A26F5CF8C0092A106 /* medium.ttf */,
+				B836279C26F5CF910092A106 /* Fonts */,
+				B836279726F5CE490092A106 /* Extension */,
+				B836279426F5CD0F0092A106 /* Onboarding */,
 				BE8B3EC026F59415008B44BB /* PinnacleApp.swift */,
 				BE8B3EC226F59415008B44BB /* ContentView.swift */,
 				BE8B3EC426F59416008B44BB /* Assets.xcassets */,
@@ -135,6 +168,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B836279B26F5CF8C0092A106 /* medium.ttf in Resources */,
 				BE8B3EC826F59416008B44BB /* Preview Assets.xcassets in Resources */,
 				BE8B3EC526F59416008B44BB /* Assets.xcassets in Resources */,
 			);
@@ -149,7 +183,9 @@
 			files = (
 				B802D3E226F5A79400329210 /* SpotifyController.swift in Sources */,
 				BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */,
+				B836279926F5CE5D0092A106 /* HexColor.swift in Sources */,
 				BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */,
+				B836279626F5CD2B0092A106 /* CreateProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

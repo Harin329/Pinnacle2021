@@ -14,18 +14,19 @@ struct PinnacleApp: App {
     var body: some Scene {
         WindowGroup {
             VStack {
-                ContentView()
-                Button (action: {
-                    spotifyController.connect()
-                }) {
-                    Text("Login")
-                }
-                    .onOpenURL { url in
-                        spotifyController.setAccessToken(from: url)
-                    }
-                    .onReceive(NotificationCenter.default.publisher(for: UIApplication.didFinishLaunchingNotification), perform: { _ in
-                        spotifyController.connect()
-                })
+//                ContentView()
+//                Button (action: {
+//                    spotifyController.connect()
+//                }) {
+//                    Text("Login")
+//                }
+//                    .onOpenURL { url in
+//                        spotifyController.setAccessToken(from: url)
+//                    }
+//                    .onReceive(NotificationCenter.default.publisher(for: UIApplication.didFinishLaunchingNotification), perform: { _ in
+//                        spotifyController.connect()
+//                })
+                CreateProfile()
             }
         }
     }
