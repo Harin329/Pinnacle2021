@@ -1,6 +1,6 @@
 import logging
 import requests
-from indexer.tools import connect_mysql, post_user, get_health
+from indexer.tools import connect_mysql, post_user, get_health, post_playlist
 from fastapi import FastAPI
 import uvicorn
 from starlette.requests import Request
@@ -28,13 +28,19 @@ def init_conn():
     return conn, cursor
 
 
-def calculateSongs(token: str = "", songs: list = []):
+def calculateSongs(token: str = "", songs: list=[]):
     metric = {"danceability": 0, "energy": 0, "key": 0, "loudness": 0, "mode": 0, "speechiness": 0,
               "acousticness": 0, "instrumentalness": 0, "liveness": 0, "valence": 0, "tempo": 0, }
+
+    if (len(songs) == 0):
+        print("Empty List")
+        return metric
+
     url = "https://api.spotify.com/v1/audio-features"
     headers = {"Authorization": "Bearer {}".format(token)}
+    joined = ",".join(songs)
     response = requests.get(url, headers=headers, params={
-                            "ids": ",".join(songs)})
+                            "ids": joined})
     res = response.json()
     total = len(res['audio_features'])
     for r in res['audio_features']:
@@ -119,16 +125,36 @@ def log_playlist(user: dict = defaultUser):
         conn, cursor = init_conn()
         userID = user['UserID']
         userName = user['UserName']
-        publicPlaylists = []  # Get All Playlists
+        token = user['Token']
 
-        for p in publicPlaylists:
-            playlistID = ""
-            playlistName = ""
-            songlist = []  # Get Songs in Playlist
-            metrics = calculateSongs(songlist)
+        url = "https://api.spotify.com/v1/me/playlists?limit=3"
+        headers = {"Authorization": "Bearer {}".format(token)}
+        response = requests.get(url, headers=headers, params={})
+        res = response.json()
+
+        added = []
+
+        for p in res['items']:
+            playlistID = p["id"]
+            playlistName = p["name"]
+
+            url_track = "https://api.spotify.com/v1/playlists/" + playlistID + "/tracks?fields=items(track(name%2Chref%2Calbum(name%2Chref)%2Cid))&limit=100&offset=0"
+            headers_track = {"Authorization": "Bearer {}".format(token)}
+            response_track = requests.get(url_track, headers=headers_track, params={})
+            res_track = response_track.json()
+
+            songlist = []
+            tracks = res_track['items']
+
+            for song in tracks:
+                s = song['track']['id']
+                songlist.append(s)
+
+            metrics = calculateSongs(token, songlist)
             res = post_playlist(conn, cursor, playlistID,
                                 playlistName, metrics)
-        return res, 200
+            added.append(res)
+        return added, 200
 
     except Exception as e:
         logging.error(e)
