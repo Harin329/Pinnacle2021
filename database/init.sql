@@ -1,3 +1,5 @@
 # Initialize
 
-CALL health_db.createHealthTable;
+CALL spotlight_db.createHealthTable;
+CALL spotlight_db.createUserTable;
+CALL spotlight_db.createPlaylistTable;

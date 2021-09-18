@@ -1,9 +1,15 @@
 import logging
-from indexer.tools import connect_mysql, post_health, get_health
+import requests
+from indexer.tools import connect_mysql, post_user, get_health
 from fastapi import FastAPI
 import uvicorn
 from starlette.requests import Request
 from starlette.middleware.cors import CORSMiddleware
+
+defaultUser = {
+    "UserID": "123",
+    "UserName": "Harin"
+}
 
 app = FastAPI()
 
@@ -21,20 +27,33 @@ def init_conn():
     return conn, cursor
 
 
+def calculateSongs(songs: list = []):
+    metric = {}
+    for s in songs:
+        print(s)  # Calculate
+    return metric
+
+
 @app.get('/')
 def welcome():
     try:
-        return "Hello Harin!", 200
+        return "Welcome to Spotlight!", 200
     except Exception as e:
         logging.error(e)
         return "Error with {}".format(e), 400
 
 
-@app.post('/logHealth')
-def log_health(name: str="Hao"):
+@app.post('/logUser')
+def log_user(user: dict = defaultUser):
     try:
         conn, cursor = init_conn()
-        res = post_health(conn, cursor, name)
+        userID = user['UserID']
+        userName = user['UserName']
+
+        savedTracks = []  # Get Saved Tracks
+
+        metrics = calculateSongs(savedTracks)
+        res = post_user(conn, cursor, userID, userName, metrics)
         return res, 200
 
     except Exception as e:
@@ -42,11 +61,21 @@ def log_health(name: str="Hao"):
         return "Error with {}".format(e), 400
 
 
-@app.get('/lastHealth')
-def log_health():
+@app.post('/logPlaylist')
+def log_playlist(user: dict = defaultUser):
     try:
         conn, cursor = init_conn()
-        res = get_health(conn, cursor)
+        userID = user['UserID']
+        userName = user['UserName']
+        publicPlaylists = []  # Get All Playlists
+
+        for p in publicPlaylists:
+            playlistID = ""
+            playlistName = ""
+            songlist = []  # Get Songs in Playlist
+            metrics = calculateSongs(songlist)
+            res = post_playlist(conn, cursor, playlistID,
+                                playlistName, metrics)
         return res, 200
 
     except Exception as e:

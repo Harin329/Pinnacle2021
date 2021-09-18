@@ -12,10 +12,24 @@ def connect_mysql():
         logging.error(e)
 
 
-def post_health(conn, cursor, name):
-    sql = 'postHealth'
+def post_user(conn, cursor, userID, userName, metrics):
+    sql = 'postUser'
     try:
-        cursor.callproc(sql, (name,))
+        cursor.callproc(sql, (
+            userID,
+            userName, 
+            metrics['danceability'], 
+            metrics['energy'], 
+            metrics['key'], 
+            metrics['loudness'],
+            metrics['mode'], 
+            metrics['speechiness'], 
+            metrics['acousticness'], 
+            metrics['instrumentalness'],
+            metrics['liveness'], 
+            metrics['valence'],
+            metrics['tempo']
+             ))
         conn.commit()
         return name
     except Exception as e:
