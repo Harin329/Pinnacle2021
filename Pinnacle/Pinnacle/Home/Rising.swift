@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct Rising: View {
-    @State var playlists = [
-        Playlist(Name: "Twenty", ID: "0", Image: "playlist1", Creator: "Jenny Cai", Songs: []),
-        Playlist(Name: "Twenty", ID: "1", Image: "playlist1", Creator: "Jenny Cai", Songs: []),
-        Playlist(Name: "Twenty", ID: "2", Image: "playlist1", Creator: "Jenny Cai", Songs: []),
-        Playlist(Name: "Twenty", ID: "3", Image: "playlist1", Creator: "Jenny Cai", Songs: [])
-    ]
+    @State var playlists = [Playlist]()
+    
     var body: some View {
         VStack {
             HStack {
@@ -33,6 +29,31 @@ struct Rising: View {
                 }
             }
         }.padding(.horizontal)
+    }
+    
+    func getRecommendedPlaylist(spotifyController: SpotifyController) {
+        var request = URLRequest(url: URL(string: "https://pinnacle.harinwu.com/recommendByAlgo?userID=" + spotifyController.user_id!)!,timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        request.httpMethod = "GET"
+        
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let data = data {
+                if let response = try? JSONSerialization.jsonObject(with: data, options: []) {
+                    DispatchQueue.main.async {
+                        let converted_respose = response as! [AnyObject]
+                        let a = converted_respose[0] as! [[Any]]
+                        for item in a {
+                            let p = Playlist(Name: item[1], ID: <#T##String#>, Image: <#T##String#>, Creator: <#T##String#>, Songs: <#T##[Song]#>)
+                            playlists.append(p)
+                        }
+                    }
+                }
+                return
+            }
+        }
+        .resume()
     }
 }
 

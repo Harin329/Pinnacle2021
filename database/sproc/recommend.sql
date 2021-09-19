@@ -36,7 +36,8 @@ USE `spotlight_db`$$
 CREATE PROCEDURE `getPlaylists` (IN `_userid` VARCHAR(255))
 BEGIN
 
-SELECT * FROM `recommend_table`
+SELECT * FROM `recommend_table` AS rt
+LEFT JOIN `playlist_table` as pt ON rt.match_id=pt.playlist_id
 WHERE `user_id`=`_userid` AND `reco_type`="playlist"
 ORDER BY `match_score` DESC
 LIMIT 20;
