@@ -85,22 +85,35 @@ struct OnboardingSong: View {
     }
     
     func getTopSongs(spotifyController: SpotifyController) {
-        guard let url = URL(string: "https://pinnacle.harinwu.com/getTop") else { return }
-        var request = URLRequest(url: url)
-        let body: [String: String] = ["UserID": self.spotifyController.user_id!, "UserName": self.spotifyController.display_name!, "token": self.spotifyController.accessToken!]
-        let finalBody = try! JSONSerialization.data(withJSONObject: body)
-        request.httpMethod = "GET"
-        request.httpBody = finalBody
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        let parameters = "{\n    \"UserID\": \"" + self.spotifyController.user_id! + "\",\n    \"UserName\": \"" + self.spotifyController.display_name! + "\",\n    \"Token\": \"" + self.spotifyController.accessToken! + "\"\n}"
+        let postData = parameters.data(using: .utf8)
+
+        var request = URLRequest(url: URL(string: "https://pinnacle.harinwu.com/getTop")!,timeoutInterval: Double.infinity)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        
+        var songList = [Song]()
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let data = data {
                 if let response = try? JSONSerialization.jsonObject(with: data, options: []) {
                     DispatchQueue.main.async {
-                        let converted_respose = response as! Dictionary<String, Any>
-                        print("HELLLO")
-                        print(converted_respose)
+                        let converted_respose = response as! [AnyObject]
+                        let a = converted_respose[0]["items"] as! [AnyObject]
+                        for item in a {
+                            
+//                            print(item["name"])
+//                            print(item["id"])
+                            let b = item["artists"] as! [AnyObject]
+//                            print(b[0]["name"])
+                            let c = item["album"] as AnyObject
+                            let d = c["images"] as! [AnyObject]
+//                            print(d[0]["url"])
+                            let s = Song(Name: item["name"] as! String, ID: item["id"] as! String, Artist: b[0]["name"] as! String, Image: d[0]["url"] as! String)
+                            songList.append(s)
+                        }
                     }
                 }
                 return
