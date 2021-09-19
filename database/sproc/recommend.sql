@@ -23,7 +23,7 @@ CREATE PROCEDURE `getMatches` (IN `_userid` VARCHAR(255))
 BEGIN
 
 SELECT * FROM `recommend_table`
-WHERE `user_id`=`_userid` AND `type`="user"
+WHERE `user_id`=`_userid` AND `reco_type`="user"
 ORDER BY `match_score` DESC
 LIMIT 5;
 
@@ -37,7 +37,7 @@ CREATE PROCEDURE `getPlaylists` (IN `_userid` VARCHAR(255))
 BEGIN
 
 SELECT * FROM `recommend_table`
-WHERE `user_id`=`_userid` AND `type`="playlist"
+WHERE `user_id`=`_userid` AND `reco_type`="playlist"
 ORDER BY `match_score` DESC
 LIMIT 20;
 
