@@ -8,6 +8,16 @@
 import SwiftUI
 
 struct OnboardingSong: View {
+    @StateObject var spotifyController: SpotifyController
+    
+//    private let songs: [Song]
+        
+//    init() {
+//        let payload = apiPayload(UserID: spotifyController.user_id!, UserName: spotifyController.display_name!, token: spotifyController.accessToken!)
+//        self.songs = SongEndpoints.getTop3(payload: payload)
+//        print(self.songs)
+//    }
+    
     var body: some View {
         HStack {
             VStack {
@@ -62,11 +72,14 @@ struct OnboardingSong: View {
                 }
             }
         }.padding()
+        .onAppear(perform: {
+            print(spotifyController.accessToken)
+        })
     }
 }
 
-struct OnboardingSong_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingSong().previewDevice(PreviewDevice(rawValue: "iPhone X"))
-    }
-}
+//struct OnboardingSong_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OnboardingSong().previewDevice(PreviewDevice(rawValue: "iPhone X"))
+//    }
+//}

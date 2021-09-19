@@ -100,10 +100,19 @@ def create_match(conn, cursor, userID, matchID, match):
         print("MYSQL ERROR:", sql)
         logging.error(e)
 
-def find_match(conn, cursor):
+def find_match(conn, cursor, userID):
     sql = 'getMatches'
     try:
-        cursor.callproc(sql)
+        cursor.callproc(sql, (userID, ))
+        return cursor.fetchall()
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)
+
+def get_userPlaylist(conn, cursor, userID):
+    sql = 'getUserPlaylist'
+    try:
+        cursor.callproc(sql, (userID, ))
         return cursor.fetchall()
     except Exception as e:
         print("MYSQL ERROR:", sql)
