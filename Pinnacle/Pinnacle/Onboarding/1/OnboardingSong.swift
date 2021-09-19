@@ -25,12 +25,12 @@ struct OnboardingSong: View {
                     .fill(Color(hex: "fff"))
                     .frame(width: 110, height: 110, alignment: .center)
                 HStack {
-                    Text("Song title")
+                    Text(topSongs[0].Name)
                         .font(.custom("CircularStd-Medium", size: 14))
                     Spacer()
                 }
                 HStack {
-                    Text("Artist")
+                    Text(topSongs[0].Artist)
                         .font(.custom("CircularStd-Medium", size: 12))
                         .foregroundColor(Color(hex: "fff"))
                     Spacer()
@@ -43,12 +43,12 @@ struct OnboardingSong: View {
                     .fill(Color(hex: "fff"))
                     .frame(width: 110, height: 110, alignment: .center)
                 HStack {
-                    Text("Song title")
+                    Text(topSongs[1].Name)
                         .font(.custom("CircularStd-Medium", size: 14))
                     Spacer()
                 }
                 HStack {
-                    Text("Artist")
+                    Text(topSongs[1].Artist)
                         .font(.custom("CircularStd-Medium", size: 12))
                         .foregroundColor(Color(hex: "fff"))
                     Spacer()
@@ -60,12 +60,12 @@ struct OnboardingSong: View {
                     .fill(Color(hex: "fff"))
                     .frame(width: 110, height: 110, alignment: .center)
                 HStack {
-                    Text("Song title")
+                    Text(topSongs[2].Name)
                         .font(.custom("CircularStd-Medium", size: 14))
                     Spacer()
                 }
                 HStack {
-                    Text("Artist")
+                    Text(topSongs[2].Artist)
                         .font(.custom("CircularStd-Medium", size: 12))
                         .foregroundColor(Color(hex: "fff"))
                     Spacer()
@@ -94,7 +94,6 @@ struct OnboardingSong: View {
         request.httpMethod = "POST"
         request.httpBody = postData
         
-        var songList = [Song]()
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let data = data {
@@ -112,7 +111,7 @@ struct OnboardingSong: View {
                             let d = c["images"] as! [AnyObject]
 //                            print(d[0]["url"])
                             let s = Song(Name: item["name"] as! String, ID: item["id"] as! String, Artist: b[0]["name"] as! String, Image: d[0]["url"] as! String)
-                            songList.append(s)
+                            topSongs.append(s)
                         }
                     }
                 }
