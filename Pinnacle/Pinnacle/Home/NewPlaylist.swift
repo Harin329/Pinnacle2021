@@ -59,6 +59,25 @@ struct NewPlaylist: View {
                 }
             }
             Divider()
+            HStack {
+                Image(systemName: "heart.fill")
+                    .foregroundColor(Color(hex: "000"))
+                    .font(.system(size: 25))
+                Text("45")
+                    .font(.custom("CircularStd-Medium", size: 18))
+                Spacer()
+                Image(systemName: "bubble.left")
+                    .foregroundColor(Color(hex: "000"))
+                    .font(.system(size: 25))
+                Text("10")
+                    .font(.custom("CircularStd-Medium", size: 18))
+                Spacer()
+                Image(systemName: "arrow.2.squarepath")
+                    .foregroundColor(Color(hex: "000"))
+                    .font(.system(size: 25))
+                Text("7")
+                    .font(.custom("CircularStd-Medium", size: 18))
+            }.padding()
         }.padding()
     }
 }
