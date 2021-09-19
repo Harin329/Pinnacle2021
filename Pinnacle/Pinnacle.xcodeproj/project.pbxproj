@@ -19,6 +19,7 @@
 		B83627A726F664480092A106 /* FavoriteArtist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627A626F664480092A106 /* FavoriteArtist.swift */; };
 		B83627AC26F66A6D0092A106 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627AB26F66A6D0092A106 /* URLImage.swift */; };
 		B83627AF26F6736C0092A106 /* PeopleToFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627AE26F6736C0092A106 /* PeopleToFollow.swift */; };
+		B83627B126F68B880092A106 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627B026F68B880092A106 /* Loading.swift */; };
 		BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC026F59415008B44BB /* PinnacleApp.swift */; };
 		BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC226F59415008B44BB /* ContentView.swift */; };
 		BE8B3EC526F59416008B44BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8B3EC426F59416008B44BB /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		B83627A626F664480092A106 /* FavoriteArtist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteArtist.swift; sourceTree = "<group>"; };
 		B83627AB26F66A6D0092A106 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		B83627AE26F6736C0092A106 /* PeopleToFollow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleToFollow.swift; sourceTree = "<group>"; };
+		B83627B026F68B880092A106 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		BE8B3EBD26F59415008B44BB /* Pinnacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinnacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8B3EC026F59415008B44BB /* PinnacleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnacleApp.swift; sourceTree = "<group>"; };
 		BE8B3EC226F59415008B44BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				B83627AD26F672E90092A106 /* 3 */,
 				B83627A926F6645E0092A106 /* 2 */,
 				B83627A826F6644C0092A106 /* 1 */,
+				B83627B026F68B880092A106 /* Loading.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */,
 				B83627A326F653530092A106 /* Taste.swift in Sources */,
 				B83627A126F64CF50092A106 /* OnboardingSong.swift in Sources */,
+				B83627B126F68B880092A106 /* Loading.swift in Sources */,
 				B836279626F5CD2B0092A106 /* CreateProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -69,7 +69,7 @@ struct CreateProfile: View {
             }.padding(.horizontal)
             OnboardingSong()
             Spacer()
-
+            
         }
         .background((Color(hex:"39D9B1")).ignoresSafeArea())
     }

@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct PinnacleApp: App {
     @StateObject var spotifyController = SpotifyController()
-
+    
     var body: some Scene {
         WindowGroup {
             VStack {
@@ -20,8 +20,9 @@ struct PinnacleApp: App {
                     }
                     .onReceive(NotificationCenter.default.publisher(for: UIApplication.didFinishLaunchingNotification), perform: { _ in
                         spotifyController.connect()
-                })
-//                Taste()
+                    })
+                //                Taste()
+                //                PeopleToFollow()
             }.statusBar(hidden: true)
         }
     }
