@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingSong: View {
-    @StateObject var spotifyController: SpotifyController
+    @ObservedObject var spotifyController: SpotifyController
     
 //    private let songs: [Song]
         
@@ -76,6 +76,7 @@ struct OnboardingSong: View {
             let payload = apiPayload(UserID: spotifyController.user_id!, UserName: spotifyController.display_name!, token: spotifyController.accessToken!)
             let songs = SongEndpoints.getTop3(payload: payload)
             print(songs)
+            print(spotifyController.accessToken as Any)
         })
     }
 }

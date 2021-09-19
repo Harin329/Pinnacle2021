@@ -20,6 +20,10 @@
 		B83627AC26F66A6D0092A106 /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627AB26F66A6D0092A106 /* URLImage.swift */; };
 		B83627AF26F6736C0092A106 /* PeopleToFollow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627AE26F6736C0092A106 /* PeopleToFollow.swift */; };
 		B83627B126F68B880092A106 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627B026F68B880092A106 /* Loading.swift */; };
+		B83627B426F6C4440092A106 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627B326F6C4430092A106 /* Home.swift */; };
+		B83627B626F6C45C0092A106 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627B526F6C45C0092A106 /* Header.swift */; };
+		B83627B826F6D5550092A106 /* HomeSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627B726F6D5540092A106 /* HomeSearchBar.swift */; };
+		B83627BA26F6D7630092A106 /* Following.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83627B926F6D7630092A106 /* Following.swift */; };
 		BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC026F59415008B44BB /* PinnacleApp.swift */; };
 		BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC226F59415008B44BB /* ContentView.swift */; };
 		BE8B3EC526F59416008B44BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8B3EC426F59416008B44BB /* Assets.xcassets */; };
@@ -48,6 +52,10 @@
 		B83627AB26F66A6D0092A106 /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		B83627AE26F6736C0092A106 /* PeopleToFollow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleToFollow.swift; sourceTree = "<group>"; };
 		B83627B026F68B880092A106 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		B83627B326F6C4430092A106 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		B83627B526F6C45C0092A106 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		B83627B726F6D5540092A106 /* HomeSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchBar.swift; sourceTree = "<group>"; };
+		B83627B926F6D7630092A106 /* Following.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Following.swift; sourceTree = "<group>"; };
 		BE8B3EBD26F59415008B44BB /* Pinnacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinnacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8B3EC026F59415008B44BB /* PinnacleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnacleApp.swift; sourceTree = "<group>"; };
 		BE8B3EC226F59415008B44BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -144,6 +152,17 @@
 			path = 3;
 			sourceTree = "<group>";
 		};
+		B83627B226F6C4350092A106 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B83627B326F6C4430092A106 /* Home.swift */,
+				B83627B526F6C45C0092A106 /* Header.swift */,
+				B83627B726F6D5540092A106 /* HomeSearchBar.swift */,
+				B83627B926F6D7630092A106 /* Following.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		BE8B3EB426F59415008B44BB = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				BEAFD41F26F6CEE100F1A502 /* Endpoints */,
+				B83627B226F6C4350092A106 /* Home */,
 				B83627AA26F66A5D0092A106 /* Models */,
 				B836279C26F5CF910092A106 /* Fonts */,
 				B836279726F5CE490092A106 /* Extension */,
@@ -275,12 +295,16 @@
 				BEAFD42126F6CEF400F1A502 /* SpotlightEndpoints.swift in Sources */,
 				BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */,
 				B836279926F5CE5D0092A106 /* HexColor.swift in Sources */,
+				B83627B426F6C4440092A106 /* Home.swift in Sources */,
+				B83627B826F6D5550092A106 /* HomeSearchBar.swift in Sources */,
 				B83627AF26F6736C0092A106 /* PeopleToFollow.swift in Sources */,
 				BEAFD42326F6CF7C00F1A502 /* Payload.swift in Sources */,
 				BEAFD42526F6D04200F1A502 /* Song.swift in Sources */,
 				BEAFD42B26F6D9D800F1A502 /* Playlist.swift in Sources */,
 				BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */,
 				B83627A326F653530092A106 /* Taste.swift in Sources */,
+				B83627BA26F6D7630092A106 /* Following.swift in Sources */,
+				B83627B626F6C45C0092A106 /* Header.swift in Sources */,
 				B83627A126F64CF50092A106 /* OnboardingSong.swift in Sources */,
 				BEAFD42926F6D9D100F1A502 /* Artist.swift in Sources */,
 				BEAFD42D26F6D9F100F1A502 /* Post.swift in Sources */,
