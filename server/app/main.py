@@ -246,6 +246,7 @@ def recommend(userID: str = ""):
         # For Each User, Get Random Playlist
         for user in userList:
             res = get_userPlaylist(conn, cursor, user[0])
+            cursor.nextset()
             playlist.append(random.choice(res))
 
         return playlist, 200
