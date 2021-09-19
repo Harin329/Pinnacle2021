@@ -292,6 +292,8 @@ def train():
 
         df = pd.DataFrame({'user_id': [], 'reco_type': [], 'match_id': [], "match_score": []})
 
+        print(playRes)
+
         if (res != None and len(res) > 0):
             for user in res:
                 for user2 in res:

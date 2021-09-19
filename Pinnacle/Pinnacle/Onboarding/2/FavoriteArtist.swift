@@ -61,7 +61,6 @@ struct FavoriteArtist: View {
             VStack {}
                 .onAppear(perform: {
                     while true {
-                        print(spotifyController.accessToken)
                         if spotifyController.accessToken != nil {
                             getTopArtists(spotifyController: spotifyController)
                             break
