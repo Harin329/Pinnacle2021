@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CreateProfile: View {
-    @StateObject var spotifyController: SpotifyController
+    @ObservedObject var spotifyController: SpotifyController
     
     var body: some View {
         VStack {

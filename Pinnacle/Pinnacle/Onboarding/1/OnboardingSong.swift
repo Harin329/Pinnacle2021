@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingSong: View {
-    @StateObject var spotifyController: SpotifyController
+    @ObservedObject var spotifyController: SpotifyController
     
 //    private let songs: [Song]
         
@@ -73,7 +73,7 @@ struct OnboardingSong: View {
             }
         }.padding()
         .onAppear(perform: {
-            print(spotifyController.accessToken)
+            print(spotifyController.accessToken as Any)
         })
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct PinnacleApp: App {
     @StateObject var spotifyController = SpotifyController()
-    
+    @State var authenticated = false
     var body: some Scene {
         WindowGroup {
             VStack {
