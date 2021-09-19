@@ -25,7 +25,7 @@ struct Following: View {
                     .foregroundColor(Color(hex: "6360FF"))
 
             }
-            ScrollView(.horizontal) {
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack (spacing: 0){
                     ForEach(playlists, id: \.self) {playlist in
                         FollowingCard(playlist: playlist)

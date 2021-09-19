@@ -74,7 +74,7 @@ struct NewSong: View {
                 Text("7")
                     .font(.custom("CircularStd-Medium", size: 18))
             }.padding()
-        }.padding()
+        }.padding().padding(.bottom, 50)
     }
 }
 

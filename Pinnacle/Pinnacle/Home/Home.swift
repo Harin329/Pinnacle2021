@@ -28,11 +28,14 @@ struct Home: View {
                     }
                 }.ignoresSafeArea()
             }.ignoresSafeArea().background((Color(hex:"fff")))
+            Profile()
+                .offset(x: (menuSelection == 2) ? 0 : UIScreen.main.bounds.width)
             VStack {
                 Spacer()
                 MenuBar(menuSelection: $menuSelection)
             }
         }.ignoresSafeArea()
+        .animation(.easeIn)
     }
 }
 

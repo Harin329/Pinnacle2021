@@ -25,7 +25,9 @@ struct MenuBar: View {
                     
                     Spacer()
                     Button(action: {
-                        menuSelection = 2
+                        withAnimation(.easeInOut) {
+                            menuSelection = 2
+                        }
                     }) {
                         Image("person")
                             .resizable()
