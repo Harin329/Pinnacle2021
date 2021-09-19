@@ -10,20 +10,22 @@ import SwiftUI
 @main
 struct PinnacleApp: App {
     @StateObject var spotifyController = SpotifyController()
-    @State var authenticated = false
+    @State var onboarded = false
     var body: some Scene {
         WindowGroup {
             VStack {
-                CreateProfile(spotifyController: spotifyController)
-                    .onOpenURL { url in
-                        spotifyController.setAccessToken(from: url)
-                        spotifyController.getUserId()
-                    }
-                    .onReceive(NotificationCenter.default.publisher(for: UIApplication.didFinishLaunchingNotification), perform: { _ in
-                        spotifyController.connect()
-                    })
-                //                Taste()
-                //                PeopleToFollow()
+                if onboarded {
+                    Home()
+                } else {
+                    CreateProfile(spotifyController: spotifyController, onboarded: $onboarded)
+                        .onOpenURL { url in
+                            spotifyController.setAccessToken(from: url)
+                            spotifyController.getUserId()
+                        }
+                        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didFinishLaunchingNotification), perform: { _ in
+                            spotifyController.connect()
+                        })
+                }
             }.statusBar(hidden: true)
         }
     }

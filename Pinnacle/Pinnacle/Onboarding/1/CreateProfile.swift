@@ -9,73 +9,80 @@ import SwiftUI
 
 struct CreateProfile: View {
     @ObservedObject var spotifyController: SpotifyController
-    
+    @Binding var onboarded : Bool
+    @State var selected = false
     var body: some View {
-        VStack {
-            HStack {
-                Text("Create profile")
-                    .font(.custom("CircularStd-Medium", size: 18))
-                Spacer()
-                Text("1/3")
-                    .font(.custom("CircularStd-Medium", size: 18))
-            }.padding(.horizontal)
-            
-            ZStack {
-                Rectangle()
-                    .frame(height: 8)
+        ZStack {
+            VStack {
                 HStack {
+                    Text("Create profile")
+                        .font(.custom("CircularStd-Medium", size: 18))
                     Spacer()
+                    Text("1/3")
+                        .font(.custom("CircularStd-Medium", size: 18))
+                }.padding(.horizontal)
+                
+                ZStack {
                     Rectangle()
-                        .fill(Color(hex: "FFF"))
-                        .frame(width: 230, height: 8)
-                }
-            }.padding()
-            
-            HStack {
-                Text("Sync with Spotify")
-                    .font(.custom("CircularStd-Medium", size: 22))
-                Spacer()
-            }.padding()
-            HStack {
-                Button(action: {
-                    spotifyController.connect()
-                }) {
+                        .frame(height: 8)
                     HStack {
-                        Text("Log in")
-                            .font(.custom("CircularStd-Book", size: 16))
-                            .foregroundColor(Color(hex: "#101010"))
-                            .padding([.vertical],8)
-                            .frame(width:100)
-                    }.background(Color(hex: "#fff"))
-                    .cornerRadius(30)
-                }
-                Spacer()
-            }.padding([.horizontal, .bottom])
-            
-            if (spotifyController.user_id != nil) {
+                        Spacer()
+                        Rectangle()
+                            .fill(Color(hex: "FFF"))
+                            .frame(width: 230, height: 8)
+                    }
+                }.padding()
+                
                 HStack {
-                    Text("A song that defines you")
+                    Text("Sync with Spotify")
                         .font(.custom("CircularStd-Medium", size: 22))
                     Spacer()
                 }.padding()
-                VStack {
-                    HStack {
-                        Text("According to your Spotify, these are")
-                            .font(.custom("CircularStd-Medium", size: 16))
-                        Spacer()
+                HStack {
+                    Button(action: {
+                        spotifyController.connect()
+                    }) {
+                        HStack {
+                            Text("Log in")
+                                .font(.custom("CircularStd-Book", size: 16))
+                                .foregroundColor(Color(hex: "#101010"))
+                                .padding([.vertical],8)
+                                .frame(width:100)
+                        }.background(Color(hex: "#fff"))
+                        .cornerRadius(30)
                     }
+                    Spacer()
+                }.padding([.horizontal, .bottom])
+                
+                if (spotifyController.user_id != nil) {
                     HStack {
-                        Text("your top 3... Help us narrow it down.")
-                            .font(.custom("CircularStd-Medium", size: 16))
+                        Text("A song that defines you")
+                            .font(.custom("CircularStd-Medium", size: 22))
                         Spacer()
-                    }
-                }.padding(.horizontal)
-                OnboardingSong(spotifyController: spotifyController)
+                    }.padding()
+                    VStack {
+                        HStack {
+                            Text("According to your Spotify, these are")
+                                .font(.custom("CircularStd-Medium", size: 16))
+                            Spacer()
+                        }
+                        HStack {
+                            Text("your top 3... Help us narrow it down.")
+                                .font(.custom("CircularStd-Medium", size: 16))
+                            Spacer()
+                        }
+                    }.padding(.horizontal)
+                    OnboardingSong(spotifyController: spotifyController, selected: $selected)
+                }
+                Spacer()
+                
             }
-            Spacer()
-            
+            .background((Color(hex:"39D9B1")).ignoresSafeArea())
+            .opacity(selected ? 0 : 1)
+            Taste()
+                .offset(x: selected ? 0 : -3000 )
+                .animation(.easeIn)
         }
-        .background((Color(hex:"39D9B1")).ignoresSafeArea())
     }
     
     

@@ -11,6 +11,7 @@ struct OnboardingSong: View {
     @ObservedObject var spotifyController: SpotifyController
     @State var topSongs: [Song] = []
     @State var loadedData: Bool = false
+    @Binding var selected : Bool
     //    private let songs: [Song]
     
     //    init() {
@@ -23,9 +24,15 @@ struct OnboardingSong: View {
         if loadedData {
             HStack {
                 VStack {
-                    URLImageView(urlString: topSongs[0].Image)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 110, height: 110)
+                    Button(action:{
+                        withAnimation(.easeIn(duration: 1)){
+                            selected = true
+                        }
+                    }) {
+                        URLImageView(urlString: topSongs[0].Image)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 110, height: 110)
+                    }
                     HStack {
                         Text(topSongs[0].Name)
                             .font(.custom("CircularStd-Medium", size: 14))
@@ -41,9 +48,15 @@ struct OnboardingSong: View {
                 }.frame(width: 110, height: 300, alignment: .top)
                 Spacer()
                 VStack {
-                    URLImageView(urlString: topSongs[1].Image)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 110, height: 110)
+                    Button(action:{
+                        withAnimation(.easeIn(duration: 1)){
+                            selected = true
+                        }
+                    }) {
+                        URLImageView(urlString: topSongs[1].Image)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 110, height: 110)
+                    }
                     HStack {
                         Text(topSongs[1].Name)
                             .font(.custom("CircularStd-Medium", size: 14))
@@ -58,9 +71,15 @@ struct OnboardingSong: View {
                 }.frame(width: 110, height: 300, alignment: .top)
                 Spacer()
                 VStack {
-                    URLImageView(urlString: topSongs[2].Image)
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 110, height: 110)
+                     Button(action:{
+                        withAnimation(.easeIn(duration: 1)){
+                            selected = true
+                        }
+                    }) {
+                        URLImageView(urlString: topSongs[2].Image)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 110, height: 110)
+                    }
                     HStack {
                         Text(topSongs[2].Name)
                             .font(.custom("CircularStd-Medium", size: 14))
