@@ -51,9 +51,11 @@ struct Taste: View {
         }
         .background((Color(hex:"FFCC54")).ignoresSafeArea())
         .opacity(selectedTaste.count >= 3 ? 0 : 1)
+        if (selectedTaste.count >= 3) {
         PeopleToFollow(spotifyController: spotifyController)
             .offset(x: selectedTaste.count >= 3 ? 0 : -3000 )
             .animation(.easeIn)
+        }
     }
 }
 

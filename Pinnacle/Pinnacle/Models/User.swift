@@ -11,4 +11,5 @@ struct User: Codable, Hashable {
     var Name: String
     var UserID: String
     var Image: String
+    var Compatibility: Double?
 }
