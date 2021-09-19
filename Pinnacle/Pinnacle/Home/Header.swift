@@ -17,7 +17,7 @@ struct Header: View {
             }.padding(.bottom, 25)
             Spacer()
             Text("Feed")
-                .font(.custom("CircularStd-Book", size: 22))
+                .font(.custom("CircularStd-Medium", size: 22))
             Spacer()
             Button(action:{}) {
                 Image("inbox")
@@ -26,7 +26,8 @@ struct Header: View {
                     .frame(width: 25)
             }.padding(.bottom, 25)
         }.padding()
-        .background((Color(hex:"FFCC54")).ignoresSafeArea())
+        .padding(.top, 30)
+        .background((Color(hex:"FFCC54")))
     }
 }
 

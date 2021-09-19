@@ -10,11 +10,19 @@ import SwiftUI
 struct Home: View {
     var body: some View {
         VStack {
-            Header()
-            HomeSearchBar(searchText: "")
-                .padding()
-            Spacer()
-        }
+        
+            ScrollView {
+                VStack {
+                    Header()
+                    HomeSearchBar(searchText: "")
+                        .padding()
+                    Following()
+                    Rising()
+                    CreatorMonth()
+                    Spacer()
+                }
+            }.ignoresSafeArea()
+        }.background((Color(hex:"fff")).ignoresSafeArea())
     }
 }
 

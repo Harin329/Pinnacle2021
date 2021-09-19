@@ -1,13 +1,13 @@
 //
-//  Following.swift
+//  Rising.swift
 //  Pinnacle
 //
-//  Created by Victor Uemura on 2021-09-18.
+//  Created by Victor Uemura on 2021-09-19.
 //
 
 import SwiftUI
 
-struct Following: View {
+struct Rising: View {
     @State var playlists = [
         Playlist(Name: "Twenty", ID: "0", Image: "playlist1", Creator: "Jenny Cai", Songs: []),
         Playlist(Name: "Twenty", ID: "1", Image: "playlist1", Creator: "Jenny Cai", Songs: []),
@@ -17,7 +17,7 @@ struct Following: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Following")
+                Text("Rising Playlists")
                     .font(.custom("CircularStd-Medium", size: 22))
                 Spacer()
                 Text("See more")
@@ -28,7 +28,7 @@ struct Following: View {
             ScrollView(.horizontal) {
                 HStack (spacing: 0){
                     ForEach(playlists, id: \.self) {playlist in
-                        FollowingCard(playlist: playlist)
+                        RisingCard(playlist: playlist)
                     }
                 }
             }
@@ -36,7 +36,7 @@ struct Following: View {
     }
 }
 
-struct FollowingCard: View {
+struct RisingCard: View {
     @State var playlist : Playlist
     @State var liked = false
     var body: some View {
@@ -46,7 +46,7 @@ struct FollowingCard: View {
                     Image(playlist.Image)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 120, height: 120)
+                        .frame(width: 150, height: 150)
                 }
                 VStack {
                     HStack {
@@ -60,7 +60,7 @@ struct FollowingCard: View {
                         }.padding(4)
                     }
                     Spacer()
-                }.frame(width: 120, height: 120)
+                }.frame(width: 150, height: 150)
             }
             HStack {
                 Text(playlist.Name)
@@ -78,8 +78,8 @@ struct FollowingCard: View {
     }
 }
 
-struct Following_Previews: PreviewProvider {
+struct Rising_Previews: PreviewProvider {
     static var previews: some View {
-        Following().previewDevice(PreviewDevice(rawValue: "iPhone X"))
+        Rising().previewDevice(PreviewDevice(rawValue: "iPhone X"))
     }
 }
