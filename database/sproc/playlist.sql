@@ -23,7 +23,7 @@ CREATE PROCEDURE `getUserPlaylist` (IN `_user_id` VARCHAR(255))
 BEGIN
 
 SELECT * FROM `playlist_table`
-WHERE `user_id`=`_user_id`;
+WHERE `creator`=`_user_id`;
 
 END$$
 
