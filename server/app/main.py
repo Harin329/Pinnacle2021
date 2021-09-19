@@ -285,15 +285,17 @@ def train():
 
         df = pd.DataFrame({'user_id': [], 'reco_type': [], 'match_id': [], "match_score": []})
 
-        for user in res:
-            for user2 in res:
-                if (user[0] != user2[0]):
-                    match = cosine_similarity(user[4:], user2[4:])
-                    df.loc[len(df.index)] = [user[0], 'user', user2[0], match]
+        if (len(res) > 0):
+            for user in res:
+                for user2 in res:
+                    if (user[0] != user2[0]):
+                        match = cosine_similarity(user[4:], user2[4:])
+                        df.loc[len(df.index)] = [user[0], 'user', user2[0], match]
 
-            for play in playRes:
-                match = cosine_similarity(user[4:], play[5:])
-                df.loc[len(df.index)] = [user[0], 'playlist', play[0], match]
+                if (len(playRes) > 0):
+                    for play in playRes:
+                        match = cosine_similarity(user[4:], play[5:])
+                        df.loc[len(df.index)] = [user[0], 'playlist', play[0], match]
 
         df.to_sql(con=engine, name='recommend_table', if_exists='replace')
         engine.dispose()
