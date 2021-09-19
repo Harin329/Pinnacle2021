@@ -80,3 +80,31 @@ def set_anthem(conn, cursor, userID, anthem):
     except Exception as e:
         print("MYSQL ERROR:", sql)
         logging.error(e)
+
+def get_allUser(conn, cursor):
+    sql = 'getAllUser'
+    try:
+        cursor.callproc(sql)
+        return cursor.fetchall()
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)
+
+def create_match(conn, cursor, userID, matchID, match):
+    sql = 'postRecommendation'
+    try:
+        cursor.callproc(sql, (userID, matchID, match, ))
+        conn.commit()
+        return match
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)
+
+def find_match(conn, cursor):
+    sql = 'getMatches'
+    try:
+        cursor.callproc(sql)
+        return cursor.fetchall()
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)

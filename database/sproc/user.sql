@@ -3,6 +3,7 @@ USE `spotlight_db`;
 
 DROP procedure IF EXISTS `postUser`;
 DROP procedure IF EXISTS `setAnthem`;
+DROP procedure IF EXISTS `getAllUser`;
 
 DELIMITER $$
 USE `spotlight_db`$$
@@ -24,6 +25,17 @@ BEGIN
 UPDATE `user_table`
 SET `anthem` = '_anthem'
 WHERE `user_id` = `_userid`;
+
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+USE `spotlight_db`$$
+CREATE PROCEDURE `getAllUser` ()
+BEGIN
+
+SELECT * FROM `user_table`;
 
 END$$
 

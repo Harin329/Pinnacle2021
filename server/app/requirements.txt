@@ -3,3 +3,4 @@ uvicorn
 mysqlclient
 sqlalchemy
 requests
+pandas

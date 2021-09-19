@@ -1,8 +1,12 @@
 import logging
 import requests
-from indexer.tools import connect_mysql, post_user, get_health, post_playlist, set_anthem
+from indexer.tools import connect_mysql, post_user, get_health, post_playlist, set_anthem, get_allUser, create_match
 from fastapi import FastAPI
+from recommend.train import cosine_similarity
 import uvicorn
+import time
+import pandas as pd
+from sqlalchemy import create_engine
 from starlette.requests import Request
 from starlette.middleware.cors import CORSMiddleware
 
@@ -210,6 +214,31 @@ def recommend(user: dict = defaultUser):
         # For Each User, Get Random Playlist
 
 
+        return res, 200
+
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e), 400
+
+@app.get('/train')
+def train():
+    try:
+        conn, cursor = init_conn()
+        engine = create_engine('mysql+mysqldb://user:root@34.134.241.78:3306/spotlight_db', echo=True)
+        
+        res = get_allUser(conn, cursor)
+
+        df = pd.DataFrame({'user_id' : [], 'match_id': [], "match_score": []})
+
+        for user in res:
+            for user2 in res:
+                if (user[0] != user2[0]):
+                    match = cosine_similarity(user[4:], user2[4:])
+                    df.loc[len(df.index)] = [user[0], user2[0], match]
+
+        df.to_sql(con=engine, name='recommend_table', if_exists='replace')
+        engine.dispose()
+            
         return res, 200
 
     except Exception as e:
