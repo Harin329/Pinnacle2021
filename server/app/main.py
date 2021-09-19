@@ -139,33 +139,40 @@ def log_playlist(user: dict = defaultUser):
         added = []
 
         for p in res['items']:
-            playlistID = p["id"]
-            playlistName = p["name"]
+            try:
+                playlistID = p["id"]
+                playlistName = p["name"]
+                print(playlistName)
 
-            url_track = "https://api.spotify.com/v1/playlists/" + playlistID + \
-                "/tracks?fields=items(track(name%2Chref%2Calbum(name%2Chref)%2Cid))&limit=100&offset=0"
-            headers_track = {"Authorization": "Bearer {}".format(token)}
-            response_track = requests.get(
-                url_track, headers=headers_track, params={})
-            res_track = response_track.json()
+                if (p["owner"]["display_name"] == "Spotify" or not p["public"]):
+                    continue
 
-            url_track2 = "https://api.spotify.com/v1/playlists/" + playlistID
-            response_track2 = requests.get(
-                url_track2, headers=headers_track, params={})
-            res_track2 = response_track2.json()
-            followers = res_track2["followers"]["total"]
+                url_track = "https://api.spotify.com/v1/playlists/" + playlistID + \
+                    "/tracks?fields=items(track(name%2Chref%2Calbum(name%2Chref)%2Cid))&limit=100&offset=0"
+                headers_track = {"Authorization": "Bearer {}".format(token)}
+                response_track = requests.get(
+                    url_track, headers=headers_track, params={})
+                res_track = response_track.json()
 
-            songlist = []
-            tracks = res_track['items']
+                url_track2 = "https://api.spotify.com/v1/playlists/" + playlistID
+                response_track2 = requests.get(
+                    url_track2, headers=headers_track, params={})
+                res_track2 = response_track2.json()
+                followers = res_track2["followers"]["total"]
 
-            for song in tracks:
-                s = song['track']['id']
-                songlist.append(s)
+                songlist = []
+                tracks = res_track['items']
 
-            metrics = calculateSongs(token, songlist)
-            res = post_playlist(conn, cursor, playlistID,
-                                playlistName, userID, followers, metrics)
-            added.append(res)
+                for song in tracks:
+                    s = song['track']['id']
+                    songlist.append(s)
+
+                metrics = calculateSongs(token, songlist)
+                res = post_playlist(conn, cursor, playlistID,
+                                    playlistName, userID, followers, metrics)
+                added.append(res)
+            except:
+                print("error training - skipping")
         return added, 200
 
     except Exception as e:
