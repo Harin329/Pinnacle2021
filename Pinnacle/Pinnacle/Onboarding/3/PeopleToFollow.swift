@@ -12,6 +12,8 @@ struct PeopleToFollow: View {
     @State var recommended: [User] = []
     @State var loadedData3: Bool = false
     @State var selectedTuneIn = false
+    @Binding var onboarded : Bool
+
     
     var image : String = "https://media-exp1.licdn.com/dms/image/C5603AQER37hJyH_-Nw/profile-displayphoto-shrink_800_800/0/1547516998888?e=1637193600&v=beta&t=_f4NExij6aZg5gbWSUcICbMMbhhc0FvfBhOJMNJHLX8"
     var username : String = "@harinwu"
@@ -235,6 +237,7 @@ struct PeopleToFollow: View {
                 HStack {
                     Spacer()
                     Button(action: {
+                        onboarded = true
                     }) {
                         HStack {
                             Text("Let’s tune in!")

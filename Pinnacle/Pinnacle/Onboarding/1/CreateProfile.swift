@@ -80,7 +80,7 @@ struct CreateProfile: View {
             .background((Color(hex:"39D9B1")).ignoresSafeArea())
             .opacity(selected ? 0 : 1)
             if (spotifyController.user_id != nil) {
-            Taste(spotifyController: spotifyController)
+            Taste(spotifyController: spotifyController, onboarded: $onboarded)
                 .offset(x: selected ? 0 : UIScreen.main.bounds.width )
                 .animation(.easeIn)
             }

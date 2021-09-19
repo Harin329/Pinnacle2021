@@ -11,6 +11,7 @@ struct Taste: View {
     @ObservedObject var spotifyController: SpotifyController
     
     @State var selectedTaste = [Artist]()
+    @Binding var onboarded : Bool
 
     var body: some View {
         VStack {
@@ -52,7 +53,7 @@ struct Taste: View {
         .background((Color(hex:"FFCC54")).ignoresSafeArea())
         .opacity(selectedTaste.count >= 3 ? 0 : 1)
         if (selectedTaste.count >= 3) {
-        PeopleToFollow(spotifyController: spotifyController)
+        PeopleToFollow(spotifyController: spotifyController, onboarded: $onboarded)
             .offset(x: selectedTaste.count >= 3 ? 0 : -3000 )
             .animation(.easeIn)
         }
