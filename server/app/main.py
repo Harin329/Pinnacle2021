@@ -173,7 +173,7 @@ def log_playlist(user: dict = defaultUser):
         return "Error with {}".format(e), 400
 
 
-@app.get('/getTop')
+@app.post('/getTop')
 def get_top(user: dict = defaultUser):
     try:
         conn, cursor = init_conn()
@@ -193,7 +193,7 @@ def get_top(user: dict = defaultUser):
         return "Error with {}".format(e), 400
 
 
-@app.get('/getTopArtists')
+@app.post('/getTopArtists')
 def get_top(user: dict = defaultUser):
     try:
         conn, cursor = init_conn()
