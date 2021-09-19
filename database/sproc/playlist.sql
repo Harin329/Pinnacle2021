@@ -2,7 +2,7 @@
 
 USE `spotlight_db`;
 DROP procedure IF EXISTS `postPlaylist`;
-DROP procedure IF EXISTS `recentPlaylist`;
+DROP procedure IF EXISTS `getUserPlaylist`;
 
 DELIMITER $$
 USE `spotlight_db`$$
@@ -11,6 +11,18 @@ BEGIN
 
 REPLACE INTO `playlist_table` (`playlist_id`, `name`, `creator`, `time`, `followers`, `danceability`, `energy`, `key`, `loudness`, `mode`, `speechiness`, `acousticness`, `instrumentalness`, `liveness`, `valence`, `tempo`)
 VALUES (`_playlistid`, `_playlistname`, `_playlistcreator`, now(), `_followers`, `_danceability`, `_energy`, `_key`, `_loudness`, `_mode`, `_speechiness`, `_acousticness`, `_instrumentalness`, `_liveness`, `_valence`, `_tempo`);
+
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+USE `spotlight_db`$$
+CREATE PROCEDURE `getUserPlaylist` (IN `_user_id` VARCHAR(255))
+BEGIN
+
+SELECT * FROM `playlist_table`
+WHERE `user_id`=`_user_id`;
 
 END$$
 
