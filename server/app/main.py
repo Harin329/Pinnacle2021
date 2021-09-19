@@ -1,8 +1,12 @@
 import logging
 import requests
-from indexer.tools import connect_mysql, post_user, get_health, post_playlist
+from indexer.tools import connect_mysql, post_user, get_health, post_playlist, set_anthem, get_allUser, create_match
 from fastapi import FastAPI
+from recommend.train import cosine_similarity
 import uvicorn
+import time
+import pandas as pd
+from sqlalchemy import create_engine
 from starlette.requests import Request
 from starlette.middleware.cors import CORSMiddleware
 
@@ -127,7 +131,7 @@ def log_playlist(user: dict = defaultUser):
         userName = user['UserName']
         token = user['Token']
 
-        url = "https://api.spotify.com/v1/me/playlists?limit=3"
+        url = "https://api.spotify.com/v1/me/playlists?limit=50"
         headers = {"Authorization": "Bearer {}".format(token)}
         response = requests.get(url, headers=headers, params={})
         res = response.json()
@@ -143,6 +147,11 @@ def log_playlist(user: dict = defaultUser):
             response_track = requests.get(url_track, headers=headers_track, params={})
             res_track = response_track.json()
 
+            url_track2 = "https://api.spotify.com/v1/playlists/" + playlistID
+            response_track2 = requests.get(url_track2, headers=headers_track, params={})
+            res_track2 = response_track2.json()
+            followers = res_track2["followers"]["total"]
+
             songlist = []
             tracks = res_track['items']
 
@@ -152,9 +161,85 @@ def log_playlist(user: dict = defaultUser):
 
             metrics = calculateSongs(token, songlist)
             res = post_playlist(conn, cursor, playlistID,
-                                playlistName, metrics)
+                                playlistName, userID, followers, metrics)
             added.append(res)
         return added, 200
+
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e), 400
+
+
+@app.get('/getTop')
+def get_top(user: dict=defaultUser):
+    try:
+        conn, cursor = init_conn()
+        userID = user['UserID']
+        userName = user['UserName']
+        token = user['Token']
+
+        url = "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=3"
+        headers = {"Authorization": "Bearer {}".format(token)}
+        response = requests.get(url, headers=headers, params={})
+        res = response.json()
+
+        return res, 200
+
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e), 400
+
+
+@app.put('/setAnthem')
+def log_anthem(userID: str="", anthem: str=""):
+    try:
+        conn, cursor = init_conn()
+
+        res = set_anthem(conn, cursor, userID, anthem)
+
+        return res, 200
+
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e), 400
+
+@app.get('/recommend')
+def recommend(user: dict = defaultUser):
+    try:
+        conn, cursor = init_conn()
+        
+
+        # Find Top 50 Similar Users [0:5] and [45:50]
+
+        # For Each User, Get Random Playlist
+
+
+        return res, 200
+
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e), 400
+
+@app.get('/train')
+def train():
+    try:
+        conn, cursor = init_conn()
+        engine = create_engine('mysql+mysqldb://user:root@34.134.241.78:3306/spotlight_db', echo=True)
+        
+        res = get_allUser(conn, cursor)
+
+        df = pd.DataFrame({'user_id' : [], 'match_id': [], "match_score": []})
+
+        for user in res:
+            for user2 in res:
+                if (user[0] != user2[0]):
+                    match = cosine_similarity(user[4:], user2[4:])
+                    df.loc[len(df.index)] = [user[0], user2[0], match]
+
+        df.to_sql(con=engine, name='recommend_table', if_exists='replace')
+        engine.dispose()
+            
+        return res, 200
 
     except Exception as e:
         logging.error(e)

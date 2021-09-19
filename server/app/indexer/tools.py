@@ -36,12 +36,14 @@ def post_user(conn, cursor, userID, userName, metrics):
         print("MYSQL ERROR:", sql)
         logging.error(e)
 
-def post_playlist(conn, cursor, playlistID, playlistName, metrics):
+def post_playlist(conn, cursor, playlistID, playlistName, creator, followers, metrics):
     sql = 'postPlaylist'
     try:
         cursor.callproc(sql, (
             playlistID,
             playlistName, 
+            creator,
+            followers,
             metrics['danceability'], 
             metrics['energy'], 
             metrics['key'], 
@@ -62,6 +64,44 @@ def post_playlist(conn, cursor, playlistID, playlistName, metrics):
 
 def get_health(conn, cursor):
     sql = 'getHealth'
+    try:
+        cursor.callproc(sql)
+        return cursor.fetchall()
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)
+
+def set_anthem(conn, cursor, userID, anthem):
+    sql = 'setAnthem'
+    try:
+        cursor.callproc(sql, (userID, anthem, ))
+        conn.commit()
+        return anthem
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)
+
+def get_allUser(conn, cursor):
+    sql = 'getAllUser'
+    try:
+        cursor.callproc(sql)
+        return cursor.fetchall()
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)
+
+def create_match(conn, cursor, userID, matchID, match):
+    sql = 'postRecommendation'
+    try:
+        cursor.callproc(sql, (userID, matchID, match, ))
+        conn.commit()
+        return match
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)
+
+def find_match(conn, cursor):
+    sql = 'getMatches'
     try:
         cursor.callproc(sql)
         return cursor.fetchall()
