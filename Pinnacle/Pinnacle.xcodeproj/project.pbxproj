@@ -24,6 +24,9 @@
 		BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC226F59415008B44BB /* ContentView.swift */; };
 		BE8B3EC526F59416008B44BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8B3EC426F59416008B44BB /* Assets.xcassets */; };
 		BE8B3EC826F59416008B44BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8B3EC726F59416008B44BB /* Preview Assets.xcassets */; };
+		BEAFD42126F6CEF400F1A502 /* SpotlightEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFD42026F6CEF400F1A502 /* SpotlightEndpoints.swift */; };
+		BEAFD42326F6CF7C00F1A502 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFD42226F6CF7C00F1A502 /* Payload.swift */; };
+		BEAFD42526F6D04200F1A502 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFD42426F6D04200F1A502 /* Song.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		BE8B3EC426F59416008B44BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE8B3EC726F59416008B44BB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BE8B3EC926F59417008B44BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEAFD42026F6CEF400F1A502 /* SpotlightEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightEndpoints.swift; sourceTree = "<group>"; };
+		BEAFD42226F6CF7C00F1A502 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
+		BEAFD42426F6D04200F1A502 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				B83627AB26F66A6D0092A106 /* URLImage.swift */,
+				BEAFD42226F6CF7C00F1A502 /* Payload.swift */,
+				BEAFD42426F6D04200F1A502 /* Song.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -145,6 +153,7 @@
 		BE8B3EBF26F59415008B44BB /* Pinnacle */ = {
 			isa = PBXGroup;
 			children = (
+				BEAFD41F26F6CEE100F1A502 /* Endpoints */,
 				B83627AA26F66A5D0092A106 /* Models */,
 				B836279C26F5CF910092A106 /* Fonts */,
 				B836279726F5CE490092A106 /* Extension */,
@@ -165,6 +174,14 @@
 				BE8B3EC726F59416008B44BB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BEAFD41F26F6CEE100F1A502 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				BEAFD42026F6CEF400F1A502 /* SpotlightEndpoints.swift */,
+			);
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,9 +259,12 @@
 				B802D3E226F5A79400329210 /* SpotifyController.swift in Sources */,
 				B83627A726F664480092A106 /* FavoriteArtist.swift in Sources */,
 				B83627AC26F66A6D0092A106 /* URLImage.swift in Sources */,
+				BEAFD42126F6CEF400F1A502 /* SpotlightEndpoints.swift in Sources */,
 				BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */,
 				B836279926F5CE5D0092A106 /* HexColor.swift in Sources */,
 				B83627AF26F6736C0092A106 /* PeopleToFollow.swift in Sources */,
+				BEAFD42326F6CF7C00F1A502 /* Payload.swift in Sources */,
+				BEAFD42526F6D04200F1A502 /* Song.swift in Sources */,
 				BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */,
 				B83627A326F653530092A106 /* Taste.swift in Sources */,
 				B83627A126F64CF50092A106 /* OnboardingSong.swift in Sources */,

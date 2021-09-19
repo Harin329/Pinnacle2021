@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CreateProfile: View {
     @StateObject var spotifyController: SpotifyController
+    
     var body: some View {
         VStack {
             HStack {
@@ -50,6 +51,7 @@ struct CreateProfile: View {
                 }
                 Spacer()
             }.padding([.horizontal, .bottom])
+            if (spotifyController.accessToken != nil) {
             HStack {
                 Text("A song that defines you")
                     .font(.custom("CircularStd-Medium", size: 22))
@@ -67,7 +69,8 @@ struct CreateProfile: View {
                     Spacer()
                 }
             }.padding(.horizontal)
-            OnboardingSong()
+                OnboardingSong(spotifyController: spotifyController)
+            }
             Spacer()
             
         }
