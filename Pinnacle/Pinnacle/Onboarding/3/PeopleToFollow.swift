@@ -58,7 +58,7 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(format: "%.0f", pow(recommended[0].Compatibility!, 4) * 500) + "%")
+                                Text(String(format: "%.0f", pow(recommended[0].Compatibility!, 100) * 100) + "%")
                                     .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
@@ -90,7 +90,7 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(format: "%.0f", pow(recommended[1].Compatibility!, 4) * 500) + "%")
+                                Text(String(format: "%.0f", pow(recommended[1].Compatibility!, 100) * 100) + "%")
                                     .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
@@ -132,7 +132,7 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(format: "%.0f", pow(recommended[2].Compatibility!, 4) * 500) + "%")
+                                Text(String(format: "%.0f", pow(recommended[2].Compatibility!, 100) * 100) + "%")
                                     .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
@@ -178,7 +178,7 @@ struct PeopleToFollow: View {
                             }
                             HStack {
                                 Spacer()
-                                Text(String(format: "%.0f", pow(recommended[3].Compatibility!, 4) * 500) + "%")
+                                Text(String(format: "%.0f", pow(recommended[3].Compatibility!, 100) * 100) + "%")
                                     .font(.custom("CircularStd-Medium", size: 29))
                             }
                         }
@@ -218,7 +218,7 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(format: "%.0f", pow(recommended[4].Compatibility!, 4) * 500) + "%")
+                                Text(String(format: "%.0f", pow(recommended[4].Compatibility!, 100) * 100) + "%")
                                     .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
