@@ -228,12 +228,9 @@ def log_anthem(userID: str = "", anthem: str = ""):
 
 
 @app.get('/recommend')
-def recommend(user: dict = defaultUser):
+def recommend(userID: str = ""):
     try:
         conn, cursor = init_conn()
-        userID = user['UserID']
-        userName = user['UserName']
-        token = user['Token']
 
         userList = find_match(userID)
         playlist = []
@@ -251,12 +248,9 @@ def recommend(user: dict = defaultUser):
 
 
 @app.get('/recommendUser')
-def recommendUser(user: dict = defaultUser):
+def recommendUser(userID: str = ""):
     try:
         conn, cursor = init_conn()
-        userID = user['UserID']
-        userName = user['UserName']
-        token = user['Token']
 
         userList = find_match(userID)
 

@@ -243,6 +243,42 @@ struct PeopleToFollow: View {
         }
         .background((Color(hex:"51D8DC")).ignoresSafeArea())
     }
+    
+    func getRecommendedUser(spotifyController: SpotifyController) {
+        let parameters = "{\n    \"UserID\": \"" + self.spotifyController.user_id! + "\",\n    \"UserName\": \"" + self.spotifyController.display_name! + "\",\n    \"Token\": \"" + self.spotifyController.accessToken! + "\"\n}"
+        let postData = parameters.data(using: .utf8)
+        
+        var request = URLRequest(url: URL(string: "https://pinnacle.harinwu.com/getTopArtists")!,timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let data = data {
+                if let response = try? JSONSerialization.jsonObject(with: data, options: []) {
+                    DispatchQueue.main.async {
+                        let converted_respose = response as! [AnyObject]
+                        let a = converted_respose[0]["items"] as! [AnyObject]
+                        for item in a {
+                            
+                            //                            print(item["name"])
+                            //                            print(item["id"])
+                            let a = item["images"] as! [AnyObject]
+                            //                            print(d[0]["url"])
+                            let s = Artist(Name: item["name"] as! String, ID: item["id"] as! String, Image: a[0]["url"] as! String)
+                            topArtists.append(s)
+                            print(topArtists)
+                        }
+                        loadedData2 = true
+                    }
+                }
+                return
+            }
+        }
+        .resume()
+    }
 }
 
 //struct PeopleToFollow_Previews: PreviewProvider {
