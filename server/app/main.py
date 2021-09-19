@@ -250,6 +250,23 @@ def recommend(user: dict = defaultUser):
         return "Error with {}".format(e), 400
 
 
+@app.get('/recommendUser')
+def recommendUser(user: dict = defaultUser):
+    try:
+        conn, cursor = init_conn()
+        userID = user['UserID']
+        userName = user['UserName']
+        token = user['Token']
+
+        userList = find_match(userID)
+
+        return userList, 200
+
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e), 400
+
+
 @app.get('/train')
 def train():
     try:

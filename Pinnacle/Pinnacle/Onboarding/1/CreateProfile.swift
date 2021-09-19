@@ -79,9 +79,11 @@ struct CreateProfile: View {
             }
             .background((Color(hex:"39D9B1")).ignoresSafeArea())
             .opacity(selected ? 0 : 1)
-            Taste()
+            if (spotifyController.user_id != nil) {
+            Taste(spotifyController: spotifyController)
                 .offset(x: selected ? 0 : -3000 )
                 .animation(.easeIn)
+            }
         }
     }
     

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PeopleToFollow: View {
+    @ObservedObject var spotifyController: SpotifyController
+    
     var image : String = "https://media-exp1.licdn.com/dms/image/C5603AQER37hJyH_-Nw/profile-displayphoto-shrink_800_800/0/1547516998888?e=1637193600&v=beta&t=_f4NExij6aZg5gbWSUcICbMMbhhc0FvfBhOJMNJHLX8"
     var username : String = "@harinwu"
     var compatibilty : String = "70%"
@@ -243,8 +245,8 @@ struct PeopleToFollow: View {
     }
 }
 
-struct PeopleToFollow_Previews: PreviewProvider {
-    static var previews: some View {
-        PeopleToFollow().previewDevice(PreviewDevice(rawValue: "iPhone X"))
-    }
-}
+//struct PeopleToFollow_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PeopleToFollow().previewDevice(PreviewDevice(rawValue: "iPhone X"))
+//    }
+//}
