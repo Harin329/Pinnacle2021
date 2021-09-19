@@ -20,7 +20,7 @@ struct CreateProfile: View {
                     Spacer()
                     Text("1/3")
                         .font(.custom("CircularStd-Medium", size: 18))
-                }.padding(.horizontal)
+                }.padding(.horizontal).padding(.top)
                 
                 ZStack {
                     Rectangle()
@@ -81,7 +81,7 @@ struct CreateProfile: View {
             .opacity(selected ? 0 : 1)
             if (spotifyController.user_id != nil) {
             Taste(spotifyController: spotifyController)
-                .offset(x: selected ? 0 : -3000 )
+                .offset(x: selected ? 0 : UIScreen.main.bounds.width )
                 .animation(.easeIn)
             }
         }
