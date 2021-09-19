@@ -37,20 +37,20 @@ struct NewPlaylistFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text("created by @wesleyli")
+                                Text("created by @carmenly")
                                     .font(.custom("CircularStd-Book", size: 12))
                                 Spacer()
                             }
                         }.frame(width: 130)
                     }
                     HStack {
-                        Image("creator1")
+                        Image("creator2")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 50)
                         VStack {
                             HStack {
-                                Text("Study Beats")
+                                Text("EDC Vibes")
                                     .font(.custom("CircularStd-Medium", size: 14))
                                 Spacer()
                             }
@@ -62,18 +62,18 @@ struct NewPlaylistFollow: View {
                         }.frame(width: 130)
                     }
                     HStack {
-                        Image("creator1")
+                        Image("creator3")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 50)
                         VStack {
                             HStack {
-                                Text("Study Beats")
+                                Text("Late Night Vibes")
                                     .font(.custom("CircularStd-Medium", size: 14))
                                 Spacer()
                             }
                             HStack {
-                                Text("created by @wesleyli")
+                                Text("created by @khalid")
                                     .font(.custom("CircularStd-Book", size: 12))
                                 Spacer()
                             }

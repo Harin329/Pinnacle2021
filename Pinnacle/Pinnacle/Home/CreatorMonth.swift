@@ -20,6 +20,7 @@ struct CreatorMonth: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 75)
+                    .clipped()
                 VStack {
                     HStack {
                         Text("@carmenly")
@@ -47,21 +48,22 @@ struct CreatorMonth: View {
                         Spacer()
                     }
                     HStack {
-                        CreatorCapsule(title: "R&B", width: 70)
-                        CreatorCapsule(title: "K-Pop", width: 80)
-                        CreatorCapsule(title: "Hip Hop", width: 90)
+                        CreatorCapsule(title: "Country", width: 90)
+                        CreatorCapsule(title: "Pop", width: 70)
+                        CreatorCapsule(title: "Jazz", width: 80)
                         Spacer()
                     }
                 }
             }.padding(.bottom, 15)
             HStack {
-                Image("creator1")
+                Image("emilyliu")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 75)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 75, height: 75)
+                    .clipped()
                 VStack {
                     HStack {
-                        Text("@carmenly")
+                        Text("@emilyliu")
                             .font(.custom("CircularStd-Medium", size: 18))
                         Spacer()
                         Text("Follow")
