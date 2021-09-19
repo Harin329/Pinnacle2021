@@ -30,6 +30,8 @@ struct Home: View {
             }.ignoresSafeArea().background((Color(hex:"fff")))
             Profile()
                 .offset(x: (menuSelection == 2) ? 0 : UIScreen.main.bounds.width)
+            Add(menu: $menuSelection)
+                .offset(y: (menuSelection == 1) ? 0 : UIScreen.main.bounds.height)
             VStack {
                 Spacer()
                 MenuBar(menuSelection: $menuSelection)

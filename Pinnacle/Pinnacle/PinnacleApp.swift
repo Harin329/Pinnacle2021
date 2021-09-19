@@ -27,6 +27,7 @@ struct PinnacleApp: App {
                         })
                 }
             }.statusBar(hidden: true)
+            .animation(.easeInOut)
         }
     }
 }
