@@ -13,6 +13,7 @@ BEGIN
 
 CREATE TABLE `recommend_table` (
   `user_id` VARCHAR(255) NOT NULL,
+  `reco_type` VARCHAR(255) NOT NULL,
   `match_id` VARCHAR(255) NOT NULL,
   `match_score` DECIMAL(20, 15),
   PRIMARY KEY (`user_id`)

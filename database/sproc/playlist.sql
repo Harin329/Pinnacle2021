@@ -3,6 +3,7 @@
 USE `spotlight_db`;
 DROP procedure IF EXISTS `postPlaylist`;
 DROP procedure IF EXISTS `getUserPlaylist`;
+DROP procedure IF EXISTS `getAllPlaylist`;
 
 DELIMITER $$
 USE `spotlight_db`$$
@@ -23,6 +24,17 @@ BEGIN
 
 SELECT * FROM `playlist_table`
 WHERE `user_id`=`_user_id`;
+
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+USE `spotlight_db`$$
+CREATE PROCEDURE `getAllPlaylist` ()
+BEGIN
+
+SELECT * FROM `playlist_table`;
 
 END$$
 

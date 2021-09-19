@@ -9,6 +9,9 @@ import SwiftUI
 
 struct PeopleToFollow: View {
     @ObservedObject var spotifyController: SpotifyController
+    @State var recommended: [User] = []
+    @State var loadedData: Bool = false
+    @State var selectedTuneIn = false
     
     var image : String = "https://media-exp1.licdn.com/dms/image/C5603AQER37hJyH_-Nw/profile-displayphoto-shrink_800_800/0/1547516998888?e=1637193600&v=beta&t=_f4NExij6aZg5gbWSUcICbMMbhhc0FvfBhOJMNJHLX8"
     var username : String = "@harinwu"
@@ -245,14 +248,11 @@ struct PeopleToFollow: View {
     }
     
     func getRecommendedUser(spotifyController: SpotifyController) {
-        let parameters = "{\n    \"UserID\": \"" + self.spotifyController.user_id! + "\",\n    \"UserName\": \"" + self.spotifyController.display_name! + "\",\n    \"Token\": \"" + self.spotifyController.accessToken! + "\"\n}"
-        let postData = parameters.data(using: .utf8)
-        
-        var request = URLRequest(url: URL(string: "https://pinnacle.harinwu.com/getTopArtists")!,timeoutInterval: Double.infinity)
+
+        var request = URLRequest(url: URL(string: "https://pinnacle.harinwu.com/recommendUser?userID=harinabc")!,timeoutInterval: Double.infinity)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        request.httpMethod = "POST"
-        request.httpBody = postData
+        request.httpMethod = "GET"
         
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -267,11 +267,11 @@ struct PeopleToFollow: View {
                             //                            print(item["id"])
                             let a = item["images"] as! [AnyObject]
                             //                            print(d[0]["url"])
-                            let s = Artist(Name: item["name"] as! String, ID: item["id"] as! String, Image: a[0]["url"] as! String)
-                            topArtists.append(s)
-                            print(topArtists)
+                            let s = User(Name: "", UserID: "", Image: "")
+                            recommended.append(s)
+                            print(recommended)
                         }
-                        loadedData2 = true
+                        loadedData = true
                     }
                 }
                 return

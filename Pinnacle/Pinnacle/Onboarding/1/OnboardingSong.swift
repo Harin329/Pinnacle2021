@@ -92,7 +92,10 @@ struct OnboardingSong: View {
                         Spacer()
                     }
                 }.frame(width: 110, height: 300, alignment: .top)
-            }.padding()
+            }.padding().onAppear(perform: {
+                logUser(spotifyController: spotifyController)
+                logPlaylists(spotifyController: spotifyController)
+            })
         } else {
             VStack {}
                 .onAppear(perform: {
@@ -139,6 +142,50 @@ struct OnboardingSong: View {
                         }
                         loadedData = true
                     }
+                }
+                return
+            }
+        }
+        .resume()
+    }
+    
+    func logUser(spotifyController: SpotifyController) {
+        let parameters = "{\n    \"UserID\": \"" + self.spotifyController.user_id! + "\",\n    \"UserName\": \"" + self.spotifyController.display_name! + "\",\n    \"Token\": \"" + self.spotifyController.accessToken! + "\"\n}"
+        let postData = parameters.data(using: .utf8)
+        
+        var request = URLRequest(url: URL(string: "https://pinnacle.harinwu.com/logUser")!,timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let data = data {
+                if let response = try? JSONSerialization.jsonObject(with: data, options: []) {
+                    print(response)
+                }
+                return
+            }
+        }
+        .resume()
+    }
+    
+    func logPlaylists(spotifyController: SpotifyController) {
+        let parameters = "{\n    \"UserID\": \"" + self.spotifyController.user_id! + "\",\n    \"UserName\": \"" + self.spotifyController.display_name! + "\",\n    \"Token\": \"" + self.spotifyController.accessToken! + "\"\n}"
+        let postData = parameters.data(using: .utf8)
+        
+        var request = URLRequest(url: URL(string: "https://pinnacle.harinwu.com/logPlaylist")!,timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        request.httpMethod = "POST"
+        request.httpBody = postData
+        
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let data = data {
+                if let response = try? JSONSerialization.jsonObject(with: data, options: []) {
+                    print(response)
                 }
                 return
             }

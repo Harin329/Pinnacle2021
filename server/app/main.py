@@ -1,6 +1,6 @@
 import logging
 import requests
-from indexer.tools import connect_mysql, post_user, get_health, post_playlist, set_anthem, get_allUser, create_match, find_match
+from indexer.tools import connect_mysql, post_user, get_health, post_playlist, find_PlaylistMatch, set_anthem, get_allUser, create_match, find_match, get_allPlaylist
 from fastapi import FastAPI
 from recommend.train import cosine_similarity
 import uvicorn
@@ -227,7 +227,7 @@ def log_anthem(userID: str = "", anthem: str = ""):
         return "Error with {}".format(e), 400
 
 
-@app.get('/recommend')
+@app.get('/recommendByUser')
 def recommend(userID: str = ""):
     try:
         conn, cursor = init_conn()
@@ -246,6 +246,18 @@ def recommend(userID: str = ""):
         logging.error(e)
         return "Error with {}".format(e), 400
 
+@app.get('/recommendByAlgo')
+def recommend(userID: str = ""):
+    try:
+        conn, cursor = init_conn()
+
+        playlist = find_PlaylistMatch(userID)
+
+        return playlist, 200
+
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e), 400
 
 @app.get('/recommendUser')
 def recommendUser(userID: str = ""):
@@ -269,14 +281,19 @@ def train():
             'mysql+mysqldb://user:root@34.134.241.78:3306/spotlight_db', echo=True)
 
         res = get_allUser(conn, cursor)
+        playRes = get_allPlaylist(conn, cursor)
 
-        df = pd.DataFrame({'user_id': [], 'match_id': [], "match_score": []})
+        df = pd.DataFrame({'user_id': [], 'reco_type': [] 'match_id': [], "match_score": []})
 
         for user in res:
             for user2 in res:
                 if (user[0] != user2[0]):
                     match = cosine_similarity(user[4:], user2[4:])
-                    df.loc[len(df.index)] = [user[0], user2[0], match]
+                    df.loc[len(df.index)] = [user[0], 'user', user2[0], match]
+
+            for play in playRes:
+                match = cosine_similarity(user[4:], play[5:])
+                df.loc[len(df.index)] = [user[0], 'playlist', play[0], match]
 
         df.to_sql(con=engine, name='recommend_table', if_exists='replace')
         engine.dispose()
