@@ -58,8 +58,8 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(recommended[0].Compatibility! * 100))
-                                    .font(.custom("CircularStd-Medium", size: 33))
+                                Text(String(format: "%.0f", recommended[0].Compatibility! * 100) + "%")
+                                    .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
                         }
@@ -90,8 +90,8 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(recommended[1].Compatibility! * 100))
-                                    .font(.custom("CircularStd-Medium", size: 33))
+                                Text(String(format: "%.0f", recommended[1].Compatibility! * 100) + "%")
+                                    .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
                         }
@@ -132,8 +132,8 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(recommended[2].Compatibility! * 100))
-                                    .font(.custom("CircularStd-Medium", size: 33))
+                                Text(String(format: "%.0f", recommended[2].Compatibility! * 100) + "%")
+                                    .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
                         }
@@ -178,8 +178,8 @@ struct PeopleToFollow: View {
                             }
                             HStack {
                                 Spacer()
-                                Text(String(recommended[3].Compatibility! * 100))
-                                    .font(.custom("CircularStd-Medium", size: 33))
+                                Text(String(format: "%.0f", recommended[3].Compatibility! * 100) + "%")
+                                    .font(.custom("CircularStd-Medium", size: 29))
                             }
                         }
                         URLImageView(urlString: recommended[3].Image)
@@ -218,8 +218,8 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(recommended[4].Compatibility! * 100))
-                                    .font(.custom("CircularStd-Medium", size: 33))
+                                Text(String(format: "%.0f", recommended[4].Compatibility! * 100) + "%")
+                                    .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
                         }
@@ -279,9 +279,9 @@ struct PeopleToFollow: View {
                             getUserInfo(spotifyController: spotifyController, user: item)
                         }
                         while(recommended.count < 4){
-                            print(recommended)
+                            print("waiting")
                         }
-                        loadedData3 = false
+                        loadedData3 = true
                     }
                 }
                 return
@@ -301,7 +301,6 @@ struct PeopleToFollow: View {
         var name = "Anon"
         var img = image
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(data)
             if let data = data {
                 if let response = try? JSONSerialization.jsonObject(with: data, options: []) {
                     DispatchQueue.main.async {
@@ -309,14 +308,16 @@ struct PeopleToFollow: View {
                         let a = converted_respose["images"] as! [AnyObject]
                         
                         name = converted_respose["display_name"] as? String ?? "Anon"
-                        img = a[0]["url"] as? String ?? image
+                        if (a.count > 0) {
+                            img = a[0]["url"] as? String ?? image
+                        }
                     }
                 }
+                let s = User(Name: name, UserID: user[3] as! String, Image: img, Compatibility: Double(user[4] as? Substring ?? "0"))
+                recommended.append(s)
+                
                 return
             }
-            let s = User(Name: name, UserID: user[3] as! String, Image: img, Compatibility: Double(user[4] as? Substring ?? "0"))
-            recommended.append(s)
-            print(recommended)
         }
         .resume()
     }
