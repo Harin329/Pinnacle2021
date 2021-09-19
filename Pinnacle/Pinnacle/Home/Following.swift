@@ -94,7 +94,6 @@ struct Following: View {
                         
                         let p = Playlist(Name: name, ID: id, Image: img, Creator: creator, Songs: [])
                         playlists.append(p)
-                        print(playlists)
                     }
                     
                 }
