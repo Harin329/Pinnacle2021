@@ -9,6 +9,9 @@ import SwiftUI
 
 struct PeopleToFollow: View {
     @ObservedObject var spotifyController: SpotifyController
+    @State var recommended: [User] = []
+    @State var loadedData: Bool = false
+    @State var selectedTuneIn = false
     
     var image : String = "https://media-exp1.licdn.com/dms/image/C5603AQER37hJyH_-Nw/profile-displayphoto-shrink_800_800/0/1547516998888?e=1637193600&v=beta&t=_f4NExij6aZg5gbWSUcICbMMbhhc0FvfBhOJMNJHLX8"
     var username : String = "@harinwu"
@@ -242,6 +245,39 @@ struct PeopleToFollow: View {
             Spacer()
         }
         .background((Color(hex:"51D8DC")).ignoresSafeArea())
+    }
+    
+    func getRecommendedUser(spotifyController: SpotifyController) {
+
+        var request = URLRequest(url: URL(string: "https://pinnacle.harinwu.com/recommendUser?userID=harinabc")!,timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        request.httpMethod = "GET"
+        
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let data = data {
+                if let response = try? JSONSerialization.jsonObject(with: data, options: []) {
+                    DispatchQueue.main.async {
+                        let converted_respose = response as! [AnyObject]
+                        let a = converted_respose[0]["items"] as! [AnyObject]
+                        for item in a {
+                            
+                            //                            print(item["name"])
+                            //                            print(item["id"])
+                            let a = item["images"] as! [AnyObject]
+                            //                            print(d[0]["url"])
+                            let s = User(Name: "", UserID: "", Image: "")
+                            recommended.append(s)
+                            print(recommended)
+                        }
+                        loadedData = true
+                    }
+                }
+                return
+            }
+        }
+        .resume()
     }
 }
 

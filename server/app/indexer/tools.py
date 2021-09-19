@@ -90,6 +90,15 @@ def get_allUser(conn, cursor):
         print("MYSQL ERROR:", sql)
         logging.error(e)
 
+def get_allPlaylist(conn, cursor):
+    sql = 'getAllPlaylist'
+    try:
+        cursor.callproc(sql)
+        return cursor.fetchall()
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)
+
 def create_match(conn, cursor, userID, matchID, match):
     sql = 'postRecommendation'
     try:
@@ -102,6 +111,15 @@ def create_match(conn, cursor, userID, matchID, match):
 
 def find_match(conn, cursor, userID):
     sql = 'getMatches'
+    try:
+        cursor.callproc(sql, (userID, ))
+        return cursor.fetchall()
+    except Exception as e:
+        print("MYSQL ERROR:", sql)
+        logging.error(e)
+
+def find_PlaylistMatch(conn, cursor, userID):
+    sql = 'getPlaylists'
     try:
         cursor.callproc(sql, (userID, ))
         return cursor.fetchall()
