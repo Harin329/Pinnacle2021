@@ -48,6 +48,7 @@ struct PeopleToFollow: View {
                         URLImageView(urlString: recommended[0].Image)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 90, height: 90)
+                            .clipped()
                         VStack {
                             HStack {
                                 Text(recommended[0].Name)
@@ -100,6 +101,7 @@ struct PeopleToFollow: View {
                             URLImageView(urlString: recommended[1].Image)
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 90, height: 90)
+                                .clipped()
                             Spacer()
                         }
                         Button (action: {}) {
@@ -122,6 +124,7 @@ struct PeopleToFollow: View {
                         URLImageView(urlString: recommended[2].Image)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 90, height: 90)
+                            .clipped()
                         VStack {
                             HStack {
                                 Text(recommended[2].Name)
@@ -185,6 +188,7 @@ struct PeopleToFollow: View {
                         URLImageView(urlString: recommended[3].Image)
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 90, height: 90)
+                            .clipped()
                     }.padding(.horizontal)
                     
                     //Row 5
@@ -207,6 +211,7 @@ struct PeopleToFollow: View {
                             URLImageView(urlString: recommended[4].Image)
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 90, height: 90)
+                                .clipped()
                         }
                         VStack {
                             HStack {
