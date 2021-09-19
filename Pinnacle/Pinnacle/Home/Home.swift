@@ -8,23 +8,31 @@
 import SwiftUI
 
 struct Home: View {
+    @State var menuSelection = 0
     var body: some View {
-        VStack {
-        
-            ScrollView {
-                VStack {
-                    Header()
-                    HomeSearchBar(searchText: "")
-                        .padding()
-                    Following()
-                    Rising()
-                    CreatorMonth()
-                    NewPlaylist()
-                    PlusFour()
-                    Spacer()
-                }
-            }.ignoresSafeArea()
-        }.background((Color(hex:"fff")).ignoresSafeArea())
+        ZStack {
+            VStack (spacing:0) {
+                Header()
+                ScrollView {
+                    VStack {
+                        HomeSearchBar(searchText: "")
+                            .padding()
+                        Following()
+                        Rising()
+                        CreatorMonth()
+                        NewPlaylist()
+                        PlusFour()
+                        NewPlaylistFollow().offset(y:-8)
+                        Reshared().offset(y:-16)
+                        NewSong().offset(y:-16)
+                    }
+                }.ignoresSafeArea()
+            }.ignoresSafeArea().background((Color(hex:"fff")))
+            VStack {
+                Spacer()
+                MenuBar(menuSelection: $menuSelection)
+            }
+        }.ignoresSafeArea()
     }
 }
 

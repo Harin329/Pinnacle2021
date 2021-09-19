@@ -14,6 +14,7 @@ struct PlusFour: View {
                 Spacer()
                 Text("+4")
                     .font(.custom("CircularStd-Book", size: 120))
+                Spacer()
                 VStack {
                     Text("new playlists were added to")
                         .font(.custom("CircularStd-Medium", size: 14))
