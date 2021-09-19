@@ -73,7 +73,9 @@ struct OnboardingSong: View {
             }
         }.padding()
         .onAppear(perform: {
-            print(spotifyController.accessToken)
+            let payload = apiPayload(UserID: spotifyController.user_id!, UserName: spotifyController.display_name!, token: spotifyController.accessToken!)
+            let songs = SongEndpoints.getTop3(payload: payload)
+            print(songs)
         })
     }
 }

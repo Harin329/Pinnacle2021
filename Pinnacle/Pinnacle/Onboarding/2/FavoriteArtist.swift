@@ -51,6 +51,11 @@ struct FavoriteArtist: View {
             }
         }.padding()
         .background((Color(hex:"fff")).ignoresSafeArea())
+        .onAppear(perform: {
+//            let payload = apiPayload(UserID: spotifyController.user_id!, UserName: spotifyController.display_name!, token: spotifyController.accessToken!)
+//            let artists = SongEndpoints.getTop12(payload: payload)
+//            print(artists)
+        })
     }
 }
 

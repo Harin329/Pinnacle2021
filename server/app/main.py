@@ -193,6 +193,26 @@ def get_top(user: dict = defaultUser):
         return "Error with {}".format(e), 400
 
 
+@app.get('/getTopArtists')
+def get_top(user: dict = defaultUser):
+    try:
+        conn, cursor = init_conn()
+        userID = user['UserID']
+        userName = user['UserName']
+        token = user['Token']
+
+        url = "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=12"
+        headers = {"Authorization": "Bearer {}".format(token)}
+        response = requests.get(url, headers=headers, params={})
+        res = response.json()
+
+        return res, 200
+
+    except Exception as e:
+        logging.error(e)
+        return "Error with {}".format(e), 400
+
+
 @app.put('/setAnthem')
 def log_anthem(userID: str = "", anthem: str = ""):
     try:

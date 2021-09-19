@@ -27,6 +27,10 @@
 		BEAFD42126F6CEF400F1A502 /* SpotlightEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFD42026F6CEF400F1A502 /* SpotlightEndpoints.swift */; };
 		BEAFD42326F6CF7C00F1A502 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFD42226F6CF7C00F1A502 /* Payload.swift */; };
 		BEAFD42526F6D04200F1A502 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFD42426F6D04200F1A502 /* Song.swift */; };
+		BEAFD42726F6D9C800F1A502 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFD42626F6D9C800F1A502 /* User.swift */; };
+		BEAFD42926F6D9D100F1A502 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFD42826F6D9D100F1A502 /* Artist.swift */; };
+		BEAFD42B26F6D9D800F1A502 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFD42A26F6D9D800F1A502 /* Playlist.swift */; };
+		BEAFD42D26F6D9F100F1A502 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAFD42C26F6D9F100F1A502 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,10 @@
 		BEAFD42026F6CEF400F1A502 /* SpotlightEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightEndpoints.swift; sourceTree = "<group>"; };
 		BEAFD42226F6CF7C00F1A502 /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 		BEAFD42426F6D04200F1A502 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		BEAFD42626F6D9C800F1A502 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BEAFD42826F6D9D100F1A502 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		BEAFD42A26F6D9D800F1A502 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		BEAFD42C26F6D9F100F1A502 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +128,10 @@
 				B83627AB26F66A6D0092A106 /* URLImage.swift */,
 				BEAFD42226F6CF7C00F1A502 /* Payload.swift */,
 				BEAFD42426F6D04200F1A502 /* Song.swift */,
+				BEAFD42626F6D9C800F1A502 /* User.swift */,
+				BEAFD42826F6D9D100F1A502 /* Artist.swift */,
+				BEAFD42A26F6D9D800F1A502 /* Playlist.swift */,
+				BEAFD42C26F6D9F100F1A502 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -259,15 +271,19 @@
 				B802D3E226F5A79400329210 /* SpotifyController.swift in Sources */,
 				B83627A726F664480092A106 /* FavoriteArtist.swift in Sources */,
 				B83627AC26F66A6D0092A106 /* URLImage.swift in Sources */,
+				BEAFD42726F6D9C800F1A502 /* User.swift in Sources */,
 				BEAFD42126F6CEF400F1A502 /* SpotlightEndpoints.swift in Sources */,
 				BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */,
 				B836279926F5CE5D0092A106 /* HexColor.swift in Sources */,
 				B83627AF26F6736C0092A106 /* PeopleToFollow.swift in Sources */,
 				BEAFD42326F6CF7C00F1A502 /* Payload.swift in Sources */,
 				BEAFD42526F6D04200F1A502 /* Song.swift in Sources */,
+				BEAFD42B26F6D9D800F1A502 /* Playlist.swift in Sources */,
 				BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */,
 				B83627A326F653530092A106 /* Taste.swift in Sources */,
 				B83627A126F64CF50092A106 /* OnboardingSong.swift in Sources */,
+				BEAFD42926F6D9D100F1A502 /* Artist.swift in Sources */,
+				BEAFD42D26F6D9F100F1A502 /* Post.swift in Sources */,
 				B83627B126F68B880092A106 /* Loading.swift in Sources */,
 				B836279626F5CD2B0092A106 /* CreateProfile.swift in Sources */,
 			);
