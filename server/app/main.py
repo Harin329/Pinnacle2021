@@ -3,6 +3,7 @@ import requests
 from indexer.tools import connect_mysql, post_user, get_health, post_playlist, get_userPlaylist, find_PlaylistMatch, set_anthem, get_allUser, create_match, find_match, get_allPlaylist
 from fastapi import FastAPI
 from recommend.train import cosine_similarity
+import random
 import uvicorn
 import time
 import pandas as pd
