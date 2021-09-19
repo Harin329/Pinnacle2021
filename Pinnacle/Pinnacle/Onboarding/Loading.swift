@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Loading: View {
+    @Binding var load : Bool
     @State var angle: Double = 0.0
     @State var isAnimating = false
     @State var scale: CGFloat = 0.5
@@ -75,14 +76,17 @@ struct Loading: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100, alignment: .center)
             }.offset(y: -60)
+        }.onAppear(perform: {
+            wait()
         }
+        )
+    }
+    func wait() {
+        // Delay of 7.5 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+            load = true
+        }
+        
     }
 }
 
-
-
-struct Loading_Previews: PreviewProvider {
-    static var previews: some View {
-        Loading()
-    }
-}
