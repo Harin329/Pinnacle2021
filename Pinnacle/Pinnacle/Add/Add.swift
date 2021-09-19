@@ -17,36 +17,27 @@ struct Add: View {
     var body: some View {
         VStack {
             HStack {
-                Image("back")
+                Button (action: {
+                    menu = 0
+                    image = "None"
+                }) {                    Image("back")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25)
+                }
                 Spacer()
                 Text("New Post")
                     .font(.custom("CircularStd-Medium", size: 18))
                 Spacer()
                 Button (action: {
                     menu = 0
+                    image = "None"
                 }) {
                     Text("New Post")
                         .font(.custom("CircularStd-Medium", size: 15))
                         .foregroundColor(Color(hex: "39D9B1"))
                 }
             }
-            HStack{
-                Button (action: {
-                    showingPopover = true
-                }) {
-                    Image(selectedSong ? "playlist1" : "None")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
-                }
-                VStack {
-                    TextField("Write a caption...", text: $text)
-                }
-            }
-            Divider()
             HStack {
                 Toggle(isOn: $share, label: {
                     Text("Share to feed")
@@ -60,13 +51,27 @@ struct Add: View {
                 Spacer()
             }
             Toggles()
+            Divider()
+            HStack{
+                Button (action: {
+                    showingPopover = true
+                }) {
+                    Image(selectedSong ? "list3" : "None")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                }
+                VStack {
+                    TextField("Write a caption...", text: $text)
+                }
+            }
             Spacer()
         }.padding()
         .padding(.top, 50)
         .background(Color.white)
         .popover(isPresented: $showingPopover) {
             AddPopover(select: $selectedSong, show: $showingPopover)
-                }
+        }
     }
 }
 
@@ -79,7 +84,7 @@ struct Toggles: View {
         VStack {
             Toggle(isOn: $one, label: {
                 HStack {
-                    Image("creator1")
+                    Image("sophiachoi")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50)
@@ -89,26 +94,26 @@ struct Toggles: View {
             })
             Toggle(isOn: $two, label: {
                 HStack {
-                    Image("creator1")
+                    Image("creator3")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50)
-                    Text("Harin Wu")
+                    Text("Jerry Wu")
                         .font(.custom("CircularStd-Medium", size: 15))
                 }
             })
             Toggle(isOn: $three, label: {
                 HStack {
-                    Image("creator1")
+                    Image("jennycai")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 50)
-                    Text("Victor Uemura")
+                    Text("Jenny Cai")
                         .font(.custom("CircularStd-Medium", size: 15))
                 }
             })
             Toggle(isOn: $four, label: {
-                Image("creator1")
+                Image("emilyliu")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 50)

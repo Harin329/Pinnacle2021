@@ -10,8 +10,8 @@ import SwiftUI
 @main
 struct PinnacleApp: App {
     @StateObject var spotifyController = SpotifyController()
-    @State var onboarded = true
-    @State var loaded = true
+    @State var onboarded = false
+    @State var loaded = false
     var body: some Scene {
         WindowGroup {
             ZStack {

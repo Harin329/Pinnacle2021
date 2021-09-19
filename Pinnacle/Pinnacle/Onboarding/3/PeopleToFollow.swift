@@ -13,6 +13,12 @@ struct PeopleToFollow: View {
     @State var loadedData3: Bool = false
     @State var selectedTuneIn = false
     @Binding var onboarded : Bool
+    
+    @State var r1 = false
+    @State var r2 = false
+    @State var r3 = false
+    @State var r4 = false
+    @State var r5 = false
 
     
     var image : String = "https://media-exp1.licdn.com/dms/image/C5603AQER37hJyH_-Nw/profile-displayphoto-shrink_800_800/0/1547516998888?e=1637193600&v=beta&t=_f4NExij6aZg5gbWSUcICbMMbhhc0FvfBhOJMNJHLX8"
@@ -66,7 +72,9 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                         }
-                        Button (action: {}) {
+                        Button (action: {
+                            r1.toggle()
+                        }) {
                             Circle()
                                 .foregroundColor(.clear)
                                 .frame(width: 70, height: 70)
@@ -74,7 +82,7 @@ struct PeopleToFollow: View {
                                     Circle()
                                         .stroke(Color.white, lineWidth: 3))
                                 .overlay(
-                                    Image(systemName: "plus")
+                                    Image(systemName: r1 ? "checkmark" : "plus")
                                         .foregroundColor(Color(hex: "fff"))
                                         .font(.system(size: 50)))
                                 .padding(.trailing, 10)
@@ -106,7 +114,9 @@ struct PeopleToFollow: View {
                                 .clipped()
                             Spacer()
                         }
-                        Button (action: {}) {
+                        Button (action: {
+                            r2.toggle()
+                        }) {
                             Circle()
                                 .foregroundColor(.clear)
                                 .frame(width: 70, height: 70)
@@ -114,7 +124,7 @@ struct PeopleToFollow: View {
                                     Circle()
                                         .stroke(Color.white, lineWidth: 3))
                                 .overlay(
-                                    Image(systemName: "plus")
+                                    Image(systemName: r2 ? "checkmark" : "plus")
                                         .foregroundColor(Color(hex: "fff"))
                                         .font(.system(size: 50)))
                                 .padding(.trailing, 10)
@@ -142,7 +152,9 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                         }
-                        Button (action: {}) {
+                        Button (action: {
+                            r3.toggle()
+                        }) {
                             Circle()
                                 .foregroundColor(.clear)
                                 .frame(width: 70, height: 70)
@@ -150,7 +162,7 @@ struct PeopleToFollow: View {
                                     Circle()
                                         .stroke(Color.white, lineWidth: 3))
                                 .overlay(
-                                    Image(systemName: "plus")
+                                    Image(systemName: r3 ? "checkmark" : "plus")
                                         .foregroundColor(Color(hex: "fff"))
                                         .font(.system(size: 50)))
                                 .padding(.trailing, 10)
@@ -159,7 +171,9 @@ struct PeopleToFollow: View {
                     
                     //Row 4
                     HStack {
-                        Button (action: {}) {
+                        Button (action: {
+                            r4.toggle()
+                        }) {
                             Circle()
                                 .foregroundColor(.clear)
                                 .frame(width: 70, height: 70)
@@ -167,7 +181,7 @@ struct PeopleToFollow: View {
                                     Circle()
                                         .stroke(Color.white, lineWidth: 3))
                                 .overlay(
-                                    Image(systemName: "plus")
+                                    Image(systemName: r4 ? "checkmark" : "plus")
                                         .foregroundColor(Color(hex: "fff"))
                                         .font(.system(size: 50)))
                                 .padding(.leading, 10)
@@ -195,7 +209,9 @@ struct PeopleToFollow: View {
                     
                     //Row 5
                     HStack(spacing: 0) {
-                        Button (action: {}) {
+                        Button (action: {
+                            r5.toggle()
+                        }) {
                             Circle()
                                 .foregroundColor(.clear)
                                 .frame(width: 70, height: 70)
@@ -203,7 +219,7 @@ struct PeopleToFollow: View {
                                     Circle()
                                         .stroke(Color.white, lineWidth: 3))
                                 .overlay(
-                                    Image(systemName: "plus")
+                                    Image(systemName: r5 ? "checkmark" : "plus")
                                         .foregroundColor(Color(hex: "fff"))
                                         .font(.system(size: 50)))
                                 .padding(.leading, 10)

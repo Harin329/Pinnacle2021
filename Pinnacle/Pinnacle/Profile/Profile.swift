@@ -17,9 +17,9 @@ struct Profile: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 230)
                     .padding(.top, 60)
-                Text("Victor Uemura")
+                Text("Harin Wu")
                     .font(.custom("CircularStd-Medium", size: 28))
-                Text("@victor.ysu")
+                Text("@harin.wu")
                     .font(.custom("CircularStd-Medium", size: 18))
                 HStack (spacing: 0){
                     Text("Good Game · Dominic Fike ")
@@ -47,11 +47,30 @@ struct Profile: View {
             .frame(width: UIScreen.main.bounds.width, height: 450, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .background((Color(hex:"51D8DC")))
             VStack{
-                Image("spotify")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width:220)
-                    .padding(.top, 30)
+                Button (action: {
+                    var url = URL(string: "spotify://user/12173301288")
+                    
+                    if UIApplication.shared.canOpenURL(url!){
+                        UIApplication.shared.open(url!, options: [:]) { success in
+                            print(success)
+                        }
+                    }
+                    else{
+                        url = URL(string: "https://open.spotify.com/user/12173301288")
+                        
+                        if UIApplication.shared.canOpenURL(url!){
+                            UIApplication.shared.open(url!, options: [:]) { success in
+                                print(success)
+                            }
+                        }
+                    }
+                }) {
+                    Image("spotify")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width:220)
+                        .padding(.top, 30)
+                }
                 Image("qr")
                     .resizable()
                     .aspectRatio(contentMode: .fit)

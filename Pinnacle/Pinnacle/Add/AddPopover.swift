@@ -51,19 +51,19 @@ struct SongList: View {
                 show = false
             }) {
                 HStack {
-                    Image("playlist1")
+                    Image("list1")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 70)
                     VStack {
                         HStack {
-                            Text("Study Beats")
+                            Text("Stay (with Justin Bieber")
                                 .font(.custom("CircularStd-Medium", size: 18))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
                         }
                         HStack {
-                            Text("created by @wesleyli")
+                            Text("The Kid LAROI, Justin Bieber")
                                 .font(.custom("CircularStd-Book", size: 16))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
@@ -76,19 +76,19 @@ struct SongList: View {
                 show = false
             }) {
                 HStack {
-                    Image("playlist1")
+                    Image("list2")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 70)
                     VStack {
                         HStack {
-                            Text("Study Beats")
+                            Text("Fair Trade (with Travis Scott)")
                                 .font(.custom("CircularStd-Medium", size: 18))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
                         }
                         HStack {
-                            Text("created by @wesleyli")
+                            Text("Drake, Travis Scott")
                                 .font(.custom("CircularStd-Book", size: 16))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
@@ -101,19 +101,19 @@ struct SongList: View {
                 show = false
             }) {
                 HStack {
-                    Image("playlist1")
+                    Image("list3")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 70)
                     VStack {
                         HStack {
-                            Text("Study Beats")
+                            Text("Heat Waves")
                                 .font(.custom("CircularStd-Medium", size: 18))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
                         }
                         HStack {
-                            Text("created by @wesleyli")
+                            Text("Glass Animals")
                                 .font(.custom("CircularStd-Book", size: 16))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
@@ -126,19 +126,19 @@ struct SongList: View {
                 show = false
             }) {
                 HStack {
-                    Image("playlist1")
+                    Image("list4")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 70)
                     VStack {
                         HStack {
-                            Text("Study Beats")
+                            Text("good 4 u")
                                 .font(.custom("CircularStd-Medium", size: 18))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
                         }
                         HStack {
-                            Text("created by @wesleyli")
+                            Text("Olivia Rodrigo")
                                 .font(.custom("CircularStd-Book", size: 16))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
@@ -151,19 +151,19 @@ struct SongList: View {
                 show = false
             }) {
                 HStack {
-                    Image("playlist1")
+                    Image("list5")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 70)
                     VStack {
                         HStack {
-                            Text("Study Beats")
+                            Text("Need To Know")
                                 .font(.custom("CircularStd-Medium", size: 18))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
                         }
                         HStack {
-                            Text("created by @wesleyli")
+                            Text("Doja Cat")
                                 .font(.custom("CircularStd-Book", size: 16))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
@@ -176,19 +176,19 @@ struct SongList: View {
                 show = false
             }) {
                 HStack {
-                    Image("playlist1")
+                    Image("list6")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 70)
                     VStack {
                         HStack {
-                            Text("Study Beats")
+                            Text("Guilty Conscience")
                                 .font(.custom("CircularStd-Medium", size: 18))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
                         }
                         HStack {
-                            Text("created by @wesleyli")
+                            Text("070 Shake")
                                 .font(.custom("CircularStd-Book", size: 16))
                                 .foregroundColor(Color(hex: "fff"))
                             Spacer()
