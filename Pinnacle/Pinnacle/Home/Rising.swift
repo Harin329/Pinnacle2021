@@ -90,11 +90,9 @@ struct Rising: View {
                         if (a.count > 0) {
                             img = a[0]["url"] as? String ?? ""
                         }
-                        print(img)
                         
                         let p = Playlist(Name: name, ID: id, Image: img, Creator: creator, Songs: [])
                         playlists.append(p)
-                        print(playlists)
                     }
                     
                 }

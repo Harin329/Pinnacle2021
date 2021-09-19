@@ -68,14 +68,14 @@ struct Following: View {
     
     func getPlaylistInfo(spotifyController: SpotifyController, playlist: [Any]) {
         print(playlist)
-        let id = playlist[3] as! String
+        let id = playlist[0] as! String
         guard let url = URL(string: "https://api.spotify.com/v1/playlists/" + id + "?fields=description%2C%20followers%2C%20href%2C%20id%2C%20images%2C%20name%2C%20owner%2C%20public") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer " + spotifyController.accessToken!, forHTTPHeaderField: "Authorization")
-        let name = playlist[6] as! String
+        var name = playlist[6] as? String ?? ""
         var img = ""
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let data = data {
@@ -87,6 +87,11 @@ struct Following: View {
                         
                         let n = converted_respose["owner"] as AnyObject
                         let creator = n["display_name"] as! String
+                        
+                        if (name == "") {
+                            name = n["name"] as? String ?? ""
+                        }
+                        
                         if (a.count > 0) {
                             img = a[0]["url"] as? String ?? ""
                         }
@@ -94,7 +99,6 @@ struct Following: View {
                         
                         let p = Playlist(Name: name, ID: id, Image: img, Creator: creator, Songs: [])
                         playlists.append(p)
-                        print(playlists)
                     }
                     
                 }
