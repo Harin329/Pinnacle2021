@@ -17,7 +17,7 @@ struct PeopleToFollow: View {
     var username : String = "@harinwu"
     var compatibilty : String = "70%"
     var body: some View {
-        if (loadedData3) {
+        if (loadedData3 && recommended.count >= 5) {
             VStack {
                 HStack {
                     Text("People to follow")
@@ -58,8 +58,8 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(recommended[0].Compatibility! * 100))
-                                    .font(.custom("CircularStd-Medium", size: 33))
+                                Text(String(format: "%.0f", pow(recommended[0].Compatibility!, 4) * 100) + "%")
+                                    .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
                         }
@@ -90,8 +90,8 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(recommended[1].Compatibility! * 100))
-                                    .font(.custom("CircularStd-Medium", size: 33))
+                                Text(String(format: "%.0f", pow(recommended[1].Compatibility!, 4) * 100) + "%")
+                                    .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
                         }
@@ -132,8 +132,8 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(recommended[2].Compatibility! * 100))
-                                    .font(.custom("CircularStd-Medium", size: 33))
+                                Text(String(format: "%.0f", pow(recommended[2].Compatibility!, 4) * 100) + "%")
+                                    .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
                         }
@@ -178,8 +178,8 @@ struct PeopleToFollow: View {
                             }
                             HStack {
                                 Spacer()
-                                Text(String(recommended[3].Compatibility! * 100))
-                                    .font(.custom("CircularStd-Medium", size: 33))
+                                Text(String(format: "%.0f", pow(recommended[3].Compatibility!, 4) * 100) + "%")
+                                    .font(.custom("CircularStd-Medium", size: 29))
                             }
                         }
                         URLImageView(urlString: recommended[3].Image)
@@ -218,8 +218,8 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                             HStack {
-                                Text(String(recommended[4].Compatibility! * 100))
-                                    .font(.custom("CircularStd-Medium", size: 33))
+                                Text(String(format: "%.0f", pow(recommended[4].Compatibility!, 4) * 100) + "%")
+                                    .font(.custom("CircularStd-Medium", size: 29))
                                 Spacer()
                             }
                         }
@@ -278,10 +278,7 @@ struct PeopleToFollow: View {
                         for item in a {
                             getUserInfo(spotifyController: spotifyController, user: item)
                         }
-                        while(recommended.count < 4){
-                            print(recommended)
-                        }
-                        loadedData3 = false
+                        loadedData3 = true
                     }
                 }
                 return
@@ -291,6 +288,7 @@ struct PeopleToFollow: View {
     }
     
     func getUserInfo(spotifyController: SpotifyController, user: [Any]) {
+        print(user)
         let id = user[3] as! String
         guard let url = URL(string: "https://api.spotify.com/v1/users/" + id) else { return }
         var request = URLRequest(url: url)
@@ -301,22 +299,26 @@ struct PeopleToFollow: View {
         var name = "Anon"
         var img = image
         URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(data)
             if let data = data {
                 if let response = try? JSONSerialization.jsonObject(with: data, options: []) {
                     DispatchQueue.main.async {
                         let converted_respose = response as! Dictionary<String, Any>
+                        print(converted_respose)
                         let a = converted_respose["images"] as! [AnyObject]
                         
                         name = converted_respose["display_name"] as? String ?? "Anon"
-                        img = a[0]["url"] as? String ?? image
+                        if (a.count > 0) {
+                            img = a[0]["url"] as? String ?? image
+                        }
+                        
+                        let s = User(Name: name, UserID: user[3] as! String, Image: img, Compatibility: Double(user[4] as? Substring ?? "0"))
+                        recommended.append(s)
+                        print(recommended)
                     }
                 }
+                
                 return
             }
-            let s = User(Name: name, UserID: user[3] as! String, Image: img, Compatibility: Double(user[4] as? Substring ?? "0"))
-            recommended.append(s)
-            print(recommended)
         }
         .resume()
     }
