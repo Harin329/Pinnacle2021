@@ -11,7 +11,7 @@ struct Reshared: View {
     var body: some View {
         VStack {
             HStack(spacing:0) {
-                Image("creator1")
+                Image("jennycai")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40)

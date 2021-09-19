@@ -11,7 +11,7 @@ struct NewPlaylist: View {
     var body: some View {
         VStack {
             HStack(spacing: 0) {
-                Image("creator1")
+                Image("sophiachoi")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40)
@@ -31,9 +31,11 @@ struct NewPlaylist: View {
             }
             HStack {
                 ZStack {
-                    Circle()
-                        .foregroundColor(Color(hex: "FA7549"))
+                    Image("sophiaplaylist")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                         .frame(width: 130, height: 130)
+                        .clipped()
                     Image(systemName: "play.fill")
                         .foregroundColor(Color(hex:"fff"))
                         .font(.system(size: 35))
