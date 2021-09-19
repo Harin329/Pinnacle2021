@@ -19,6 +19,8 @@ struct Home: View {
                     Following()
                     Rising()
                     CreatorMonth()
+                    NewPlaylist()
+                    PlusFour()
                     Spacer()
                 }
             }.ignoresSafeArea()
