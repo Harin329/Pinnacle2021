@@ -288,7 +288,7 @@ def train():
             'mysql+mysqldb://user:root@34.134.241.78:3306/spotlight_db', echo=True)
 
         res = get_allUser(conn, cursor)
-        time.sleep(10)
+        cursor.nextset()
         playRes = get_allPlaylist(conn, cursor)
 
         df = pd.DataFrame({'user_id': [], 'reco_type': [], 'match_id': [], "match_score": []})
