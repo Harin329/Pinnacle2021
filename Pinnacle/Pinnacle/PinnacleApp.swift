@@ -17,6 +17,7 @@ struct PinnacleApp: App {
                 CreateProfile(spotifyController: spotifyController)
                     .onOpenURL { url in
                         spotifyController.setAccessToken(from: url)
+                        spotifyController.getUserId()
                     }
                     .onReceive(NotificationCenter.default.publisher(for: UIApplication.didFinishLaunchingNotification), perform: { _ in
                         spotifyController.connect()

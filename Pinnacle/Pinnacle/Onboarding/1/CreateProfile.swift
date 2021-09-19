@@ -51,24 +51,25 @@ struct CreateProfile: View {
                 }
                 Spacer()
             }.padding([.horizontal, .bottom])
-            if (spotifyController.accessToken != nil) {
-            HStack {
-                Text("A song that defines you")
-                    .font(.custom("CircularStd-Medium", size: 22))
-                Spacer()
-            }.padding()
-            VStack {
+            
+            if (spotifyController.user_id != nil) {
                 HStack {
-                    Text("According to your Spotify, these are")
-                        .font(.custom("CircularStd-Medium", size: 16))
+                    Text("A song that defines you")
+                        .font(.custom("CircularStd-Medium", size: 22))
                     Spacer()
-                }
-                HStack {
-                    Text("your top 3... Help us narrow it down.")
-                        .font(.custom("CircularStd-Medium", size: 16))
-                    Spacer()
-                }
-            }.padding(.horizontal)
+                }.padding()
+                VStack {
+                    HStack {
+                        Text("According to your Spotify, these are")
+                            .font(.custom("CircularStd-Medium", size: 16))
+                        Spacer()
+                    }
+                    HStack {
+                        Text("your top 3... Help us narrow it down.")
+                            .font(.custom("CircularStd-Medium", size: 16))
+                        Spacer()
+                    }
+                }.padding(.horizontal)
                 OnboardingSong(spotifyController: spotifyController)
             }
             Spacer()
@@ -76,6 +77,8 @@ struct CreateProfile: View {
         }
         .background((Color(hex:"39D9B1")).ignoresSafeArea())
     }
+    
+    
 }
 
 //struct CreateProfile_Previews: PreviewProvider {

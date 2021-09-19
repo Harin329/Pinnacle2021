@@ -14,8 +14,8 @@ class SpotifyController: NSObject, ObservableObject {
     let spotifyRedirectURL = URL(string:"spotify-ios-quick-start://spotify-login-callback")!
     
     @Published var accessToken: String? = nil
-    var user_id: String? = nil
-    var display_name: String? = nil
+    @Published var user_id: String? = nil
+    @Published var display_name: String? = nil
     
     var playURI = ""
     
@@ -56,7 +56,6 @@ class SpotifyController: NSObject, ObservableObject {
         if let accessToken = parameters?[SPTAppRemoteAccessTokenKey] {
             appRemote.connectionParameters.accessToken = accessToken
             self.accessToken = accessToken
-            self.getUserId()
         } else if let errorDescription = parameters?[SPTAppRemoteErrorDescriptionKey] {
             print(errorDescription)
         }
