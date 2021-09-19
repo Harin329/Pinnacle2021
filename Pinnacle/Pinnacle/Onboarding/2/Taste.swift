@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct Taste: View {
+    @ObservedObject var spotifyController: SpotifyController
+    
+    @State var selectedTaste = [Artist]()
+
     var body: some View {
         VStack {
             HStack {
@@ -41,16 +45,20 @@ struct Taste: View {
                 .padding(.horizontal)
                 .padding(.bottom)
             
-            FavoriteArtist()
+            FavoriteArtist(spotifyController: spotifyController, selectedTaste: $selectedTaste)
             
             Spacer()
         }
         .background((Color(hex:"FFCC54")).ignoresSafeArea())
+        .opacity(selectedTaste.count >= 3 ? 0 : 1)
+        PeopleToFollow(spotifyController: spotifyController)
+            .offset(x: selectedTaste.count >= 3 ? 0 : -3000 )
+            .animation(.easeIn)
     }
 }
 
-struct Taste_Previews: PreviewProvider {
-    static var previews: some View {
-        Taste()
-    }
-}
+//struct Taste_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Taste()
+//    }
+//}
