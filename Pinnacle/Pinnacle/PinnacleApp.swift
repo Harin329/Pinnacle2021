@@ -11,20 +11,26 @@ import SwiftUI
 struct PinnacleApp: App {
     @StateObject var spotifyController = SpotifyController()
     @State var onboarded = false
+    @State var loaded = false
     var body: some Scene {
         WindowGroup {
-            VStack {
-                if onboarded {
-                    Home()
-                } else {
-                    CreateProfile(spotifyController: spotifyController, onboarded: $onboarded)
-                        .onOpenURL { url in
-                            spotifyController.setAccessToken(from: url)
-                            spotifyController.getUserId()
-                        }
-                        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didFinishLaunchingNotification), perform: { _ in
-                            spotifyController.connect()
-                        })
+            ZStack {
+                VStack {
+                    if onboarded && loaded {
+                        Home()
+                    }
+                    else if onboarded && !loaded{
+                        Loading(load: $loaded)
+                    } else {
+                        CreateProfile(spotifyController: spotifyController, onboarded: $onboarded)
+                            .onOpenURL { url in
+                                spotifyController.setAccessToken(from: url)
+                                spotifyController.getUserId()
+                            }
+                            .onReceive(NotificationCenter.default.publisher(for: UIApplication.didFinishLaunchingNotification), perform: { _ in
+                                spotifyController.connect()
+                            })
+                    }
                 }
             }.statusBar(hidden: true)
             .animation(.easeInOut)
