@@ -283,7 +283,7 @@ def train():
         res = get_allUser(conn, cursor)
         playRes = get_allPlaylist(conn, cursor)
 
-        df = pd.DataFrame({'user_id': [], 'reco_type': [] 'match_id': [], "match_score": []})
+        df = pd.DataFrame({'user_id': [], 'reco_type': [], 'match_id': [], "match_score": []})
 
         for user in res:
             for user2 in res:
