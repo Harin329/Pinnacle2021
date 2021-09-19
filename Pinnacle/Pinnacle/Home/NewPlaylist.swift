@@ -33,7 +33,7 @@ struct NewPlaylist: View {
                 ZStack {
                     Circle()
                         .foregroundColor(Color(hex: "FA7549"))
-                        .frame(width: 150, height: 150)
+                        .frame(width: 130, height: 130)
                     Image(systemName: "play.fill")
                         .foregroundColor(Color(hex:"fff"))
                         .font(.system(size: 35))
@@ -47,10 +47,18 @@ struct NewPlaylist: View {
                     HStack {
                         Text("17 songs · 1h 05min")
                             .font(.custom("CircularStd-Medium", size: 14))
+                            .foregroundColor(Color(hex: "777"))
+                        Spacer()
+                    }.padding(.bottom, 5)
+                    HStack {
+                        Text("If you’re looking for chill Korean vibes to study to, this playlist is for you!")
+                            .fixedSize(horizontal: false, vertical: true)
+                            .font(.custom("CircularStd-Book", size: 12))
                         Spacer()
                     }
                 }
             }
+            Divider()
         }.padding()
     }
 }
