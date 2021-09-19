@@ -232,7 +232,7 @@ def recommend(userID: str = ""):
     try:
         conn, cursor = init_conn()
 
-        userList = find_match(userID)
+        userList = find_match(conn, cursor, userID)
         playlist = []
 
         # For Each User, Get Random Playlist
@@ -251,7 +251,7 @@ def recommend(userID: str = ""):
     try:
         conn, cursor = init_conn()
 
-        playlist = find_PlaylistMatch(userID)
+        playlist = find_PlaylistMatch(conn, cursor, userID)
 
         return playlist, 200
 
@@ -264,7 +264,7 @@ def recommendUser(userID: str = ""):
     try:
         conn, cursor = init_conn()
 
-        userList = find_match(userID)
+        userList = find_match(conn, cursor, userID)
 
         return userList, 200
 
