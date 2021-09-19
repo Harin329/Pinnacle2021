@@ -17,7 +17,7 @@ struct PinnacleApp: App {
             ZStack {
                 VStack {
                     if onboarded && loaded {
-                        Home()
+                        Home(spotifyController: spotifyController)
                     }
                     else if onboarded && !loaded{
                         Loading(load: $loaded)

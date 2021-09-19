@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct Home: View {
+    @ObservedObject var spotifyController: SpotifyController
+
     @State var menuSelection = 0
     var body: some View {
         ZStack {
@@ -17,8 +19,8 @@ struct Home: View {
                     VStack {
                         HomeSearchBar(searchText: "")
                             .padding()
-                        Following()
-                        Rising()
+                        Following(spotifyController: spotifyController)
+                        Rising(spotifyController: spotifyController)
                         CreatorMonth()
                         NewPlaylist()
                         PlusFour()
@@ -41,8 +43,8 @@ struct Home: View {
     }
 }
 
-struct Home_Previews: PreviewProvider {
-    static var previews: some View {
-        Home().previewDevice(PreviewDevice(rawValue: "iPhone X"))
-    }
-}
+//struct Home_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Home().previewDevice(PreviewDevice(rawValue: "iPhone X"))
+//    }
+//}
