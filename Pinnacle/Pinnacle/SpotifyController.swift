@@ -10,7 +10,7 @@ import Combine
 
 
 class SpotifyController: NSObject, ObservableObject {
-    let spotifyClientID = "8c3b694f5a8a4d12af6e1dd6f68b7502"
+    let spotifyClientID = "4e21bf8617d34f28a9b762b5f27fb040"
     let spotifyRedirectURL = URL(string:"spotify-ios-quick-start://spotify-login-callback")!
     
     @Published var accessToken: String? = nil

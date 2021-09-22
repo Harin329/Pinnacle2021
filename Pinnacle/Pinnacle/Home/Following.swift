@@ -116,7 +116,24 @@ struct FollowingCard: View {
     var body: some View {
         VStack {
             ZStack {
-                Button (action:{}) {
+                Button (action:{
+                    var url = URL(string: "spotify://playlist/" + playlist.ID)
+                    
+                    if UIApplication.shared.canOpenURL(url!){
+                        UIApplication.shared.open(url!, options: [:]) { success in
+                            print(success)
+                        }
+                    }
+                    else{
+                        url = URL(string: "https://open.spotify.com/playlist/" + playlist.ID)
+                        
+                        if UIApplication.shared.canOpenURL(url!){
+                            UIApplication.shared.open(url!, options: [:]) { success in
+                                print(success)
+                            }
+                        }
+                    }
+                }) {
                     URLImageView(urlString: playlist.Image)
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 120, height: 120)
