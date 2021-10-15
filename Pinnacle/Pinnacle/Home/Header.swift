@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct Header: View {
+    @StateObject var screen = Screen()
+
     var body: some View {
         HStack {
             Button(action:{}) {
                 Image(systemName: "camera")
                     .foregroundColor(Color(hex: "101010"))
                     .font(.system(size: 25))
-            }.padding(.bottom, 20)
+            }.padding(.bottom, screen.height / 40.6)
             Spacer()
             Text("Feed")
                 .font(.custom("CircularStd-Medium", size: 22))
@@ -23,10 +25,10 @@ struct Header: View {
                 Image("inbox")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 25)
-            }.padding(.bottom, 20)
+                    .frame(width: screen.width / 15)
+            }.padding(.bottom, screen.height / 40.6)
         }.padding()
-        .padding(.top, 30)
+        .padding(.top, screen.height / 27.067)
         .background((Color(hex:"FFCC54")))
     }
 }

@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct NewPlaylist: View {
+    @StateObject var screen = Screen()
+
     var body: some View {
         VStack {
             HStack(spacing: 0) {
                 Image("sophiachoi")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 40)
+                    .frame(width: screen.width / 9.375)
                 Text(" Sophia Choi")
                     .font(.custom("CircularStd-Medium", size: 13))
                 Text(" created a")
@@ -23,7 +25,7 @@ struct NewPlaylist: View {
                     .font(.custom("CircularStd-Book", size: 13))
                     .background(Rectangle()
                                     .foregroundColor(Color(hex: "FFCC54").opacity(0.54))
-                                    .frame(height: 10))
+                                    .frame(height: screen.height / 81.2))
                 Spacer()
                 Text("Sep 17 ")
                     .font(.custom("CircularStd-Book", size: 13))
@@ -34,7 +36,7 @@ struct NewPlaylist: View {
                     Image("sophiaplaylist")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 130, height: 130)
+                        .frame(width: screen.width / 2.885, height: screen.width / 2.885)
                         .clipped()
                     Image(systemName: "play.fill")
                         .foregroundColor(Color(hex:"fff"))
@@ -51,7 +53,7 @@ struct NewPlaylist: View {
                             .font(.custom("CircularStd-Medium", size: 14))
                             .foregroundColor(Color(hex: "777"))
                         Spacer()
-                    }.padding(.bottom, 5)
+                    }.padding(.bottom, screen.height / 162.4)
                     HStack {
                         Text("If you’re looking for chill Korean vibes to study to, this playlist is for you!")
                             .fixedSize(horizontal: false, vertical: true)

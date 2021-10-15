@@ -9,14 +9,16 @@ import SwiftUI
 
 struct Profile: View {
     @State var follow = false
+    @StateObject var screen = Screen()
+
     var body: some View {
         VStack {
             VStack {
                 Image("creator1")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 230)
-                    .padding(.top, 60)
+                    .frame(width: screen.width / 1.63)
+                    .padding(.top, screen.height / 13.533)
                 Text("Harin Wu")
                     .font(.custom("CircularStd-Medium", size: 28))
                 Text("@harin.wu")
@@ -28,7 +30,7 @@ struct Profile: View {
                     Image("profile")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 15)
+                        .frame(width: screen.width / 25)
                 }
                 Button(action: {
                     follow.toggle()
@@ -37,14 +39,14 @@ struct Profile: View {
                         Text(follow ? "Following" : "Follow")
                             .font(.custom("CircularStd-Book", size: 16))
                             .foregroundColor(Color(hex: follow ? "#fff" : "#101010"))
-                            .padding([.vertical],8)
-                            .frame(width:100)
+                            .padding([.vertical], screen.height / 101.5)
+                            .frame(width: screen.width / 3.75)
                     }.background(Color(hex: follow ? "#248487" : "#fff"))
                     .cornerRadius(30)
                 }
                 Spacer()
             }
-            .frame(width: UIScreen.main.bounds.width, height: 450, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .frame(width: screen.width, height: screen.height / 1.804)
             .background((Color(hex:"51D8DC")))
             VStack{
                 Button (action: {
@@ -68,15 +70,15 @@ struct Profile: View {
                     Image("spotify")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width:220)
-                        .padding(.top, 30)
+                        .frame(width: screen.width / 1.705)
+                        .padding(.top, screen.height / 27.067)
                 }
                 Image("qr")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width:220)
+                    .frame(width: screen.width / 1.705)
                 Spacer()
-            }.frame(width: UIScreen.main.bounds.width, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            }.frame(width: screen.width, height: screen.height / 2.03)
             .background((Color(hex:"fff")))
         }
     }

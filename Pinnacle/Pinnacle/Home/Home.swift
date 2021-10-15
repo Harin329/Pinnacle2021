@@ -11,6 +11,8 @@ struct Home: View {
     @ObservedObject var spotifyController: SpotifyController
 
     @State var menuSelection = 0
+    @StateObject var screen = Screen()
+
     var body: some View {
         ZStack {
             VStack (spacing:0) {
@@ -24,9 +26,9 @@ struct Home: View {
                         CreatorMonth()
                         NewPlaylist()
                         PlusFour()
-                        NewPlaylistFollow().offset(y:-8)
-                        Reshared().offset(y:-16)
-                        NewSong().offset(y:-16)
+                        NewPlaylistFollow().offset(y:screen.height / 101.5)
+                        Reshared().offset(y:screen.height / 50.75)
+                        NewSong().offset(y:screen.height / 50.75)
                     }
                 }.ignoresSafeArea()
             }.ignoresSafeArea().background((Color(hex:"fff")))

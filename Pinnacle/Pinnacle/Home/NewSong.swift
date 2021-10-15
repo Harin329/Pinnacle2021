@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct NewSong: View {
+    @StateObject var screen = Screen()
+
     var body: some View {
         VStack {
             HStack(spacing: 0) {
                 Image("sophiachoi")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 40)
+                    .frame(width: screen.width / 9.375)
                 Text(" Sophia Choi")
                     .font(.custom("CircularStd-Medium", size: 13))
                 Text(" created a")
@@ -23,7 +25,7 @@ struct NewSong: View {
                     .font(.custom("CircularStd-Book", size: 13))
                     .background(Rectangle()
                                     .foregroundColor(Color(hex: "54E0FF").opacity(0.54))
-                                    .frame(height: 10))
+                                    .frame(height: screen.height / 81.2))
                 Spacer()
                 Text("Sep 17 ")
                     .font(.custom("CircularStd-Book", size: 13))
@@ -33,7 +35,7 @@ struct NewSong: View {
                 Image("playlist1")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 150)
+                    .frame(width: screen.width / 2.5)
                 VStack {
                     HStack {
                         Text("Feel A Way")
@@ -45,7 +47,7 @@ struct NewSong: View {
                             .font(.custom("CircularStd-Medium", size: 14))
                             .foregroundColor(Color(hex: "777"))
                         Spacer()
-                    }.padding(.bottom, 5)
+                    }.padding(.bottom, screen.height / 162.4)
                     HStack {
                         Text("Can’t believe I just discovered this song by Kiana! Thought you guys would love it too :)")
                             .fixedSize(horizontal: false, vertical: true)
@@ -74,7 +76,7 @@ struct NewSong: View {
                 Text("7")
                     .font(.custom("CircularStd-Medium", size: 18))
             }.padding()
-        }.padding().padding(.bottom, 50)
+        }.padding().padding(.bottom, screen.height / 16.24)
     }
 }
 

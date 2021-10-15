@@ -12,14 +12,8 @@ struct OnboardingSong: View {
     @State var topSongs: [Song] = []
     @State var loadedData: Bool = false
     @Binding var selected : Bool
-    //    private let songs: [Song]
-    
-    //    init() {
-    //        let payload = apiPayload(UserID: spotifyController.user_id!, UserName: spotifyController.display_name!, token: spotifyController.accessToken!)
-    //        self.songs = SongEndpoints.getTop3(payload: payload)
-    //        print(self.songs)
-    //    }
-    
+    @StateObject var screen = Screen()
+
     var body: some View {
         if loadedData {
             HStack {
@@ -31,7 +25,7 @@ struct OnboardingSong: View {
                     }) {
                         URLImageView(urlString: topSongs[0].Image)
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 110, height: 110)
+                            .frame(width: screen.width / 3.409 , height: screen.height / 7.382)
                     }
                     HStack {
                         Text(topSongs[0].Name)
@@ -45,7 +39,7 @@ struct OnboardingSong: View {
                         Spacer()
                     }
                     
-                }.frame(width: 110, height: 300, alignment: .top)
+                }.frame(width: screen.width / 3.409, height: screen.height / 2.707, alignment: .top)
                 Spacer()
                 VStack {
                     Button(action:{
@@ -55,7 +49,7 @@ struct OnboardingSong: View {
                     }) {
                         URLImageView(urlString: topSongs[1].Image)
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 110, height: 110)
+                            .frame(width: screen.width / 3.409, height: screen.height / 7.382)
                     }
                     HStack {
                         Text(topSongs[1].Name)
@@ -68,7 +62,7 @@ struct OnboardingSong: View {
                             .foregroundColor(Color(hex: "fff"))
                         Spacer()
                     }
-                }.frame(width: 110, height: 300, alignment: .top)
+                }.frame(width: screen.width / 3.409, height: screen.height / 2.707, alignment: .top)
                 Spacer()
                 VStack {
                      Button(action:{
@@ -78,7 +72,7 @@ struct OnboardingSong: View {
                     }) {
                         URLImageView(urlString: topSongs[2].Image)
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 110, height: 110)
+                            .frame(width: screen.width / 3.409, height: screen.height / 7.382)
                     }
                     HStack {
                         Text(topSongs[2].Name)
@@ -91,7 +85,7 @@ struct OnboardingSong: View {
                             .foregroundColor(Color(hex: "fff"))
                         Spacer()
                     }
-                }.frame(width: 110, height: 300, alignment: .top)
+                }.frame(width: screen.width / 3.409, height: screen.height / 2.707, alignment: .top)
             }.padding().onAppear(perform: {
                 logUser(spotifyController: spotifyController)
                 logPlaylists(spotifyController: spotifyController)

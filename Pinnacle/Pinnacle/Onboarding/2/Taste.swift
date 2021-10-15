@@ -12,6 +12,7 @@ struct Taste: View {
     
     @State var selectedTaste = [Artist]()
     @Binding var onboarded : Bool
+    @StateObject var screen = Screen()
 
     var body: some View {
         VStack {
@@ -26,12 +27,12 @@ struct Taste: View {
             
             ZStack {
                 Rectangle()
-                    .frame(height: 8)
+                    .frame(height: screen.height / 101.5)
                 HStack {
                     Spacer()
                     Rectangle()
                         .fill(Color(hex: "FFF"))
-                        .frame(width: 115, height: 8)
+                        .frame(width: screen.width / 3.26, height: screen.height / 101.5)
                 }
             }.padding()
             
@@ -40,7 +41,7 @@ struct Taste: View {
                     .font(.custom("CircularStd-Medium", size: 22))
                 Spacer()
             }.padding(.horizontal)
-            .padding(.top, 5)
+            .padding(.top, screen.height / 162.4)
             
             GenreSelector()
                 .padding(.horizontal)
@@ -54,7 +55,7 @@ struct Taste: View {
         .opacity(selectedTaste.count >= 3 ? 0 : 1)
         if (selectedTaste.count >= 3) {
         PeopleToFollow(spotifyController: spotifyController, onboarded: $onboarded)
-            .offset(x: selectedTaste.count >= 3 ? 0 : -3000 )
+            .offset(x: selectedTaste.count >= 3 ? 0 : -screen.width )
             .animation(.easeIn)
         }
     }

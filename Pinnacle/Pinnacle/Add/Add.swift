@@ -14,6 +14,8 @@ struct Add: View {
     @State var share = true
     @State var showingPopover = false
     @State var selectedSong = false
+    @StateObject var screen = Screen()
+
     var body: some View {
         VStack {
             HStack {
@@ -23,7 +25,7 @@ struct Add: View {
                 }) {                    Image("back")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 25)
+                    .frame(width: screen.width / 15)
                 }
                 Spacer()
                 Text("New Post")
@@ -59,7 +61,7 @@ struct Add: View {
                     Image(selectedSong ? "list3" : "None")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
+                        .frame(width: screen.width / 3.75, height: screen.height / 8.12)
                 }
                 VStack {
                     TextField("Write a caption...", text: $text)
@@ -67,7 +69,7 @@ struct Add: View {
             }
             Spacer()
         }.padding()
-        .padding(.top, 50)
+        .padding(.top, screen.height / 16.24)
         .background(Color.white)
         .popover(isPresented: $showingPopover) {
             AddPopover(select: $selectedSong, show: $showingPopover)
@@ -80,6 +82,7 @@ struct Toggles: View {
     @State var two = false
     @State var three = false
     @State var four = false
+    @StateObject var screen = Screen()
     var body: some View {
         VStack {
             Toggle(isOn: $one, label: {
@@ -87,7 +90,7 @@ struct Toggles: View {
                     Image("sophiachoi")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 50)
+                        .frame(width: screen.width / 7.5)
                     Text("Sophia Choi")
                         .font(.custom("CircularStd-Medium", size: 15))
                 }
@@ -97,7 +100,7 @@ struct Toggles: View {
                     Image("creator3")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 50)
+                        .frame(width: screen.width / 7.5)
                     Text("Jerry Wu")
                         .font(.custom("CircularStd-Medium", size: 15))
                 }
@@ -107,7 +110,7 @@ struct Toggles: View {
                     Image("jennycai")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 50)
+                        .frame(width: screen.width / 7.5)
                     Text("Jenny Cai")
                         .font(.custom("CircularStd-Medium", size: 15))
                 }
@@ -116,7 +119,7 @@ struct Toggles: View {
                 Image("emilyliu")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 50)
+                    .frame(width: screen.width / 7.5)
                 Text("Emily Liu")
                     .font(.custom("CircularStd-Medium", size: 15))
             })

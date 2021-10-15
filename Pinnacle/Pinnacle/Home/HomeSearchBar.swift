@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeSearchBar: View {
     @State var searchText: String
+    @StateObject var screen = Screen()
+
     var body: some View {
         ZStack {
             Rectangle()
@@ -21,11 +23,11 @@ struct HomeSearchBar: View {
             }
             .foregroundColor(.gray)
         }
-        .frame(height: 40)
+        .frame(height: screen.height / 20.3)
         .cornerRadius(13)
         .overlay(
             RoundedRectangle(cornerRadius: 25)
-                .stroke(Color(hex: "#FFCC54"), lineWidth: 2))
+                .stroke(Color(hex: "#FFCC54"), lineWidth: screen.width / 187.5))
     }
 }
 

@@ -10,6 +10,7 @@ import SwiftUI
 struct AddPopover: View {
     @Binding var select : Bool
     @Binding var show : Bool
+    @StateObject var screen = Screen()
     var body: some View {
         VStack {
             SearchBarAdd(searchText: "")
@@ -20,9 +21,9 @@ struct AddPopover: View {
                         .font(.custom("CircularStd-Medium", size: 18))
                         .foregroundColor(Color(hex: "fff"))
                     Rectangle()
-                        .frame(width: 140, height: 2)
+                        .frame(width: screen.width / 2.679, height: screen.height / 406)
                         .foregroundColor(Color(hex:"FFCC54"))
-                        .offset(y:20)
+                        .offset(y:screen.height / 40.6)
                 }
                 Spacer()
                 Spacer()
@@ -31,11 +32,11 @@ struct AddPopover: View {
                     .foregroundColor(Color(hex: "fff"))
                 Spacer()
 
-            }.padding(.vertical,20)
+            }.padding(.vertical,screen.height / 40.6)
             SongList(select: $select, show: $show)
             Spacer()
         }.padding()
-        .padding(.top, 30)
+        .padding(.top, screen.height / 27.067)
         .background(Color(hex: "101010").opacity(0.8))
         .ignoresSafeArea()
     }
@@ -44,6 +45,7 @@ struct AddPopover: View {
 struct SongList: View {
     @Binding var select : Bool
     @Binding var show : Bool
+    @StateObject var screen = Screen()
     var body: some View {
         VStack {
             Button (action: {
@@ -54,7 +56,7 @@ struct SongList: View {
                     Image("list1")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 70)
+                        .frame(width: screen.width / 5.357)
                     VStack {
                         HStack {
                             Text("Stay (with Justin Bieber")
@@ -79,7 +81,7 @@ struct SongList: View {
                     Image("list2")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 70)
+                        .frame(width: screen.width / 5.357)
                     VStack {
                         HStack {
                             Text("Fair Trade (with Travis Scott)")
@@ -104,7 +106,7 @@ struct SongList: View {
                     Image("list3")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 70)
+                        .frame(width: screen.width / 5.357)
                     VStack {
                         HStack {
                             Text("Heat Waves")
@@ -129,7 +131,7 @@ struct SongList: View {
                     Image("list4")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 70)
+                        .frame(width: screen.width / 5.357)
                     VStack {
                         HStack {
                             Text("good 4 u")
@@ -154,7 +156,7 @@ struct SongList: View {
                     Image("list5")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 70)
+                        .frame(width: screen.width / 5.357)
                     VStack {
                         HStack {
                             Text("Need To Know")
@@ -179,7 +181,7 @@ struct SongList: View {
                     Image("list6")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 70)
+                        .frame(width: screen.width / 5.357)
                     VStack {
                         HStack {
                             Text("Guilty Conscience")
@@ -202,6 +204,8 @@ struct SongList: View {
 
 struct SearchBarAdd: View {
     @State var searchText: String
+    @StateObject var screen = Screen()
+
     var body: some View {
         ZStack {
             Rectangle()
@@ -214,7 +218,7 @@ struct SearchBarAdd: View {
             }
             .foregroundColor(.gray)
         }
-        .frame(height: 40)
+        .frame(height: screen.height / 20.3)
         .cornerRadius(13)
         .overlay(
             RoundedRectangle(cornerRadius: 25)

@@ -112,11 +112,11 @@ struct FavoriteArtist: View {
 
 
 struct ArtistCircle: View {
-    //    var image : String = "https://media-exp1.licdn.com/dms/image/C5603AQER37hJyH_-Nw/profile-displayphoto-shrink_800_800/0/1547516998888?e=1637193600&v=beta&t=_f4NExij6aZg5gbWSUcICbMMbhhc0FvfBhOJMNJHLX8"
-    //    var name : String = "Harin Wu"
-    @State var selected = false
     @State var artist: Artist
     @Binding var selectedTaste: [Artist]
+    
+    @StateObject var screen = Screen()
+    @State var selected = false
     
     var body: some View {
         VStack {
@@ -128,12 +128,12 @@ struct ArtistCircle: View {
                     URLImageView(urlString: artist.Image)
                         .clipShape(Circle())
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 65, height: 65)
+                        .frame(width: screen.width / 5.769, height: screen.height / 12.492)
                     if selected {
                         Circle()
                             .foregroundColor(Color(hex:"101010"))
                             .opacity(0.3)
-                            .frame(width: 65, height: 65)
+                            .frame(width: screen.width / 5.769, height: screen.height / 12.492)
                         Image(systemName: "checkmark")
                             .foregroundColor(Color(hex: "fff"))
                             .font(.title)
@@ -142,12 +142,15 @@ struct ArtistCircle: View {
             }
             Text(artist.Name)
                 .font(.custom("CircularStd-Medium", size: 12))
-        }.frame(width: 80, height: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        }.frame(width: screen.width / 4.688, height: screen.height / 10.15)
     }
 }
 
 struct SearchBar: View {
     @State var searchText: String
+    
+    @StateObject var screen = Screen()
+
     var body: some View {
         ZStack {
             Rectangle()
@@ -160,7 +163,7 @@ struct SearchBar: View {
             }
             .foregroundColor(.gray)
         }
-        .frame(height: 40)
+        .frame(height: screen.height / 20.3)
         .cornerRadius(13)
         .overlay(
             RoundedRectangle(cornerRadius: 25)

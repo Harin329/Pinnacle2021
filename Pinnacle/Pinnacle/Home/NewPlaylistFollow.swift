@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct NewPlaylistFollow: View {
+    @StateObject var screen = Screen()
+
     var body: some View {
         VStack {
             HStack {
@@ -29,7 +31,7 @@ struct NewPlaylistFollow: View {
                         Image("creator1")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 50)
+                            .frame(width: screen.width / 7.5)
                         VStack {
                             HStack {
                                 Text("Study Beats")
@@ -41,13 +43,13 @@ struct NewPlaylistFollow: View {
                                     .font(.custom("CircularStd-Book", size: 12))
                                 Spacer()
                             }
-                        }.frame(width: 130)
+                        }.frame(width: screen.width / 2.885)
                     }
                     HStack {
                         Image("creator2")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 50)
+                            .frame(width: screen.width / 7.5)
                         VStack {
                             HStack {
                                 Text("EDC Vibes")
@@ -59,13 +61,13 @@ struct NewPlaylistFollow: View {
                                     .font(.custom("CircularStd-Book", size: 12))
                                 Spacer()
                             }
-                        }.frame(width: 130)
+                        }.frame(width: screen.width / 2.885)
                     }
                     HStack {
                         Image("creator3")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 50)
+                            .frame(width: screen.width / 7.5)
                         VStack {
                             HStack {
                                 Text("Late Night Vibes")
@@ -77,14 +79,14 @@ struct NewPlaylistFollow: View {
                                     .font(.custom("CircularStd-Book", size: 12))
                                 Spacer()
                             }
-                        }.frame(width: 130)
+                        }.frame(width: screen.width / 2.885)
                     }
                 }
                 Spacer()
             }
         }.padding()
         .background((Color(hex:"FA7549")))
-        .frame(height: 250)
+        .frame(height: screen.height / 3.248)
     }
 }
 

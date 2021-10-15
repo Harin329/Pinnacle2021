@@ -8,30 +8,31 @@
 import SwiftUI
 
 struct GenreSelector: View {
+    @StateObject var screen = Screen()
     var body: some View {
         VStack {
             HStack {
-                GenreCapsule(title: "Pop", width: 75)
+                GenreCapsule(title: "Pop", width: screen.width / 5)
                 Spacer()
-                GenreCapsule(title: "R&B", width: 75)
+                GenreCapsule(title: "R&B", width: screen.width / 5)
                 Spacer()
-                GenreCapsule(title: "Hip Hop", width: 85)
+                GenreCapsule(title: "Hip Hop", width: screen.width / 4.412)
                 Spacer()
-                GenreCapsule(title: "K-Pop", width: 80)
+                GenreCapsule(title: "K-Pop", width: screen.width / 4.688)
             }
             HStack {
-                GenreCapsule(title: "Dance / Electronic", width: 175)
-                GenreCapsule(title: "Country", width: 100)
+                GenreCapsule(title: "Dance / Electronic", width: screen.width / 2.143)
+                GenreCapsule(title: "Country", width: screen.width / 3.75)
                 Spacer()
             }
             HStack {
-                GenreCapsule(title: "Indie", width: 75)
+                GenreCapsule(title: "Indie", width: screen.width / 5)
                 Spacer()
-                GenreCapsule(title: "Lo-Fi", width: 75)
+                GenreCapsule(title: "Lo-Fi", width: screen.width / 5)
                 Spacer()
-                GenreCapsule(title: "Rock", width: 75)
+                GenreCapsule(title: "Rock", width: screen.width / 5)
                 Spacer()
-                GenreCapsule(title: "Classical", width: 85)
+                GenreCapsule(title: "Classical", width: screen.width / 4.412)
             }
         }
     }

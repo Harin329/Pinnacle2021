@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MenuBar: View {
+    @StateObject var screen = Screen()
     @Binding var menuSelection : Int
     var body: some View {
         ZStack {
@@ -20,7 +21,7 @@ struct MenuBar: View {
                         Image("home")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 35)
+                            .frame(width: screen.width / 10.714)
                     }
                     
                     Spacer()
@@ -32,11 +33,11 @@ struct MenuBar: View {
                         Image("person")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 35)
-                            .offset(y:10)
+                            .frame(width: screen.width / 10.714)
+                            .offset(y:screen.height / 81.2)
                     }
                 }
-                .padding([.trailing, .leading], 40)
+                .padding([.trailing, .leading], screen.width / 9.375)
                 .padding()
                 .background((Color(hex:"000")))
             }
@@ -50,6 +51,6 @@ struct MenuBar: View {
             }.background(Color(.clear))
                 
         }.background(Color(.clear))
-        .frame(height: 130)
+        .frame(height: screen.height / 6.246)
     }
 }

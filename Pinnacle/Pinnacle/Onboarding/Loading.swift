@@ -12,6 +12,7 @@ struct Loading: View {
     @State var angle: Double = 0.0
     @State var isAnimating = false
     @State var scale: CGFloat = 0.5
+    @StateObject var screen = Screen()
     
     var foreverAnimation: Animation {
         Animation.linear(duration: 2.4)
@@ -39,7 +40,7 @@ struct Loading: View {
                     Spacer()
                     Circle()
                         .fill(Color(hex: "FFCC54"))
-                        .frame(width: 15, height: 15)
+                        .frame(width: screen.width / 25, height: screen.width / 25)
                         .scaleEffect(scale)
                         .animation(Animation.easeInOut(duration: 0.6).repeatForever()) // 1.
                         .onAppear {
@@ -48,7 +49,7 @@ struct Loading: View {
                             }}
                     Circle()
                         .fill(Color(hex: "FFCC54"))
-                        .frame(width: 15, height: 15)
+                        .frame(width: screen.width / 25, height: screen.width / 25)
                         .scaleEffect(scale)
                         .animation(Animation.easeInOut(duration: 0.6).repeatForever()) // 1.
                         .onAppear {
@@ -57,7 +58,7 @@ struct Loading: View {
                             }}
                     Circle()
                         .fill(Color(hex: "FFCC54"))
-                        .frame(width: 15, height: 15)
+                        .frame(width: screen.width / 25, height: screen.width / 25)
                         .scaleEffect(scale)
                         .animation(Animation.easeInOut(duration: 0.6).repeatForever()) // 1.
                         .onAppear {
@@ -65,17 +66,17 @@ struct Loading: View {
                                 self.scale = 1
                             }}
                 }
-                .offset(y: -25.0)
-                .padding(.trailing,40)
+                .offset(y: -screen.height / 32.48)
+                .padding(.trailing, screen.width / 9.375)
             }
-            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            .frame(width: screen.width, height: screen.height)
             .background((Color(hex:"#FA7549")).ignoresSafeArea())
             HStack {
                 Spacer()
                 Image("arm")
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100, alignment: .center)
-            }.offset(y: -60)
+                    .frame(width: screen.width / 3.75, height: screen.height / 8.12, alignment: .center)
+            }.offset(y: -screen.height / 13.533)
         }.onAppear(perform: {
             wait()
         }
@@ -83,7 +84,7 @@ struct Loading: View {
     }
     func wait() {
         // Delay of 7.5 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             load = true
         }
         

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PlusFour: View {
+    @StateObject var screen = Screen()
+
     var body: some View {
         ZStack{
             HStack {
@@ -33,9 +35,9 @@ struct PlusFour: View {
                 Image("arrow")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 50)
+                    .frame(width: screen.width / 7.5)
             }.padding()
-            .offset(y:50)
+            .offset(y:screen.height / 16.24)
         }.padding()
             .background((Color(hex:"51D8DC")))
     }

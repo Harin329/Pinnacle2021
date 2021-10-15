@@ -35,6 +35,7 @@
 		B837930226F72F9200D85B6D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B837930126F72F9200D85B6D /* Profile.swift */; };
 		B837930526F7395800D85B6D /* Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = B837930426F7395800D85B6D /* Add.swift */; };
 		B837930726F741A100D85B6D /* AddPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B837930626F741A000D85B6D /* AddPopover.swift */; };
+		B837930C26FAE5A700D85B6D /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = B837930B26FAE5A600D85B6D /* GlobalVariables.swift */; };
 		BE8B3EC126F59415008B44BB /* PinnacleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC026F59415008B44BB /* PinnacleApp.swift */; };
 		BE8B3EC326F59415008B44BB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8B3EC226F59415008B44BB /* ContentView.swift */; };
 		BE8B3EC526F59416008B44BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE8B3EC426F59416008B44BB /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		B837930126F72F9200D85B6D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		B837930426F7395800D85B6D /* Add.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Add.swift; sourceTree = "<group>"; };
 		B837930626F741A000D85B6D /* AddPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPopover.swift; sourceTree = "<group>"; };
+		B837930B26FAE5A600D85B6D /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		BE8B3EBD26F59415008B44BB /* Pinnacle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinnacle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE8B3EC026F59415008B44BB /* PinnacleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnacleApp.swift; sourceTree = "<group>"; };
 		BE8B3EC226F59415008B44BB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,14 @@
 			path = Add;
 			sourceTree = "<group>";
 		};
+		B837930A26FAE58E00D85B6D /* Global Variables */ = {
+			isa = PBXGroup;
+			children = (
+				B837930B26FAE5A600D85B6D /* GlobalVariables.swift */,
+			);
+			path = "Global Variables";
+			sourceTree = "<group>";
+		};
 		BE8B3EB426F59415008B44BB = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +241,7 @@
 		BE8B3EBF26F59415008B44BB /* Pinnacle */ = {
 			isa = PBXGroup;
 			children = (
+				B837930A26FAE58E00D85B6D /* Global Variables */,
 				B837930326F7394900D85B6D /* Add */,
 				B837930026F72F7F00D85B6D /* Profile */,
 				BEAFD41F26F6CEE100F1A502 /* Endpoints */,
@@ -340,6 +351,7 @@
 				B83792F726F7162B00D85B6D /* PlusFour.swift in Sources */,
 				B802D3E226F5A79400329210 /* SpotifyController.swift in Sources */,
 				B83627A726F664480092A106 /* FavoriteArtist.swift in Sources */,
+				B837930C26FAE5A700D85B6D /* GlobalVariables.swift in Sources */,
 				B83792F126F6FB5D00D85B6D /* Rising.swift in Sources */,
 				B83792F926F7198F00D85B6D /* NewPlaylistFollow.swift in Sources */,
 				B83627AC26F66A6D0092A106 /* URLImage.swift in Sources */,

@@ -11,8 +11,9 @@ struct PeopleToFollow: View {
     @ObservedObject var spotifyController: SpotifyController
     @State var recommended: [User] = []
     @State var loadedData3: Bool = false
-    @State var selectedTuneIn = false
     @Binding var onboarded : Bool
+    @State var selectedTuneIn = false
+    @StateObject var screen = Screen()
     
     @State var r1 = false
     @State var r2 = false
@@ -36,14 +37,14 @@ struct PeopleToFollow: View {
                 }.padding(.horizontal)
                 .padding(.top)
                 Rectangle()
-                    .frame(height: 8)
+                    .frame(height: screen.height / 101.5)
                     .padding()
                 HStack {
                     Text("Here are a few people that")
                         .font(.custom("CircularStd-Medium", size: 22))
                     Spacer()
                 }.padding(.horizontal)
-                .padding(.top, 5)
+                .padding(.top, screen.height / 162.4)
                 HStack {
                     Text("have similar taste as you.")
                         .font(.custom("CircularStd-Medium", size: 22))
@@ -55,7 +56,7 @@ struct PeopleToFollow: View {
                     HStack {
                         URLImageView(urlString: recommended[0].Image)
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 90, height: 90)
+                            .frame(width: screen.width / 4.167, height: screen.height / 9.022)
                             .clipped()
                         VStack {
                             HStack {
@@ -63,7 +64,7 @@ struct PeopleToFollow: View {
                                     .font(.custom("CircularStd-Medium", size: 16))
                                     .background(Rectangle()
                                                     .foregroundColor(Color(hex: "B8FDFF"))
-                                                    .frame(height: 20))
+                                                    .frame(height: screen.height / 40.6))
                                 Spacer()
                             }
                             HStack {
@@ -77,7 +78,7 @@ struct PeopleToFollow: View {
                         }) {
                             Circle()
                                 .foregroundColor(.clear)
-                                .frame(width: 70, height: 70)
+                                .frame(width: screen.width / 5.357, height: screen.height / 11.6)
                                 .overlay(
                                     Circle()
                                         .stroke(Color.white, lineWidth: 3))
@@ -85,7 +86,7 @@ struct PeopleToFollow: View {
                                     Image(systemName: r1 ? "checkmark" : "plus")
                                         .foregroundColor(Color(hex: "fff"))
                                         .font(.system(size: 50)))
-                                .padding(.trailing, 10)
+                                .padding(.trailing, screen.width / 37.5)
                         }
                     }.padding(.horizontal)
                     
@@ -97,7 +98,7 @@ struct PeopleToFollow: View {
                                     .font(.custom("CircularStd-Medium", size: 16))
                                     .background(Rectangle()
                                                     .foregroundColor(Color(hex: "B8FDFF"))
-                                                    .frame(height: 20))
+                                                    .frame(height: screen.height / 40.6))
                                 Spacer()
                             }
                             HStack {
@@ -106,11 +107,11 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                         }
-                        .frame(width: 90, height: 90)
+                        .frame(width: screen.width / 4.167, height: screen.height / 9.022)
                         HStack {
                             URLImageView(urlString: recommended[1].Image)
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 90, height: 90)
+                                .frame(width: screen.width / 4.167, height: screen.height / 9.022)
                                 .clipped()
                             Spacer()
                         }
@@ -119,7 +120,7 @@ struct PeopleToFollow: View {
                         }) {
                             Circle()
                                 .foregroundColor(.clear)
-                                .frame(width: 70, height: 70)
+                                .frame(width: screen.width / 5.357, height: screen.height / 11.6)
                                 .overlay(
                                     Circle()
                                         .stroke(Color.white, lineWidth: 3))
@@ -127,7 +128,7 @@ struct PeopleToFollow: View {
                                     Image(systemName: r2 ? "checkmark" : "plus")
                                         .foregroundColor(Color(hex: "fff"))
                                         .font(.system(size: 50)))
-                                .padding(.trailing, 10)
+                                .padding(.trailing, screen.width / 37.5)
                         }
                     }.padding(.horizontal)
                     
@@ -135,7 +136,7 @@ struct PeopleToFollow: View {
                     HStack {
                         URLImageView(urlString: recommended[2].Image)
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 90, height: 90)
+                            .frame(width: screen.width / 4.167, height: screen.height / 9.022)
                             .clipped()
                         VStack {
                             HStack {
@@ -143,7 +144,7 @@ struct PeopleToFollow: View {
                                     .font(.custom("CircularStd-Medium", size: 16))
                                     .background(Rectangle()
                                                     .foregroundColor(Color(hex: "B8FDFF"))
-                                                    .frame(height: 20))
+                                                    .frame(height: screen.height / 40.6))
                                 Spacer()
                             }
                             HStack {
@@ -157,7 +158,7 @@ struct PeopleToFollow: View {
                         }) {
                             Circle()
                                 .foregroundColor(.clear)
-                                .frame(width: 70, height: 70)
+                                .frame(width: screen.width / 5.357, height: screen.height / 11.6)
                                 .overlay(
                                     Circle()
                                         .stroke(Color.white, lineWidth: 3))
@@ -165,7 +166,7 @@ struct PeopleToFollow: View {
                                     Image(systemName: r3 ? "checkmark" : "plus")
                                         .foregroundColor(Color(hex: "fff"))
                                         .font(.system(size: 50)))
-                                .padding(.trailing, 10)
+                                .padding(.trailing, screen.width / 37.5)
                         }
                     }.padding(.horizontal)
                     
@@ -176,7 +177,7 @@ struct PeopleToFollow: View {
                         }) {
                             Circle()
                                 .foregroundColor(.clear)
-                                .frame(width: 70, height: 70)
+                                .frame(width: screen.width / 5.357, height: screen.height / 11.6)
                                 .overlay(
                                     Circle()
                                         .stroke(Color.white, lineWidth: 3))
@@ -184,7 +185,7 @@ struct PeopleToFollow: View {
                                     Image(systemName: r4 ? "checkmark" : "plus")
                                         .foregroundColor(Color(hex: "fff"))
                                         .font(.system(size: 50)))
-                                .padding(.leading, 10)
+                                .padding(.leading, screen.width / 37.5)
                         }
                         VStack {
                             HStack {
@@ -193,7 +194,7 @@ struct PeopleToFollow: View {
                                     .font(.custom("CircularStd-Medium", size: 16))
                                     .background(Rectangle()
                                                     .foregroundColor(Color(hex: "B8FDFF"))
-                                                    .frame(height: 20))
+                                                    .frame(height: screen.height / 40.6))
                             }
                             HStack {
                                 Spacer()
@@ -203,18 +204,18 @@ struct PeopleToFollow: View {
                         }
                         URLImageView(urlString: recommended[3].Image)
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 90, height: 90)
+                            .frame(width: screen.width / 4.167, height: screen.height / 9.022)
                             .clipped()
                     }.padding(.horizontal)
                     
                     //Row 5
-                    HStack(spacing: 0) {
+                    HStack() {
                         Button (action: {
                             r5.toggle()
                         }) {
                             Circle()
                                 .foregroundColor(.clear)
-                                .frame(width: 70, height: 70)
+                                .frame(width: screen.width / 5.357, height: screen.height / 11.6)
                                 .overlay(
                                     Circle()
                                         .stroke(Color.white, lineWidth: 3))
@@ -222,13 +223,13 @@ struct PeopleToFollow: View {
                                     Image(systemName: r5 ? "checkmark" : "plus")
                                         .foregroundColor(Color(hex: "fff"))
                                         .font(.system(size: 50)))
-                                .padding(.leading, 10)
+                                .padding(.leading, screen.width / 37.5)
                         }
                         HStack {
                             Spacer()
                             URLImageView(urlString: recommended[4].Image)
                                 .aspectRatio(contentMode: .fill)
-                                .frame(width: 90, height: 90)
+                                .frame(width: screen.width / 4.167, height: screen.height / 9.022)
                                 .clipped()
                         }
                         VStack {
@@ -237,7 +238,7 @@ struct PeopleToFollow: View {
                                     .font(.custom("CircularStd-Medium", size: 16))
                                     .background(Rectangle()
                                                     .foregroundColor(Color(hex: "B8FDFF"))
-                                                    .frame(height: 20))
+                                                    .frame(height: screen.height / 40.6))
                                 Spacer()
                             }
                             HStack {
@@ -246,9 +247,9 @@ struct PeopleToFollow: View {
                                 Spacer()
                             }
                         }
-                        .frame(width: 90, height: 90)
+                        .frame(width: screen.width / 4.167, height: screen.height / 9.022)
                     }.padding(.horizontal)
-                }.padding(.top, 20)
+                }.padding(.top, screen.height / 40.6)
                 
                 HStack {
                     Spacer()
@@ -259,13 +260,13 @@ struct PeopleToFollow: View {
                             Text("Let’s tune in!")
                                 .font(.custom("CircularStd-Book", size: 16))
                                 .foregroundColor(Color(hex: "#101010"))
-                                .padding([.vertical],12)
-                                .frame(width:140)
+                                .padding([.vertical], screen.height / 67.667)
+                                .frame(width: screen.width / 2.679)
                         }.background(Color(hex: "#fff"))
                         .cornerRadius(30)
                     }
                     Spacer()
-                }.padding(.top,25)
+                }.padding(.top, screen.height / 32.48)
                 
                 Spacer()
             }

@@ -10,6 +10,7 @@ import SwiftUI
 struct Rising: View {
     @ObservedObject var spotifyController: SpotifyController
     @State var playlists = [Playlist]()
+    @StateObject var screen = Screen()
     
     var body: some View {
         VStack {
@@ -107,13 +108,15 @@ struct Rising: View {
 struct RisingCard: View {
     @State var playlist : Playlist
     @State var liked = false
+    @StateObject var screen = Screen()
+
     var body: some View {
         VStack {
             ZStack {
                 Button (action:{}) {
                     URLImageView(urlString: playlist.Image)
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 150, height: 150)
+                        .frame(width: screen.width / 2.5, height: screen.height / 5.413)
                         .clipped()
                 }
                 VStack {
@@ -125,10 +128,10 @@ struct RisingCard: View {
                             Image(systemName: liked ? "heart.fill" : "heart")
                                 .foregroundColor(Color(hex: "fff"))
                                 .font(.system(size: 23))
-                        }.padding(4)
+                        }.padding(screen.height / 203)
                     }
                     Spacer()
-                }.frame(width: 150, height: 150)
+                }.frame(width: screen.width / 2.5, height: screen.height / 5.413)
             }
             HStack {
                 Text(playlist.Name)

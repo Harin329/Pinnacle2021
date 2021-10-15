@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct Reshared: View {
+    @StateObject var screen = Screen()
+
     var body: some View {
         VStack {
             HStack(spacing:0) {
                 Image("jennycai")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 40)
+                    .frame(width: screen.width / 9.375)
                 Text(" Jenny Cai")
                     .font(.custom("CircularStd-Medium", size: 14))
                 Text(" reshared ")
@@ -28,8 +30,8 @@ struct Reshared: View {
                 Image("playlist1")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 160)
-                VStack (spacing: 8) {
+                    .frame(width: screen.width / 2.344)
+                VStack (spacing: screen.height / 101.5) {
                     HStack {
                         Text("Olivia O’Malley")
                             .font(.custom("CircularStd-Book", size: 13))

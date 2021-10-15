@@ -11,6 +11,7 @@ struct CreateProfile: View {
     @ObservedObject var spotifyController: SpotifyController
     @Binding var onboarded : Bool
     @State var selected = false
+    @StateObject var screen = Screen()
     var body: some View {
         ZStack {
             VStack {
@@ -24,12 +25,12 @@ struct CreateProfile: View {
                 
                 ZStack {
                     Rectangle()
-                        .frame(height: 8)
+                        .frame(height: screen.height / 101.5)
                     HStack {
                         Spacer()
                         Rectangle()
                             .fill(Color(hex: "FFF"))
-                            .frame(width: 230, height: 8)
+                            .frame(width: screen.width / 1.63, height: screen.height / 101.5)
                     }
                 }.padding()
                 
@@ -47,7 +48,7 @@ struct CreateProfile: View {
                                 .font(.custom("CircularStd-Book", size: 16))
                                 .foregroundColor(Color(hex: "#101010"))
                                 .padding([.vertical],8)
-                                .frame(width:100)
+                                .frame(width:screen.width / 3.75)
                         }.background(Color(hex: "#fff"))
                         .cornerRadius(30)
                     }
@@ -81,7 +82,7 @@ struct CreateProfile: View {
             .opacity(selected ? 0 : 1)
             if (spotifyController.user_id != nil) {
             Taste(spotifyController: spotifyController, onboarded: $onboarded)
-                .offset(x: selected ? 0 : UIScreen.main.bounds.width )
+                .offset(x: selected ? 0 : screen.width )
                 .animation(.easeIn)
             }
         }

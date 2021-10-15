@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CreatorMonth: View {
+    @StateObject var screen = Screen()
+
     var body: some View {
         VStack {
             HStack {
@@ -19,7 +21,7 @@ struct CreatorMonth: View {
                 Image("creator1")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 75)
+                    .frame(width: screen.width / 5)
                     .clipped()
                 VStack {
                     HStack {
@@ -38,7 +40,7 @@ struct CreatorMonth: View {
                         Text(" playlists created this month")
                             .font(.custom("CircularStd-Book", size: 12))
                         Spacer()
-                    }.padding(.top,5)
+                    }.padding(.top,screen.height / 162.4)
                     HStack(spacing: 0){
                         Text("2.2k")
                             .font(.custom("CircularStd-Medium", size: 20))
@@ -48,18 +50,20 @@ struct CreatorMonth: View {
                         Spacer()
                     }
                     HStack {
-                        CreatorCapsule(title: "Country", width: 90)
-                        CreatorCapsule(title: "Pop", width: 70)
-                        CreatorCapsule(title: "Jazz", width: 80)
+                        //TODO:
+                        // Need to make this sizing dynamic
+                        CreatorCapsule(title: "Country", width: screen.width / 4.167)
+                        CreatorCapsule(title: "Pop", width: screen.width / 5.357)
+                        CreatorCapsule(title: "Jazz", width: screen.width / 4.688)
                         Spacer()
                     }
                 }
-            }.padding(.bottom, 15)
+            }.padding(.bottom, screen.height / 54.133)
             HStack {
                 Image("emilyliu")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 75, height: 75)
+                    .frame(width: screen.width / 5, height: screen.width / 5)
                     .clipped()
                 VStack {
                     HStack {
@@ -78,7 +82,7 @@ struct CreatorMonth: View {
                         Text(" playlists created this month")
                             .font(.custom("CircularStd-Book", size: 12))
                         Spacer()
-                    }.padding(.top,5)
+                    }.padding(.top, screen.height / 162.4)
                     HStack(spacing: 0){
                         Text("2.2k")
                             .font(.custom("CircularStd-Medium", size: 20))
@@ -88,15 +92,15 @@ struct CreatorMonth: View {
                         Spacer()
                     }
                     HStack {
-                        CreatorCapsule(title: "R&B", width: 70)
-                        CreatorCapsule(title: "K-Pop", width: 80)
-                        CreatorCapsule(title: "Hip Hop", width: 90)
+                        CreatorCapsule(title: "R&B", width: screen.width / 5.357)
+                        CreatorCapsule(title: "K-Pop", width: screen.width / 4.688)
+                        CreatorCapsule(title: "Hip Hop", width: screen.width / 4.167)
                         Spacer()
                     }
                 }
             }
         }
-        .padding(.top, 10)
+        .padding(.top, screen.height / 81.2)
         .padding()
         .background((Color(hex:"FFCC54")))
         
@@ -107,6 +111,8 @@ struct CreatorCapsule: View {
     var title : String
     var width : CGFloat
     @State var selected = false
+    @StateObject var screen = Screen()
+
     var body: some View {
         Button(action: {
             selected.toggle()
@@ -115,13 +121,13 @@ struct CreatorCapsule: View {
                 Text(title)
                     .font(.custom("CircularStd-Book", size: 14))
                     .foregroundColor(Color(hex: "#101010"))
-                    .padding([.vertical],5)
+                    .padding([.vertical],screen.height / 162.4)
                     .frame(width:width)
             }.background(Color(hex: "#fff"))
             .cornerRadius(30)
             .overlay(
                 RoundedRectangle(cornerRadius: 25)
-                    .stroke(Color.white, lineWidth: 2))
+                    .stroke(Color.white, lineWidth: screen.width / 187.5))
         }
     }
 }
