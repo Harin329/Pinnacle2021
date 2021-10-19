@@ -16,7 +16,6 @@ services:
     volumes: 
       - ./database/data:/var/lib/mysql
       - ./database/init.sql:/docker-entrypoint-initdb.d/~init.sql
-      - ./database/mockdata.sql:/mockData/mockdata.sql
 
   server:
     build: ./server

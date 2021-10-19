@@ -4,6 +4,7 @@ USE `spotlight_db`;
 DROP procedure IF EXISTS `postUser`;
 DROP procedure IF EXISTS `setAnthem`;
 DROP procedure IF EXISTS `getAllUser`;
+DROP procedure IF EXISTS `getAllUserId`;
 
 DELIMITER $$
 USE `spotlight_db`$$
@@ -36,6 +37,17 @@ CREATE PROCEDURE `getAllUser` ()
 BEGIN
 
 SELECT * FROM `user_table`;
+
+END$$
+
+DELIMITER ;
+
+DELIMITER $$
+USE `spotlight_db`$$
+CREATE PROCEDURE `getAllUserId` ()
+BEGIN
+
+SELECT `user_id` FROM `user_table`;
 
 END$$
 
