@@ -169,7 +169,7 @@ struct OnboardingSong: View {
         let parameters = "{\n    \"UserID\": \"" + self.spotifyController.user_id! + "\",\n    \"UserName\": \"" + self.spotifyController.display_name! + "\",\n    \"Token\": \"" + self.spotifyController.accessToken! + "\"\n}"
         let postData = parameters.data(using: .utf8)
         
-        var request = URLRequest(url: URL(string: "https://pinnacle.harinwu.com/user/playlist")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://pinnacle.harinwu.com/user/myPlaylist")!,timeoutInterval: Double.infinity)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         request.httpMethod = "POST"

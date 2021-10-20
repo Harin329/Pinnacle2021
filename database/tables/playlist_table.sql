@@ -16,6 +16,7 @@ CREATE TABLE `playlist_table` (
   `name` VARCHAR(255) NOT NULL,
   `creator` VARCHAR(255) NOT NULL,
   `time` DATETIME,
+  `last_update` DATETIME,
   `followers` INT(8),
   `danceability` DECIMAL(10, 5),
   `energy` DECIMAL(10, 5),
