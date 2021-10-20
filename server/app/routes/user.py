@@ -18,7 +18,7 @@ defaultUser = {
 }
 
 @router.post('/myPlaylist')
-def log_playlist(user: dict = defaultUser):
+def log_myPlaylist(user: dict = defaultUser):
     try:
         conn, cursor = init_conn()
         userID = user['UserID']
@@ -76,24 +76,25 @@ def log_playlist(user: dict = defaultUser):
 
 @router.post('/playlist')
 def log_playlist(user: dict = defaultUser):
+    print(user['UserID'])
     try:
         conn, cursor = init_conn()
         userID = user['UserID']
         # userName = user['UserName']
         token = user['Token']
 
-        url = "https://api.spotify.com/v1/" + userID + "/playlists?limit=50"
+        url = "https://api.spotify.com/v1/users/" + userID + "/playlists?limit=50"
 
-        next = url
+        nextUp = url
 
-        while (next != None):
+        while (nextUp != None):
             headers = {"Authorization": "Bearer {}".format(token)}
-            response = requests.get(next, headers=headers, params={})
+            response = requests.get(nextUp, headers=headers, params={})
             res = response.json()
 
             added = []
 
-            next = res['next']
+            nextUp = res['next']
 
             for p in res['items']:
                 try:
@@ -130,6 +131,7 @@ def log_playlist(user: dict = defaultUser):
                     added.append(res)
                 except:
                     print("error training - skipping")
+
         return added, 200
 
     except Exception as e:

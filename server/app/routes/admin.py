@@ -15,7 +15,7 @@ router = APIRouter(
 
 expiry = None
 token = None
-refresh_token = None
+refresh_token = "AQBsvG-fvAOIpbfqsmTTVtUtokKDLsC0CCKCZV9GIVBSRFyD2HdIkZ8RKDNZ3molAfMWMUS3tZSiF2jUaqqPkXY7NL3jFjSWk56wecWYzkI1CbEKl03XGs2aERgnRcVc2ho"
 authorization = "Basic NGUyMWJmODYxN2QzNGYyOGE5Yjc2MmI1ZjI3ZmIwNDA6NTBjZTg2Mjk5MmUzNGExMzg0N2YwOTllOWIzMzBjYWY="
 
 def obtainToken(code):
@@ -45,6 +45,7 @@ def refreshToken():
 def getToken():
     global expiry
     global token
+    global refresh_token
     if token == None or expiry == None or time.time() > expiry:
         payload = refreshToken()
 
@@ -80,11 +81,14 @@ def callback(code: str = ""):
     else:
         return "Failed to access token"
 
-    return "Auth Success"
+    return "Auth Success, Refresh Token: " + refresh_token
 
 
 @router.get("/checkToken")
-def refresh_all():
+def checkToken():
+    global expiry
+    global token
+    global refresh_token
     try:
         checkedToken = getToken()
         return checkedToken, 200
@@ -95,6 +99,9 @@ def refresh_all():
 
 @router.get("/refresh")
 def refresh_all():
+    global expiry
+    global token
+    global refresh_token
     try:
         _, cursor = init_conn()
 
@@ -102,11 +109,12 @@ def refresh_all():
         
         for user in list(res):
             user = {
-                "UserID": user,
+                "UserID": user[0],
                 "UserName": "Harin",
                 "Token": getToken()
             }
-            log_playlist(user)
+            numAdded = log_playlist(user)
+            print("Total Added: " + str(len(numAdded)))
 
         return "Data Refreshed!", 200
     except Exception as e:
