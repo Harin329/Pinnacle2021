@@ -36,7 +36,7 @@ def log_myPlaylist(user: dict = defaultUser):
             try:
                 playlistID = p["id"]
                 playlistName = p["name"]
-                print(playlistName)
+                # print(playlistName)
 
                 if (p["owner"]["display_name"] == "Spotify" or not p["public"]):
                     continue
@@ -75,8 +75,7 @@ def log_myPlaylist(user: dict = defaultUser):
 
 
 @router.post('/playlist')
-def log_playlist(user: dict = defaultUser):
-    print(user['UserID'])
+async def log_playlist(user: dict = defaultUser):
     try:
         conn, cursor = init_conn()
         userID = user['UserID']
@@ -99,7 +98,7 @@ def log_playlist(user: dict = defaultUser):
                 try:
                     playlistID = p["id"]
                     playlistName = p["name"]
-                    print(playlistName)
+                    # print(playlistName)
 
                     if (p["owner"]["display_name"] == "Spotify" or not p["public"]):
                         continue
@@ -129,7 +128,6 @@ def log_playlist(user: dict = defaultUser):
                     res = post_playlist(conn, cursor, playlistID,
                                         playlistName, userID, followers, metrics)
                     added.append(res)
-                    print(len(added))
                 except Exception as ex:
                     print("error training: {} - skipping".format(ex))
 
