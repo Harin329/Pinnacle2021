@@ -2,6 +2,7 @@ from fastapi import APIRouter, responses
 import logging
 import time
 import requests
+import threading
 from indexer.user import get_allUserId
 from indexer.tools import init_conn
 from routes.user import log_playlist
@@ -15,7 +16,7 @@ router = APIRouter(
 
 expiry = None
 token = None
-refresh_token = "AQBsvG-fvAOIpbfqsmTTVtUtokKDLsC0CCKCZV9GIVBSRFyD2HdIkZ8RKDNZ3molAfMWMUS3tZSiF2jUaqqPkXY7NL3jFjSWk56wecWYzkI1CbEKl03XGs2aERgnRcVc2ho"
+refresh_token = "AQAtvVdw-I2EEQ-F5idOYkVSqlz3Gzvqgvdop85DC4EVsTzQDuUlRfPocvyNapQMqJKAMW2znt8mVmXLlFK69VcQQbOYlGw-PfoKzA8jmIp-0lu4obSLvkkLgWxrFIXZgWA"
 authorization = "Basic NGUyMWJmODYxN2QzNGYyOGE5Yjc2MmI1ZjI3ZmIwNDA6NTBjZTg2Mjk5MmUzNGExMzg0N2YwOTllOWIzMzBjYWY="
 
 def obtainToken(code):
@@ -96,25 +97,34 @@ def checkToken():
         logging.error(e)
         return "Error with {}".format(e), 400
 
-
 @router.get("/refresh")
 def refresh_all():
     global expiry
     global token
     global refresh_token
     try:
-        _, cursor = init_conn()
+        def loopRefresh():
+            try:
+                _, cursor = init_conn()
 
-        res = get_allUserId(cursor)
+                res = get_allUserId(cursor)
+                
+                for user in list(res):
+                    user = {
+                        "UserID": user[0],
+                        "UserName": "Harin",
+                        "Token": getToken()
+                    }
+                    log_playlist(user)
+                    # numAdded, _ = log_playlist(user)
+                    # print("Total Added: " + str(len(numAdded)))
+
+            except Exception as e:
+                logging.error(e)
+                return "Error with {}".format(e)
         
-        for user in list(res):
-            user = {
-                "UserID": user[0],
-                "UserName": "Harin",
-                "Token": getToken()
-            }
-            numAdded, _ = log_playlist(user)
-            print("Total Added: " + str(len(numAdded)))
+        thread = threading.Thread(target=loopRefresh)
+        thread.start()
 
         return "Data Refreshed!", 200
     except Exception as e:

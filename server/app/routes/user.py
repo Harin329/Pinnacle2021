@@ -75,7 +75,7 @@ def log_myPlaylist(user: dict = defaultUser):
 
 
 @router.post('/playlist')
-async def log_playlist(user: dict = defaultUser):
+def log_playlist(user: dict = defaultUser):
     try:
         conn, cursor = init_conn()
         userID = user['UserID']
