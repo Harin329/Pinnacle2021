@@ -10,3 +10,4 @@ CALL spotlight_db.postUser('anna_~', 'Anna Brisland', 0.46300, 0.21300, 2.00000,
 CALL spotlight_db.postUser('z4gf9epzt7ppwoll64yooydwz', 'Quin Towert',  0.68232, 0.66077, 5.39000, -5.71452, 0.63000, 0.08369, 0.19410, 0.00209, 0.17248, 0.51402, 115.9511);
 CALL spotlight_db.postUser('tomor2.y', 'Tomoki Kn',  0.30, 0.06077, 10.39000, -2.71452, 0.93000, 0.48369, 0.59410, 0.20209, 0.47248, 0.01402, 105.9511);
 CALL spotlight_db.postUser('tlapgd20omu6wm2s2hatop7sh', 'Carmen Ly',  0.10, 0.09077, 17.39000, -8.71452, 0.73000, 0.88369, 0.49410, 0.29209, 0.46248, 0.08402, 110.9511);
+CALL spotlight_db.postUser('12183923611', 'Yashar Shayei',  0.29, 0.09077, 17.39000, -8.71452, 0.73000, 0.88369, 0.49410, 0.29209, 0.46248, 0.08402, 110.9511);

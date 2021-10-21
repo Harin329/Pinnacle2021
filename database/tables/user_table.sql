@@ -28,7 +28,7 @@ CREATE TABLE `user_table` (
   `valence` DECIMAL(10, 5),
   `tempo` DECIMAL(10, 5),
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 END$$
 
