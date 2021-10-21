@@ -86,13 +86,12 @@ def log_playlist(user: dict = defaultUser):
         url = "https://api.spotify.com/v1/users/" + userID + "/playlists?limit=50"
 
         nextUp = url
+        added = []
 
         while (nextUp != None):
             headers = {"Authorization": "Bearer {}".format(token)}
             response = requests.get(nextUp, headers=headers, params={})
             res = response.json()
-
-            added = []
 
             nextUp = res['next']
 
@@ -123,14 +122,16 @@ def log_playlist(user: dict = defaultUser):
 
                     for song in tracks:
                         s = song['track']['id']
-                        songlist.append(s)
+                        if (s != None):
+                            songlist.append(s)
 
                     metrics = calculateSongs(token, songlist)
                     res = post_playlist(conn, cursor, playlistID,
                                         playlistName, userID, followers, metrics)
                     added.append(res)
-                except:
-                    print("error training - skipping")
+                    print(len(added))
+                except Exception as ex:
+                    print("error training: {} - skipping".format(ex))
 
         return added, 200
 
