@@ -208,7 +208,7 @@ def train():
 
                 if (playRes != None and len(playRes) > 0):
                     for play in playRes:
-                        match = cosine_similarity(user[4:], play[5:])
+                        match = cosine_similarity(user[4:], play[6:])
                         df.loc[len(df.index)] = [user[0], 'playlist', play[0], match]
 
         df.to_sql(con=engine, name='recommend_table', if_exists='replace')
