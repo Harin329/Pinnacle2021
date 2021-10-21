@@ -30,7 +30,7 @@ CREATE TABLE `playlist_table` (
   `valence` DECIMAL(10, 5),
   `tempo` DECIMAL(10, 5),
   PRIMARY KEY (`playlist_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 END$$
 

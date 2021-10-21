@@ -113,7 +113,7 @@ def refresh_all():
                 "UserName": "Harin",
                 "Token": getToken()
             }
-            numAdded = log_playlist(user)
+            numAdded, _ = log_playlist(user)
             print("Total Added: " + str(len(numAdded)))
 
         return "Data Refreshed!", 200
