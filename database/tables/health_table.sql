@@ -16,7 +16,7 @@ CREATE TABLE `health_table` (
   `name` VARCHAR(255) NOT NULL,
   `time` DATETIME,
   PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 END$$
 

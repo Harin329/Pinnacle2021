@@ -1,5 +1,9 @@
 # Initialize
 
+ALTER DATABASE spotlight_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+SET collation_connection = utf8mb4_unicode_ci;
+SET collation_server = utf8mb4_unicode_ci;
+
 CALL spotlight_db.createHealthTable;
 CALL spotlight_db.createUserTable;
 CALL spotlight_db.createPlaylistTable;
