@@ -13,7 +13,7 @@ BEGIN
 
 CREATE TABLE `playlist_table` (
   `playlist_id` VARCHAR(255) NOT NULL,
-  `name` VARCHAR(255) NOT NULL CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `creator` VARCHAR(255) NOT NULL,
   `time` DATETIME,
   `last_update` DATETIME,
