@@ -189,7 +189,7 @@ def train():
     try:
         conn, cursor = init_conn()
         engine = create_engine(
-            'mysql+mysqldb://user:root@34.134.241.78:3306/spotlight_db', echo=True)
+            'mysql+mysqldb://user:root@pinnacle.harinwu.com:3306/spotlight_db', echo=True)
 
         res = get_allUser(cursor)
         cursor.nextset()
